@@ -1,0 +1,131 @@
+/* 株式会社Root corporate site */
+body{margin:0;background:#FFFFFF;color:#1F1F1F;font-family:'Noto Sans JP',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body.dark{background:#221B14}
+a{color:#C94E10}a:hover{color:#F2661F}
+body.dark a{color:#F2661F}body.dark a:hover{color:#FF8B52}
+.nav-a:hover .nav-en{background-size:100% 1.5px !important}
+.type-chip.is-active{background:#221B14 !important;color:#FBF1E6 !important;border-color:#221B14 !important}
+@keyframes fvDraw{from{stroke-dashoffset:var(--ds)}}
+@keyframes fvRise{from{clip-path:inset(101% 0 0 0);transform:translateY(4%)}}
+@keyframes fvPop{0%{transform:scale(0)}62%{transform:scale(1.28)}}
+@keyframes fvOut{to{opacity:0}}
+@keyframes fvLogoIn{from{opacity:0}}
+@keyframes fvIn{from{opacity:0;transform:translateY(12px)}}
+@keyframes fvShift{from{transform:none}}
+@keyframes fvGuide{0%{opacity:0}10%{opacity:1}76%{opacity:1}100%{opacity:0}}
+@keyframes fvOrbit{from{transform:rotate(-260deg)}}
+@keyframes fvDrop{0%{transform:translateY(-42px) scale(.5);opacity:0}55%{transform:translateY(5px) scale(1.08);opacity:1}100%{transform:none;opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+/* hover/focus states */
+.hv1:hover{border-color:#F2661F !important;color:#F2661F !important}
+.hv2:hover{background:rgba(242,102,31,.1) !important;color:#F2661F !important}
+.hv3:hover{background:rgba(242,102,31,.1) !important;color:#F2661F !important}
+.hv4:hover{background:rgba(242,102,31,.1) !important;color:#F2661F !important}
+.hv5:hover{background:rgba(242,102,31,.1) !important;color:#F2661F !important}
+.hv6:hover{background:rgba(242,102,31,.1) !important;color:#F2661F !important}
+.hv7:hover{color:#F2661F !important}
+.hv8:hover{color:#F2661F !important}
+.hv9:hover{background:#F2661F !important}
+.hv10:hover{background:#F2661F !important}
+.hv11:hover{color:#F2661F !important}
+.hv12:hover{color:#F2661F !important}
+.hv13:hover{color:#F2661F !important}
+.hv14:hover{color:#F2661F !important}
+.hv15:hover{color:#F2661F !important}
+.hv16:hover{color:#F2661F !important}
+.hv17:hover{color:#F2661F !important}
+.hv18:hover{color:#F2661F !important}
+.hv19:hover{background:#F2661F !important}
+.hv20:hover{background:#FFFFFF !important;color:#C94E10 !important}
+.hv21:hover{background:#FFFFFF !important;color:#C94E10 !important}
+.hv22:hover{background:#F2661F !important}
+.hv23:hover{background:#C94E10 !important}
+.hv24:hover{background:#F2661F !important}
+.hv25:hover{color:#F2661F !important}
+.hv26:hover{color:#F2661F !important}
+.hv27:hover{color:#F2661F !important}
+.hv28:hover{color:#F2661F !important}
+.hv29:hover{color:#F2661F !important}
+.hv30:hover{color:#F2661F !important}
+.hv31:hover{color:#F2661F !important}
+.hv32:hover{color:#F2661F !important}
+.hv33:hover{background:#F2661F !important}
+.hv34:hover{background:#F2661F !important}
+.hv35:hover{color:#F2661F !important}
+.hv36:hover{color:#F2661F !important}
+.hv37:hover{color:#F2661F !important}
+.hv38:hover{color:#F2661F !important}
+.hv39:hover{color:#F2661F !important}
+.hv40:hover{color:#F2661F !important}
+.hv41:hover{color:#F2661F !important}
+.hv42:hover{color:#F2661F !important}
+.hv43:hover{background:#F2661F !important}
+.hv44:hover{background:#C94E10 !important}
+.hv45:hover{background:#F2661F !important}
+.hv46:hover{color:#F2661F !important}
+.hv47:hover{color:#F2661F !important}
+.hv48:hover{color:#F2661F !important}
+.hv49:hover{color:#F2661F !important}
+.hv50:hover{color:#F2661F !important}
+.hv51:hover{color:#F2661F !important}
+.hv52:hover{color:#F2661F !important}
+.hv53:hover{color:#F2661F !important}
+.hv54:hover{background:#F2661F !important}
+.hv55:hover{background:#F2661F !important}
+.hv56:hover{color:#F2661F !important}
+.hv57:hover{color:#F2661F !important}
+.hv58:hover{color:#F2661F !important}
+.hv59:hover{color:#F2661F !important}
+.hv60:hover{color:#F2661F !important}
+.hv61:hover{color:#F2661F !important}
+.hv62:hover{color:#F2661F !important}
+.hv63:hover{color:#F2661F !important}
+.hv64:hover{background:#F2661F !important}
+.fc65:focus{border-bottom-color:#F2661F !important}
+.fc66:focus{border-bottom-color:#F2661F !important}
+.fc67:focus{border-bottom-color:#F2661F !important}
+.fc68:focus{border-color:#F2661F !important}
+.hv69:hover{background:#F2661F !important}
+.hv70:hover{color:#F2661F !important}
+.hv71:hover{color:#F2661F !important}
+.hv72:hover{color:#F2661F !important}
+.hv73:hover{color:#F2661F !important}
+.hv74:hover{color:#F2661F !important}
+.hv75:hover{color:#F2661F !important}
+.hv76:hover{color:#F2661F !important}
+.hv77:hover{color:#F2661F !important}
+.hv78:hover{background:#F2661F !important}
+.hv79:hover{color:#F2661F !important}
+.hv80:hover{color:#F2661F !important}
+.hv81:hover{color:#F2661F !important}
+.hv82:hover{color:#F2661F !important}
+.hv83:hover{color:#F2661F !important}
+.hv84:hover{color:#F2661F !important}
+.hv85:hover{color:#F2661F !important}
+.hv86:hover{color:#F2661F !important}
+.hv87:hover{background:#F2661F !important}
+.hv88:hover{color:#F2661F !important}
+.hv89:hover{color:#F2661F !important}
+.hv90:hover{color:#F2661F !important}
+.hv91:hover{color:#F2661F !important}
+.hv92:hover{color:#F2661F !important}
+.hv93:hover{color:#F2661F !important}
+.hv94:hover{color:#F2661F !important}
+.hv95:hover{color:#F2661F !important}
+
+@keyframes rtTrace{from{stroke-dashoffset:100}to{stroke-dashoffset:-100}}
+@keyframes rtPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}[data-rt]{stroke-dasharray:100 0 !important}}
+@media (max-width: 760px){
+main p br{display:none}
+h1{overflow-wrap:anywhere}
+[data-r="split"]{grid-template-columns:1fr !important;gap:20px !important}
+[data-r="dl"]{grid-template-columns:1fr !important;gap:4px 0 !important}
+[data-r="nav"]{flex:1 1 100%;flex-wrap:nowrap !important;overflow-x:auto;gap:22px !important;padding:2px 0 12px !important;scrollbar-width:none}
+[data-r="nav"]::-webkit-scrollbar{display:none}
+[data-r="nav"] > a{flex:none}
+[data-r="nav"] > a > span + span{display:none}
+[data-r="nav"] > a:last-child{margin-left:0 !important;padding:9px 16px !important}
+[data-r="fvlogo"]{width:min(78vw,340px) !important}
+[data-r="fvshift"]{transform:translateY(-1vh) !important}
+}
