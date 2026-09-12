@@ -18,8 +18,39 @@ body.dark{background:#221B14}
 body.light{background:#FFFFFF}
 img{max-width:100%}
 .pc-view{display:none}
-.sp-view{display:block;width:100%;max-width:480px;margin:0 auto;min-height:100vh}
+.sp-view{display:block;width:100%;max-width:480px;margin:0 auto}
 @media (min-width:768px){
-  .pc-view{display:block;width:100%;max-width:1280px;margin:0 auto;min-height:100vh}
+  .pc-view{display:block;width:100%;max-width:1280px;margin:0 auto}
   .sp-view{display:none}
 }
+
+/* ---- FV オープニング演出（トップページ） ---- */
+#intro{
+  position:fixed; inset:0; z-index:9999;
+  background:#221B14;
+  display:grid; place-items:center; gap:34px; align-content:center;
+  transition:transform .85s cubic-bezier(.76,0,.24,1), opacity .6s ease .2s;
+  will-change:transform,opacity;
+}
+#intro.is-out{ transform:translateY(-100%); opacity:0; }
+#intro-mark{
+  position:relative;
+  width:min(420px, 68vw); aspect-ratio:487/170;
+}
+#intro-mark svg{ position:absolute; inset:0; animation:fvOut .24s ease 1.5s both; }
+#intro-logo{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; opacity:0;
+  animation:fvLogoIn .34s ease 1.62s both;
+}
+#intro-bar{
+  width:min(160px, 40vw); height:1px;
+  background:rgba(251,241,230,.16); overflow:hidden;
+}
+#intro-bar i{
+  display:block; height:100%; width:100%;
+  background:#F2661F; transform-origin:left center;
+  animation:introBar 2.1s cubic-bezier(.5,0,.2,1) both;
+}
+@keyframes introBar{ from{transform:scaleX(0)} to{transform:scaleX(1)} }
+@media (prefers-reduced-motion: reduce){ #intro{display:none} }
