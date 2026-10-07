@@ -1,4 +1,118 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "root-biz.vercel.app"
+        }
+      ],
+      "destination": "https://www.root-biz.com/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/service",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/service/ad",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service/ad>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/service/hr",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service/hr>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/company",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/company>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/mission",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/mission>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/news",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/news>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/recruit",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/recruit>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/contact",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/contact>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/privacy",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/privacy>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/koukoku",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/koukoku>; rel=\"canonical\""
+        }
+      ]
+    }
+  ]
 }
