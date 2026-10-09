@@ -1,0 +1,78 @@
+/* Root corporate site — round 2: video + motion */
+
+/* ---- video ---- */
+.rt-video{opacity:0;transition:opacity .9s ease;pointer-events:none}
+.rt-video.is-on{opacity:1}
+#hero-video-slot .rt-video{transition-duration:.35s}
+#hero-video-slot.is-video > img[alt="Root"]{opacity:0;transition:opacity .35s ease}
+
+/* ---- scroll reveal ---- */
+.rt-r{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)}
+.rt-r.is-in{opacity:1;transform:none}
+.rt-h{clip-path:inset(0 0 100% 0);transform:translateY(.35em);transition:clip-path .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rt-h.is-in{clip-path:inset(0 0 -25% 0);transform:none}
+.rt-now{transition:none !important}
+.rt-drift{will-change:translate}
+
+/* ---- buttons: lift on hover (pill CTAs only) ---- */
+@media (hover:hover){
+  a[href^="/mtg"][style*="999px"],a[href="/contact"][style*="999px"],a[href^="/recruit"][style*="999px"]{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background .22s ease,filter .22s ease !important}
+  a[href^="/mtg"][style*="999px"]:hover,a[href="/contact"][style*="999px"]:hover,a[href^="/recruit"][style*="999px"]:hover{transform:translateY(-3px) !important;filter:brightness(1.06)}
+  a[href^="/mtg"][style*="999px"]:active,a[href="/contact"][style*="999px"]:active{transform:translateY(0) !important}
+}
+
+/* ---- accordion ---- */
+[data-rt-acc] > *{transform-origin:top}
+button[data-rt-acc-btn] [data-rt-sign]{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+button[data-rt-acc-btn][aria-expanded="true"] [data-rt-sign]{transform:rotate(180deg)}
+
+/* ---- tabs ---- */
+[role="tab"]{transition:background .25s ease,color .25s ease}
+[role="tabpanel"].rt-tab-in{animation:rt-fade .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rt-fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---- carousel ---- */
+[data-rt-track]{scrollbar-width:none}
+[data-rt-track]::-webkit-scrollbar{display:none}
+[data-rt-bar]{transition:width .35s cubic-bezier(.2,.7,.2,1)}
+[data-rt-board]{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+button[data-rt-dot]{transition:background .3s ease,transform .3s ease}
+
+/* ---- sticky CTA (SP) ---- */
+#sp-sticky-cta{transition:transform .4s cubic-bezier(.2,.7,.2,1),visibility .4s !important}
+#sp-sticky-cta.is-hidden{transform:translateY(120%) !important;visibility:hidden !important}
+
+/* ---- SP drawer: quarter-circle open from the MENU/CLOSE corner ---- */
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"]{animation:rt-drawer .55s cubic-bezier(.65,0,.25,1) both}
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div{animation:rt-up .55s cubic-bezier(.2,.7,.2,1) both}
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div:nth-child(1){animation-delay:.18s}
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div:nth-child(2){animation-delay:.24s}
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div:nth-child(3){animation-delay:.30s}
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div:nth-child(4){animation-delay:.36s}
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div:nth-child(5){animation-delay:.42s}
+[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div:nth-child(6){animation-delay:.48s}
+@keyframes rt-drawer{from{clip-path:circle(0 at calc(100% - 48px) calc(100% - 48px))}to{clip-path:circle(160% at calc(100% - 48px) calc(100% - 48px))}}
+@keyframes rt-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ---- RECRUIT hero: word reveal + swoosh wipe ---- */
+#recruit-copy [data-word]{opacity:0;transform:translateY(40px)}
+#hero-video-recruit.rt-ready #recruit-copy [data-word]{animation:rt-word .8s cubic-bezier(.2,.7,.2,1) forwards}
+#hero-video-recruit img[src*="illust-recruit-01"]{clip-path:inset(-5% 100% -5% 0)}
+#hero-video-recruit.rt-ready img[src*="illust-recruit-01"]{animation:rt-wipe 1.4s .15s cubic-bezier(.65,0,.25,1) forwards}
+#hero-video-recruit h1{opacity:0;transform:translateY(16px)}
+#hero-video-recruit.rt-ready h1{animation:rt-word .8s .75s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rt-word{to{opacity:1;transform:none}}
+@keyframes rt-wipe{to{clip-path:inset(-5% 0 -5% 0)}}
+
+/* ---- top hero SCROLL indicator pulse ---- */
+#hero-video-slot span[aria-hidden="true"] > span:last-child{animation:rt-scroll 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes rt-scroll{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---- reduced motion: everything static, posters instead of video ---- */
+@media (prefers-reduced-motion:reduce){
+  .rt-video{display:none !important}
+  .rt-r,.rt-h,#recruit-copy [data-word],#hero-video-recruit h1{opacity:1 !important;transform:none !important;clip-path:none !important;transition:none !important;animation:none !important}
+  #hero-video-recruit img[src*="illust-recruit-01"]{clip-path:none !important;animation:none !important}
+  [data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"],[data-dc-if="spIsOpen"]:not([hidden]) > [role="dialog"] nav > div,[role="tabpanel"].rt-tab-in,#hero-video-slot span[aria-hidden="true"] > span:last-child{animation:none !important}
+  #sp-sticky-cta,[data-rt-board],[data-rt-bar]{transition:none !important}
+}

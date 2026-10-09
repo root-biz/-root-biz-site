@@ -113,6 +113,33 @@
           "value": "<https://www.root-biz.com/koukoku>; rel=\"canonical\""
         }
       ]
+    },
+    {
+      "source": "/news/20261001-establishment",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/news/20261001-establishment>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/mtg",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/assets/site/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,19 @@
+/* Root corporate site: shared runtime styles (round 1) */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[id]{scroll-margin-top:112px}
+@media (max-width:767px){[id]{scroll-margin-top:92px}}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body.is-menu-open{overflow:hidden}
+/* PC mega menu panel */
+.rt-mega-link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:12px 2px;border-bottom:1px solid #EFE8DE;font:500 15px/1.5 'Noto Sans JP',sans-serif;color:#221B14!important;text-decoration:none;transition:color .15s ease}
+.rt-mega-link:hover,.rt-mega-link:focus-visible{color:#C94E10!important}
+.rt-mega-link svg{flex:none;width:14px;height:14px;transition:transform .15s ease}
+.rt-mega-link:hover svg{transform:translateX(3px)}
+[data-rt-nav].is-active{color:#F2661F!important}
+[data-rt-panel]{animation:rtFade .18s ease}
+@keyframes rtFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-rt-panel]{animation:none}}
+a:focus-visible,button:focus-visible{outline:3px solid #F2661F;outline-offset:3px}
+/* tablet 768–1023: PC layout scaled to the screen width (zoom set by site.js) */
+@media (min-width:768px) and (max-width:1023px){html,body{overflow-x:hidden}.view-pc{zoom:var(--rt-zoom,1)}}
