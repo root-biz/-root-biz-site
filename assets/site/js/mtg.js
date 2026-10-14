@@ -13,7 +13,7 @@
     position: { label: '役職', ph: '例：マーケティング部 部長', ac: 'organization-title', max: 60 },
     tel: { label: '電話番号', ph: '例：03-1234-5678', type: 'tel', ac: 'tel', kind: 'tel', max: 20 },
     email: { label: 'メールアドレス', ph: '例：info@example.co.jp', type: 'email', ac: 'email', kind: 'email', max: 120 },
-    detail: { label: 'お悩みごと・事業の共有事項', ph: '例：Web広告の費用対効果を改善したい', multi: true, max: 2000, full: true },
+    detail: { label: 'お悩みごと・事前の共有事項', ph: '例：Web広告の費用対効果を改善したい', multi: true, max: 2000, full: true },
     question: { key: 'detail', label: 'ご質問・共有事項', ph: '例：面談で聞いてみたいこと、ご経歴の補足など', multi: true, max: 2000, full: true },
     school: { label: '学校名', ph: '例：〇〇大学', max: 100 },
     faculty: { label: '学部・学科', ph: '例：経済学部 経済学科', max: 100 },
