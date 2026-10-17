@@ -9,7 +9,7 @@
 <style>
 
 /* ===== page-local styles (MARKETING CONSULTING) ===== */
-:root{--or:#F2661F;--ink:#F7F4EE;--cream:#FFFFFF;--bg:#221B14;--bg2:#2B2219;--line:rgba(251,241,230,.14);--line2:rgba(251,241,230,.28);--mute:rgba(251,241,230,.7);--mute2:rgba(251,241,230,.5)}
+:root{--or:#F2661F;--ink:#221B14;--cream:#FFFFFF;--bg:#FFFFFF;--bg2:#F6F5F2;--line:rgba(34,27,20,.12);--line2:rgba(34,27,20,.26);--mute:rgba(34,27,20,.74);--mute2:rgba(34,27,20,.56)}
 html,body{background:var(--bg);color:var(--ink);margin:0}
 .page-mc{background:var(--bg);color:var(--ink);min-height:100vh}
 .mc{max-width:1280px;margin:0 auto;color:var(--ink);font-family:'Noto Sans JP',sans-serif}
@@ -331,6 +331,18 @@ html,body{margin:0;background:#221B14;color:#F7F4EE}*{box-sizing:border-box}a{co
 .h1:hover{background:#FFFFFF !important}
 .view-sp{display:none}
 @media (max-width:767px){.view-pc{display:none}.view-sp{display:block}}
+
+/* round 8: white base (baked in) */
+/* MARKETING CONSULTING page (PC uses CSS variables): white base, hero stays dark over the video */
+body[data-page="ad"] .view-pc{--bg:#FFFFFF;--bg2:#F6F5F2;--ink:#221B14;--line:rgba(34,27,20,.12);--line2:rgba(34,27,20,.26);--mute:rgba(34,27,20,.74);--mute2:rgba(34,27,20,.56);--cream:#FFFFFF}
+body[data-page="ad"] .view-pc .hero{--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+body[data-page="ad"] .view-pc .hero-bg{background:#221B14}
+body[data-page="ad"] .view-pc .svc2:hover .svc2-body{background:#FFFFFF;box-shadow:0 16px 40px rgba(34,27,20,.14),0 0 0 1px var(--or)}
+body[data-page="ad"] .view-pc .slot{background:none}
+body[data-page="ad"] .view-pc [class*="bg-"],body[data-page="ad"] .view-pc section{color:var(--ink)}
+body[data-page="ad"] .view-pc .card,body[data-page="ad"] .view-pc .pt{background:#FFFFFF}
+body[data-page="ad"] .view-pc #ad-final-cta{background:#221B14;--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1016,7 +1028,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
   
-  <section id="hero-video-marketing" style="position:relative;overflow:hidden;height:85svh;min-height:640px;padding:60px 16px 72px;display:grid;align-content:center;background:#221B14 url(/assets/site/img/adobestock_2013692671-muzkig9g-w7nt.jpeg) center/cover no-repeat"><video class="rt-video" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" poster="/assets/site/img/marketing_poster.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><source src="/assets/site/video/marketing.webm" type="video/webm"><source src="/assets/site/video/marketing.mp4" type="video/mp4"></source></source></video>
+  <section id="hero-video-marketing" style="position:relative;overflow:hidden;height:85svh;min-height:640px;padding:60px 16px 72px;display:grid;align-content:center;background:#221B14 url(/assets/site/img/adobestock_2013692671-muzkig9g-w7nt.jpeg) center/cover no-repeat;color:#F7F4EE"><video class="rt-video" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" poster="/assets/site/img/marketing_poster.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><source src="/assets/site/video/marketing.webm" type="video/webm"><source src="/assets/site/video/marketing.mp4" type="video/mp4"></source></source></video>
     <div aria-hidden="true" style="position:absolute;inset:0;background:rgba(34,27,20,.6)"></div>
     <div style="position:absolute;top:0;left:16px;right:16px;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:0 6px;font:500 12px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.6)">
       <a href="/" style="display:inline-flex;align-items:center;min-height:44px;color:rgba(251,241,230,.6);text-decoration:none">TOP</a><span>／</span><a href="/service" style="display:inline-flex;align-items:center;min-height:44px;color:rgba(251,241,230,.6);text-decoration:none">SERVICE</a><span>／</span><span style="color:#F2661F;font-weight:700">MARKETING CONSULTING</span>
