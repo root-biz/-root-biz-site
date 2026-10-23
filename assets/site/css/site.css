@@ -17,3 +17,5 @@ body.is-menu-open{overflow:hidden}
 a:focus-visible,button:focus-visible{outline:3px solid #F2661F;outline-offset:3px}
 /* tablet 768–1023: PC layout scaled to the screen width (zoom set by site.js) */
 @media (min-width:768px) and (max-width:1023px){html,body{overflow-x:hidden}.view-pc{zoom:var(--rt-zoom,1)}}
+/* SP: keep the header on screen while scrolling (overflow-x:hidden on the page wrapper disabled position:sticky) */
+@media (max-width:767px){.view-sp > div{overflow-x:clip !important}html,body{overflow-x:clip}}
