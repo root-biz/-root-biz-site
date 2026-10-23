@@ -1,4 +1,4 @@
-/* Root — /contact : お問い合わせフォーム（GAS action:"contact" → info@root-biz.com） */
+/* Root — /contact : お問い合わせフォーム（GAS action:"contact" → 担当者3名へメール） */
 (function () {
   'use strict';
   var GAS_API_URL = 'https://script.google.com/macros/s/AKfycbxPxy0g9u-2qg0OdASEF7r8l0vuYiJtHp8yNVmL_clRyRwcWgiW8Og_NkH1NVQNWP-0/exec';

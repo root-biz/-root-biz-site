@@ -95,43 +95,59 @@
       pcLinks.forEach(function (a) { a.setAttribute('aria-expanded', 'false'); a.classList.remove('is-active'); });
     }
     function closeSoon() { clearTimeout(timer); timer = setTimeout(close, 160); }
+    // hover opens the panel only for a real mouse: on touch screens (iPad etc.) a tap must navigate on the first try
+    var lastPointer = 0;
     pcLinks.forEach(function (a, i) {
       a.setAttribute('data-rt-nav', '');
-      a.addEventListener('mouseenter', function () { open(i); });
-      a.addEventListener('focus', function () { open(i); });
+      a.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') open(i); });
+      a.addEventListener('pointerdown', function () { lastPointer = Date.now(); });
+      a.addEventListener('focus', function () { if (Date.now() - lastPointer > 600) open(i); });   // keyboard focus only
+      a.addEventListener('click', function () { close(); });   // leave nothing open while the next page loads
     });
-    box.addEventListener('mouseleave', closeSoon);
-    box.addEventListener('mouseenter', function () { clearTimeout(timer); });
+    panel.addEventListener('click', function (e) { if (closest(e.target, 'a')) close(); });
+    box.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') closeSoon(); });
+    box.addEventListener('pointerenter', function () { clearTimeout(timer); });
     box.addEventListener('focusout', function (e) { if (!box.contains(e.relatedTarget)) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { close(); } });
+    window.addEventListener('pageshow', function (e) { if (e.persisted) close(); });   // back/forward cache
   });
 
-  /* SP drawer */
+  /* SP drawer — one drawer can have several open buttons (header + sticky CTA on the service pages): bind it once */
+  var drawers = [];
   document.querySelectorAll('button[aria-label="メニューを開く"]').forEach(function (openBtn) {
     var wrap = openBtn.parentElement.parentElement;
     var drawerWrap = wrap.querySelector('[data-dc-if="spIsOpen"]');
     if (!drawerWrap) return;
-    var closeBtn = drawerWrap.querySelector('button[aria-label="メニューを閉じる"]');
-    function setOpen(v) {
-      drawerWrap.hidden = !v; openBtn.setAttribute('aria-expanded', v ? 'true' : 'false');
-      document.body.classList.toggle('is-menu-open', v);
-      if (v && closeBtn) closeBtn.focus(); else openBtn.focus({ preventScroll: true });
-    }
-    openBtn.addEventListener('click', function () { setOpen(true); });
-    if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawerWrap.hidden) setOpen(false); });
-    drawerWrap.querySelectorAll('nav > div').forEach(function (block) {
-      var b = block.querySelector('button'), sub = block.querySelector('[data-dc-if="m.spIsOpen"]');
-      if (!b || !sub) return;
-      var sign = b.querySelector('span[aria-hidden="true"]:last-child');
-      b.addEventListener('click', function () {
-        var v = sub.hidden; sub.hidden = !v; b.setAttribute('aria-expanded', v ? 'true' : 'false');
-        if (sign) sign.textContent = v ? '−' : '+';
+    var d = drawers.filter(function (x) { return x.el === drawerWrap; })[0];
+    if (!d) {
+      d = { el: drawerWrap, btns: [], last: openBtn };
+      drawers.push(d);
+      var closeBtn = drawerWrap.querySelector('button[aria-label="メニューを閉じる"]');
+      d.set = function (v, keepFocus) {
+        drawerWrap.hidden = !v;
+        d.btns.forEach(function (b) { b.setAttribute('aria-expanded', v ? 'true' : 'false'); });
+        document.body.classList.toggle('is-menu-open', v);
+        if (keepFocus) return;
+        if (v && closeBtn) closeBtn.focus(); else if (d.last) d.last.focus({ preventScroll: true });
+      };
+      if (closeBtn) closeBtn.addEventListener('click', function () { d.set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawerWrap.hidden) d.set(false); });
+      drawerWrap.querySelectorAll('nav > div').forEach(function (block) {
+        var b = block.querySelector('button'), sub = block.querySelector('[data-dc-if="m.spIsOpen"]');
+        if (!b || !sub) return;
+        var sign = b.querySelector('span[aria-hidden="true"]:last-child');
+        b.addEventListener('click', function () {
+          var v = sub.hidden; sub.hidden = !v; b.setAttribute('aria-expanded', v ? 'true' : 'false');
+          if (sign) sign.textContent = v ? '−' : '+';
+        });
       });
-    });
-    drawerWrap.addEventListener('click', function (e) {
-      var a = closest(e.target, 'a'); if (a) setTimeout(function () { setOpen(false); }, 0);
-    });
+      drawerWrap.addEventListener('click', function (e) {
+        var a = closest(e.target, 'a'); if (a) setTimeout(function () { d.set(false, true); }, 0);
+      });
+      window.addEventListener('pageshow', function (e) { if (e.persisted && !drawerWrap.hidden) d.set(false, true); });
+    }
+    d.btns.push(openBtn);
+    openBtn.addEventListener('click', function () { d.last = openBtn; d.set(true); });
   });
 
   /* ---------- 3. Links that are intentionally inert ---------- */
