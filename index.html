@@ -4,17 +4,152 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>株式会社Root｜マーケティング支援とリファラル採用SNS「Root」</title>
-<meta name="description" content="株式会社Rootは、事業目標から逆算するマーケティング支援（Web広告運用代行・SNS運用・SEO）と、知人の推薦で転職できるリファラル採用SNS「Root」を展開しています。">
+<meta name="description" content="株式会社Rootは、オンライン常駐型コンサルティング、事業目標から逆算するマーケティング支援（Web広告運用・SNS運用・SEO・AI検索対策・MEO・クリエイティブ制作）、知人の推薦で転職できるリファラル採用SNS「Root」を展開しています。">
 <link rel="icon" type="image/svg+xml" href="/assets/site/img/favicon.svg">
 <style>
+html,body{margin:0;background:#FFFFFF;color:#221B14}*{box-sizing:border-box}
+.view-sp{display:none}
+@media (max-width:767px){.view-pc{display:none}.view-sp{display:block}}
+
+body{margin:0}
+/* Root corporate site: shared runtime styles (round 1) */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[id]{scroll-margin-top:112px}
+@media (max-width:767px){[id]{scroll-margin-top:92px}}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body.is-menu-open{overflow:hidden}
+/* PC mega menu panel */
+.rt-mega-link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:12px 2px;border-bottom:1px solid #EFE8DE;font:500 15px/1.5 'Noto Sans JP',sans-serif;color:#221B14!important;text-decoration:none;transition:color .15s ease}
+.rt-mega-link:hover,.rt-mega-link:focus-visible{color:#C94E10!important}
+.rt-mega-link svg{flex:none;width:14px;height:14px;transition:transform .15s ease}
+.rt-mega-link:hover svg{transform:translateX(3px)}
+[data-rt-nav].is-active{color:#F2661F!important}
+[data-rt-panel]{animation:rtFade .18s ease}
+@keyframes rtFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-rt-panel]{animation:none}}
+a:focus-visible,button:focus-visible{outline:3px solid #F2661F;outline-offset:3px}
+
+/* Root — round 8 design refresh: white/black base, orange buttons, hover motion */
+
+/* buttons: every pill-shaped link/button lifts on hover */
+@media (hover:hover){
+  a[style*="999px"],button[style*="999px"],.rt-cta,.rt-more,.rt-tile .rt-arrow{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background .22s ease,color .22s ease,filter .22s ease !important}
+  a[style*="999px"]:hover,button[style*="999px"]:not([disabled]):hover,.rt-cta:hover{transform:translateY(-3px) !important;box-shadow:0 12px 28px rgba(242,102,31,.35) !important;filter:brightness(1.05)}
+  a[style*="999px"]:active,.rt-cta:active{transform:translateY(0) !important}
+  .rt-tile:hover .rt-arrow{transform:translateX(6px) scale(1.08);box-shadow:0 10px 24px rgba(242,102,31,.55)}
+.rt-tile .rt-arrow{box-shadow:0 6px 16px rgba(242,102,31,.4),0 0 0 4px rgba(255,255,255,.14);cursor:pointer}
+.rt-tile .rt-arrow svg{width:30px !important;height:30px !important}
+.rt-tile .rt-arrow path{stroke-width:3.6 !important}
+  .rt-tile{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+  .rt-tile:hover{transform:translateY(-6px)}
+  .rt-tile img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .rt-tile:hover img{transform:scale(1.04)}
+}
+/* 「詳しく見る」 -> small ghost button */
+a.rt-more,span.rt-more{display:inline-flex !important;align-items:center;gap:8px;min-height:36px;padding:0 16px !important;border:1.5px solid #F2661F !important;border-radius:999px !important;background:#FFFFFF !important;color:#C94E10 !important;font-weight:700 !important;text-decoration:none !important;transition:background .2s ease,color .2s ease,transform .2s ease}
+a.rt-more:hover,span.rt-more:hover,a:hover > span.rt-more{background:#F2661F !important;color:#FFFFFF !important;transform:translateY(-2px)}
+/* bold arrow on "詳しく見る" */
+span.rt-more{padding:0 7px 0 16px !important;font-size:13px !important}
+a:hover > span.rt-more .rt-more-ico,span.rt-more:hover .rt-more-ico{background:#FFFFFF !important;transform:translateX(3px)}
+a:hover > span.rt-more .rt-more-ico path,span.rt-more:hover .rt-more-ico path{stroke:#F2661F}
+
+
+/* MARKETING CONSULTING page (PC uses CSS variables): white base, hero stays dark over the video */
+body[data-page="ad"] .view-pc{--bg:#FFFFFF;--bg2:#F6F5F2;--ink:#221B14;--line:rgba(34,27,20,.12);--line2:rgba(34,27,20,.26);--mute:rgba(34,27,20,.74);--mute2:rgba(34,27,20,.56);--cream:#FFFFFF}
+body[data-page="ad"] .view-pc .hero{--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+body[data-page="ad"] .view-pc .hero-bg{background:#221B14}
+body[data-page="ad"] .view-pc .svc2:hover .svc2-body{background:#FFFFFF;box-shadow:0 16px 40px rgba(34,27,20,.14),0 0 0 1px var(--or)}
+body[data-page="ad"] .view-pc .slot{background:none}
+body[data-page="ad"] .view-pc [class*="bg-"],body[data-page="ad"] .view-pc section{color:var(--ink)}
+body[data-page="ad"] .view-pc .card,body[data-page="ad"] .view-pc .pt{background:#FFFFFF}
+body[data-page="ad"] .view-pc #ad-final-cta{background:#221B14;--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+
+/* inverted sections (ad SP / hr): light cards get a soft edge */
+[data-rt-inverted] [data-rt-card]{box-shadow:0 1px 0 rgba(34,27,20,.04)}
+
+/* mission: black bands separated by thin lines */
+[data-rt-band]{border-top:1px solid rgba(255,255,255,.14)}
+[data-rt-band="origin"]{border-bottom:1px solid rgba(255,255,255,.14)}
+
+
 html,body{margin:0;background:#FFFFFF;color:#221B14}*{box-sizing:border-box}a{color:#C94E10}a:hover{color:#F2661F}
 html,body{margin:0}*{box-sizing:border-box}a{color:#C94E10}a:hover{color:#F2661F}
 html,body{margin:0}*{box-sizing:border-box}a{color:#FFFFFF}a:hover{color:#FFFFFF}
 html,body{margin:0}*{box-sizing:border-box}a{color:#FBF1E6}a:hover{color:#F2661F}
 .h0:hover{color:#F2661F !important}
 .h1:hover{background:#FFFFFF !important}
-.view-sp{display:none}
-@media (max-width:767px){.view-pc{display:none}.view-sp{display:block}}
+
+
+
+
+
+
+body{margin:0}
+/* Root corporate site: shared runtime styles (round 1) */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[id]{scroll-margin-top:112px}
+@media (max-width:767px){[id]{scroll-margin-top:92px}}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body.is-menu-open{overflow:hidden}
+/* PC mega menu panel */
+.rt-mega-link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:12px 2px;border-bottom:1px solid #EFE8DE;font:500 15px/1.5 'Noto Sans JP',sans-serif;color:#221B14!important;text-decoration:none;transition:color .15s ease}
+.rt-mega-link:hover,.rt-mega-link:focus-visible{color:#C94E10!important}
+.rt-mega-link svg{flex:none;width:14px;height:14px;transition:transform .15s ease}
+.rt-mega-link:hover svg{transform:translateX(3px)}
+[data-rt-nav].is-active{color:#F2661F!important}
+[data-rt-panel]{animation:rtFade .18s ease}
+@keyframes rtFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-rt-panel]{animation:none}}
+a:focus-visible,button:focus-visible{outline:3px solid #F2661F;outline-offset:3px}
+
+/* Root — round 8 design refresh: white/black base, orange buttons, hover motion */
+
+/* buttons: every pill-shaped link/button lifts on hover */
+@media (hover:hover){
+  a[style*="999px"],button[style*="999px"],.rt-cta,.rt-more,.rt-tile .rt-arrow{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background .22s ease,color .22s ease,filter .22s ease !important}
+  a[style*="999px"]:hover,button[style*="999px"]:not([disabled]):hover,.rt-cta:hover{transform:translateY(-3px) !important;box-shadow:0 12px 28px rgba(242,102,31,.35) !important;filter:brightness(1.05)}
+  a[style*="999px"]:active,.rt-cta:active{transform:translateY(0) !important}
+  .rt-tile:hover .rt-arrow{transform:translateX(6px) scale(1.08);box-shadow:0 8px 20px rgba(242,102,31,.45)}
+  .rt-tile{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+  .rt-tile:hover{transform:translateY(-6px)}
+  .rt-tile img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .rt-tile:hover img{transform:scale(1.04)}
+}
+/* 「詳しく見る」 -> small ghost button */
+a.rt-more,span.rt-more{display:inline-flex !important;align-items:center;gap:8px;min-height:36px;padding:0 16px !important;border:1.5px solid #F2661F !important;border-radius:999px !important;background:#FFFFFF !important;color:#C94E10 !important;font-weight:700 !important;text-decoration:none !important;transition:background .2s ease,color .2s ease,transform .2s ease}
+a.rt-more:hover,span.rt-more:hover,a:hover > span.rt-more{background:#F2661F !important;color:#FFFFFF !important;transform:translateY(-2px)}
+
+/* MARKETING CONSULTING page (PC uses CSS variables): white base, hero stays dark over the video */
+body[data-page="ad"] .view-pc{--bg:#FFFFFF;--bg2:#F6F5F2;--ink:#221B14;--line:rgba(34,27,20,.12);--line2:rgba(34,27,20,.26);--mute:rgba(34,27,20,.74);--mute2:rgba(34,27,20,.56);--cream:#FFFFFF}
+body[data-page="ad"] .view-pc .hero{--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+body[data-page="ad"] .view-pc .hero-bg{background:#221B14}
+body[data-page="ad"] .view-pc .svc2:hover .svc2-body{background:#FFFFFF;box-shadow:0 16px 40px rgba(34,27,20,.14),0 0 0 1px var(--or)}
+body[data-page="ad"] .view-pc .slot{background:none}
+body[data-page="ad"] .view-pc [class*="bg-"],body[data-page="ad"] .view-pc section{color:var(--ink)}
+body[data-page="ad"] .view-pc .card,body[data-page="ad"] .view-pc .pt{background:#FFFFFF}
+body[data-page="ad"] .view-pc #ad-final-cta{background:#221B14;--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+
+/* inverted sections (ad SP / hr): light cards get a soft edge */
+[data-rt-inverted] [data-rt-card]{box-shadow:0 1px 0 rgba(34,27,20,.04)}
+
+/* mission: black bands separated by thin lines */
+[data-rt-band]{border-top:1px solid rgba(255,255,255,.14)}
+[data-rt-band="origin"]{border-bottom:1px solid rgba(255,255,255,.14)}
+
+
+html,body{margin:0;background:#FFFFFF;color:#221B14}*{box-sizing:border-box}a{color:#C94E10}a:hover{color:#F2661F}
+html,body{margin:0}*{box-sizing:border-box}a{color:#C94E10}a:hover{color:#F2661F}
+html,body{margin:0}*{box-sizing:border-box}a{color:#FFFFFF}a:hover{color:#FFFFFF}
+html,body{margin:0}*{box-sizing:border-box}a{color:#FBF1E6}a:hover{color:#F2661F}
+.h0:hover{color:#F2661F !important}
+.h1:hover{background:#FFFFFF !important}
+
+
+
+
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,15 +158,17 @@ html,body{margin:0}*{box-sizing:border-box}a{color:#FBF1E6}a:hover{color:#F2661F
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="株式会社Root">
 <meta property="og:title" content="株式会社Root｜マーケティング支援とリファラル採用SNS「Root」">
-<meta property="og:description" content="株式会社Rootは、事業目標から逆算するマーケティング支援（Web広告運用代行・SNS運用・SEO）と、知人の推薦で転職できるリファラル採用SNS「Root」を展開しています。">
+<meta property="og:description" content="株式会社Rootは、オンライン常駐型コンサルティング、事業目標から逆算するマーケティング支援（Web広告運用・SNS運用・SEO・AI検索対策・MEO・クリエイティブ制作）、知人の推薦で転職できるリファラル採用SNS「Root」を展開しています。">
 <meta property="og:url" content="https://www.root-biz.com/">
 <meta property="og:image" content="https://www.root-biz.com/assets/site/img/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/site/css/site.css?v=9">
-<link rel="stylesheet" href="/assets/site/css/motion.css">
-<link rel="stylesheet" href="/assets/site/css/theme.css">
-<script src="/assets/site/js/site.js?v=9" defer></script>
-<script src="/assets/site/js/motion.js" defer></script>
+<link rel="stylesheet" href="/assets/site/css/site.css?v=10">
+<link rel="stylesheet" href="/assets/site/css/motion.css?v=10">
+<link rel="stylesheet" href="/assets/site/css/theme.css?v=10">
+<script src="/assets/site/js/site.js?v=10" defer></script>
+<script src="/assets/site/js/motion.js?v=10" defer></script>
+<script src="/assets/site/js/ui.js?v=10" defer></script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -40,15 +177,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-K2XGM5JS');</script>
 <!-- End Google Tag Manager -->
 </head>
+
 <body data-page="top">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XGM5JS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div class="view-pc">
-<h1 class="sr-only">株式会社Root｜人を想い、人に想われる。マーケティング支援とリファラル採用SNS「Root」</h1>
-
-
-<div data-screen-label="00 TOP PC" style="background:#FFFFFF;font-family:'Noto Sans JP',sans-serif;color:#221B14;min-width:1024px">
+<h1 class="sr-only">株式会社Root｜人を想い、人に想われる。</h1>
+<div data-screen-label="00 TOP PC" style="background: #FFFFFF; font-family: 'Noto Sans JP',sans-serif; color: #221B14; min-width: 1024px; border-style: solid; border-width: 1px; border-color: #141413">
 
   <div style="position:sticky;top:0;z-index:50;height:96px">
 
@@ -56,7 +192,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div style="position:relative;height:96px;font-family:'Noto Sans JP',sans-serif">
     <div style="position:absolute;top:16px;left:24px;right:24px;max-width:1232px;margin:0 auto;background:#FFFFFF;border-radius:32px;border:1px solid rgba(34,27,20,.08);box-shadow:0 8px 32px rgba(34,27,20,.10)">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 10px 0 28px">
-        <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo.png" alt="Root" style="height:26px;width:auto"></a>
+        <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:26px;width:auto"></a>
         <nav aria-label="メインメニュー" style="display:flex;align-items:center;gap:4px">
           
             <a href="/mission" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">MISSION</a>
@@ -74,15 +210,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </nav>
         <span style="display:inline-flex"><div>
 
-<a href="/mtg" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:14px;min-height:46px;padding:0 8px 0 24px;border-radius:999px;font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">無料相談を予約<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewbox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<a href="/mtg" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:14px;min-height:46px;padding:0 8px 0 24px;border-radius:999px;font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">無料相談を予約<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
 </div></span>
       </div>
-      <div hidden data-dc-if="isOpen">
+      <div hidden="" data-dc-if="isOpen">
         <div style="position:relative;border-top:1px solid #EFE8DE;padding:44px 56px 52px;display:grid;gap:36px">
                     <a href="#" style="justify-self:center;display:grid;justify-items:center;gap:8px;text-decoration:none;color:#221B14">
             <span style="display:flex;align-items:center;gap:16px">
               <span style="font:900 56px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:#221B14"></span>
-              <span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F"><svg viewbox="0 0 24 24" style="width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F"><svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
             </span>
             <span style="font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#6B6259"></span>
           </a>
@@ -94,21 +230,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </div>
 
-<div hidden data-dc-if="isSP">
+<div hidden="" data-dc-if="isSP">
   <div style="position:relative;height:80px;font-family:'Noto Sans JP',sans-serif">
     <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 6px 0 20px;background:#FFFFFF;border-radius:30px;border:1px solid rgba(34,27,20,.08);box-shadow:0 6px 24px rgba(34,27,20,.10)">
-      <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo.png" alt="Root" style="height:22px;width:auto"></a>
+      <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
       <button type="button" aria-label="メニューを開く" aria-expanded="false" style="display:grid;place-items:center;align-content:center;gap:3px;width:48px;height:48px;border-radius:50%;border:1.5px solid #F2661F;background:#FFFFFF;cursor:pointer;padding:0">
         <span aria-hidden="true" style="display:grid;gap:3px"><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span></span>
         <span style="font:700 7.5px 'Archivo',sans-serif;letter-spacing:.12em;color:#221B14">MENU</span>
       </button>
     </div>
-    <div hidden data-dc-if="spIsOpen">
+    <div hidden="" data-dc-if="spIsOpen">
       <div role="dialog" aria-modal="true" aria-label="メニュー" style="position:fixed;inset:0;z-index:200;background:#FFFFFF;overflow-y:auto;display:flex;flex-direction:column">
         <div style="display:flex;align-items:center;height:84px;padding:0 18px 0 32px;flex:none">
-          <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo.png" alt="Root" style="height:22px;width:auto"></a>
+          <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
         </div>
-        <button type="button" aria-label="メニューを閉じる" style="position:fixed;right:0;bottom:0;z-index:210;width:128px;height:128px;border:0;border-top-left-radius:128px;background:#F2661F;cursor:pointer;padding:0 20px 22px 0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end"><span style="display:grid;justify-items:center;gap:6px"><svg viewbox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg><span style="font:800 12px/1 'Archivo',sans-serif;letter-spacing:.08em;color:#FFFFFF">CLOSE</span></span></button>
+        <button type="button" aria-label="メニューを閉じる" style="position:fixed;right:0;bottom:0;z-index:210;width:128px;height:128px;border:0;border-top-left-radius:128px;background:#F2661F;cursor:pointer;padding:0 20px 22px 0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end"><span style="display:grid;justify-items:center;gap:6px"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg><span style="font:800 12px/1 'Archivo',sans-serif;letter-spacing:.08em;color:#FFFFFF">CLOSE</span></span></button>
         <nav aria-label="メインメニュー" style="padding:8px 20px 0;display:grid">
           
             <div style="border-bottom:1px solid #E6DED3">
@@ -116,13 +252,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">MISSION</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">ミッション</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/mission" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">ミッショントップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/mission" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">ミッショントップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/mission#vision" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">目指す姿<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/mission#vision" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">目指す姿<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/mission#origin" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">社名の由来<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/mission#origin" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">社名の由来<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -133,15 +269,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">SERVICE</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">事業内容</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">事業内容トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業内容トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/service/ad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">MARKETING CONSULTING<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/service/ad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">マーケティング支援<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/service/hr" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">HR TECH<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/service/hr" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">リファラル採用DX<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -152,17 +288,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">NEWS</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お知らせ</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お知らせトップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お知らせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">すべてのお知らせ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">すべてのお知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news#press" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プレスリリース<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news#press" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プレスリリース<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news#info" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">お知らせ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news#info" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">お知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news#media" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">メディア掲載<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news#media" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">メディア掲載<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -173,15 +309,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">RECRUIT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">採用情報</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/recruit" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">採用情報トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/recruit" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">採用情報トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/recruit#culture" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">働く環境<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/recruit#culture" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">働く環境<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">募集職種<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">募集職種<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">エントリー<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">エントリー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -192,19 +328,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">COMPANY</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">会社概要</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/company" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">会社概要トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/company" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">会社概要トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/company#profile" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">会社情報<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/company#profile" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">会社情報<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/company#business" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業紹介<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/company#business" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業紹介<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/company#access" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">アクセス<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/company#access" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">アクセス<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/koukoku" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">電子公告<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/koukoku" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">電子公告<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/privacy" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プライバシーポリシー<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/privacy" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プライバシーポリシー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -215,13 +351,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">CONTACT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お問い合わせ</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お問い合わせトップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お問い合わせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">無料相談・資料送付のご予約<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">無料相談・資料送付のご予約<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">その他のお問い合わせ（採用・取材など）<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">その他のお問い合わせ（採用・取材など）<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -238,28 +374,60 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
   
-  <section id="hero-video-slot" aria-label="Root" style="position:relative;width:100%;aspect-ratio:16/9;max-height:100vh;background:#FFFFFF;display:grid;place-items:center;overflow:hidden"><video class="rt-video" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-fit:contain;background:#FFFFFF"><source src="/assets/site/video/intro_pc.webm?v=4" type="video/webm"><source src="/assets/site/video/intro_pc.mp4?v=4" type="video/mp4"></source></source></video>
-    <img src="/assets/site/img/logo.png" alt="Root" style="width:32%;max-width:640px;height:auto;display:block">
+  <section id="hero-video-slot" aria-label="Root" style="position:relative;width:100%;aspect-ratio:16/9;max-height:100vh;background:#FFFFFF;display:grid;place-items:center;overflow:hidden"><video class="rt-video" muted="" playsinline="" preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-fit:contain;background:#FFFFFF" loop=""><source src="/assets/site/video/intro_pc.webm" type="video/webm"><source src="/assets/site/video/intro_pc.mp4" type="video/mp4"></video>
+    <img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="width:32%;max-width:640px;height:auto;display:block">
   </section>
+<section id="latest-column" aria-label="最新のコラム・note速報" style="background:#221B14;padding:88px 0 80px;display:grid;gap:40px;overflow:hidden"><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 44px;"><div style="display:grid;gap:8px"><h2 style="margin:0;font:900 64px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:#FFFFFF">COLUMN</h2><span style="font:700 15px 'Noto Sans JP',sans-serif;letter-spacing:.08em;color:rgba(255,255,255,.78)">最新のコラム・note速報</span></div><div style="display:flex;align-items:center;gap:12px"><button type="button" aria-label="前の記事" style="display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:transparent;cursor:pointer"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button type="button" aria-label="次の記事" style="display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1.5px solid #F2661F;background:#F2661F;cursor:pointer"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></div><div style="display:flex;gap:28px;align-items:flex-start;padding:0 44px;overflow:hidden"><a href="/column/ai-search-information-design" style="flex:none;width:600px;display:grid;gap:16px;text-decoration:none;color:#FFFFFF"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-05.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:12px"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">AI活用</span><time datetime="2026-11-05" style="font:600 13px 'Archivo',sans-serif;color:rgba(255,255,255,.7)">2026/11/05</time></span><span style="font:700 20px/1.6 'Noto Sans JP',sans-serif;color:#FFFFFF">AI検索に選ばれるための情報設計</span></a><a href="/column/vertical-video-planning" style="flex:none;width:250px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-04.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">クリエイティブ</span><time datetime="2026-11-04" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/04</time></span></a><a href="/column/measurement-change" style="flex:none;width:250px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">広告テクノロジー</span><time datetime="2026-11-03" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/03</time></span></a><a href="/column/ad-report-revenue" style="flex:none;width:250px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-02.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">マーケティング戦略</span><time datetime="2026-11-02" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/02</time></span></a><a href="/column/generative-ai-creative" style="flex:none;width:250px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-01.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">AI活用</span><time datetime="2026-11-01" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/01</time></span></a></div><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 44px;"><div style="display:flex;gap:8px;"><span style="display:block;width:24px;height:8px;border-radius:999px;background:#F2661F"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span></div><div style="display:flex;gap:12px;"><a href="https://note.com/root_biz" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;border:1.5px solid #FFFFFF;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none">noteで速報を読む</a><a class="rt-cta" href="/column" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:0 10px 0 26px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none">コラム一覧を見る<span aria-hidden="true" style="display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></div></div></section>
+
+
 
   
-  <section id="top-business" aria-labelledby="top-service-h" style="background:#FFFFFF"><div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:120px 44px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px"><h2 id="top-service-h" style="margin:0;display:grid;gap:12px"><span style="font:900 72px/.95 'Archivo',sans-serif;font-stretch:110%;letter-spacing:-.01em;color:#221B14">BUSINESS<br>SERVICE</span><span style="font:700 15px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#221B14">事業内容</span></h2><a href="/service" style="display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 10px 0 24px;border-radius:999px;border:1.5px solid #F2661F;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none;background:#F2661F" class="rt-cta">事業内容をすべて見る<span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#FFFFFF"><svg viewbox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></div><div style="position:relative;overflow:hidden;background:#FFFFFF">
+  <section id="top-business" aria-labelledby="top-service-h" style="background:#FFFFFF"><div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:120px 44px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px"><h2 id="top-service-h" style="margin:0;display:grid;gap:12px"><span style="font:900 72px/.95 'Archivo',sans-serif;font-stretch:110%;letter-spacing:-.01em;color:#221B14">BUSINESS<br>SERVICE</span><span style="font:700 15px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#221B14">事業内容</span></h2><a href="/service" style="display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 10px 0 24px;border-radius:999px;border:1.5px solid #F2661F;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none;background:#F2661F" class="rt-cta">サービス一覧<span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></div><div style="position:relative;overflow:hidden;background:#FFFFFF">
     <span aria-hidden="true" style="position:absolute;left:-28px;top:120px;writing-mode:vertical-rl;font:900 240px/1 'Archivo',sans-serif;letter-spacing:.02em;color:#EEECE8;pointer-events:none;user-select:none">SERVICE</span>
     <span aria-hidden="true" style="position:absolute;right:-28px;bottom:120px;writing-mode:vertical-rl;font:900 240px/1 'Archivo',sans-serif;letter-spacing:.02em;color:#EEECE8;pointer-events:none;user-select:none">SERVICE</span>
 
     
-    <section aria-labelledby="biz01" style="position:relative;max-width:1280px;margin:0 auto;padding:120px 44px 40px">
-      <div id="biz-video-marketing" style="position:relative;height:506px">
-        <div aria-hidden="true" style="position:absolute;inset:0;border-radius:4px;overflow:hidden;background:#221B14"><img src="/assets/site/img/hero-poster.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"><video class="rt-video" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><source src="/assets/site/video/marketing.webm" type="video/webm"><source src="/assets/site/video/marketing.mp4" type="video/mp4"></source></source></video>
+    <section aria-labelledby="biz00" style="position:relative;max-width:1280px;margin:0 auto;padding:120px 44px 40px">
+      <div id="biz-video-consulting" style="position:relative;height:506px">
+        <div aria-hidden="true" style="position:absolute;inset:0;border-radius:4px;overflow:hidden;background:#221B14"><img src="/assets/site/img/consulting/hero-poster.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"><video class="rt-video" poster="/assets/site/img/consulting/hero-poster.jpg" muted="" playsinline="" preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" loop=""><source src="/assets/site/video/consulting.mp4" type="video/mp4"></video>
         <span aria-hidden="true" style="position:absolute;inset:0;background:rgba(34,27,20,.4)"></span></div>
         <div style="position:absolute;right:-28px;top:36px;z-index:1;width:442px;aspect-ratio:1000/486;transform:rotate(-5deg);filter:drop-shadow(0 18px 22px rgba(10,6,3,.45))">
           <img src="/assets/site/img/phone_landscape.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
           <div style="position:absolute;top:9%;bottom:9%;left:11%;right:6%;display:grid;grid-template-rows:auto auto;align-content:center;gap:10px">
             <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center">
+              <img src="/assets/site/img/ui/d9677b61225e.png" alt="マーケティングの伴走者を表すイラスト" style="height:84px;width:84px;object-fit:cover;object-position:50% 40%;border-radius:50%;background:#F6EFE6;display:block">
+              <span style="display:grid;gap:4px"><span id="biz00" style="font: 900 19px / 1.35 &quot;Zen Kaku Gothic New&quot;, &quot;Noto Sans JP&quot;, sans-serif; color: rgb(34, 27, 20)">オンライン常駐型<br>コンサルティング事業</span>
+              </span>
+            </div>
+            <span style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding: 4px 11px; border-radius: 999px; border: 1.5px solid rgb(242, 102, 31); font: 700 12.5px / 1.5 &quot;Noto Sans JP&quot;, sans-serif; color: rgb(201, 78, 16); white-space: nowrap">ROAS・CACでの成果評価</span><span style="padding: 4px 11px; border-radius: 999px; border: 1.5px solid rgb(242, 102, 31); font: 700 12.5px / 1.5 &quot;Noto Sans JP&quot;, sans-serif; color: rgb(201, 78, 16); white-space: nowrap">施策アロケーション設計</span><span style="padding: 4px 11px; border-radius: 999px; border: 1.5px solid rgb(242, 102, 31); font: 700 12.5px / 1.5 &quot;Noto Sans JP&quot;, sans-serif; color: rgb(201, 78, 16); white-space: nowrap">代理店とのコミュニケーション</span><span style="padding: 4px 11px; border-radius: 999px; border: 1.5px solid rgb(242, 102, 31); font: 700 12.5px / 1.5 &quot;Noto Sans JP&quot;, sans-serif; color: rgb(201, 78, 16); white-space: nowrap">POC実証</span></span>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;z-index:2;margin:-80px 48px 0;background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(34,27,20,.14),0 2px 6px rgba(34,27,20,.05);padding:64px clamp(40px,4.5vw,64px) 60px;display:grid;grid-template-columns:minmax(0,1fr) minmax(min-content,1.1fr);gap:clamp(32px,4vw,56px);align-items:center">
+        <div style="display:grid;gap:18px">
+          <span style="font:700 12px/1.5 'Archivo',sans-serif;letter-spacing:.2em;color:#F2661F">オンライン常駐型コンサルティング</span>
+          <h2 lang="ja" style="margin: 0;font: 900 clamp(26px,2.7vw,34px)/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color: #221B14;word-break: auto-phrase">判断と実行を支える<br><span style="color: rgb(242, 102, 31)">常駐型コンサルティング</span></h2>
+        </div>
+        <div style="display:grid;gap:32px;justify-items:start">
+          <p style="margin:0;font:500 16px/2 'Noto Sans JP',sans-serif;color:#3D342B;text-wrap:pretty"><b>Rootの社員がマーケティング部署の一員として常駐をし、<br>分析・意思決定・実行までを一緒に伴走します。<br>既存の広告代理店はそのまま、施策成果を「売上軸」で再評価し、次の打ち手と予算配分を設計します。</b></p>
+          <div>
+
+<a href="/service/consulting" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:28px;min-height:77px;padding:0 22px 0 52px;border-radius:999px;font:700 20px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="biz01" style="position:relative;max-width:1280px;margin:0 auto;padding:144px 44px 40px">
+      <div id="biz-video-marketing" style="position:relative;height:506px">
+        <div aria-hidden="true" style="position:absolute;inset:0;border-radius:4px;overflow:hidden;background:#221B14"><img src="/assets/site/img/ui/5e7b161f08a3.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"><video class="rt-video" muted="" playsinline="" preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" loop=""><source src="/assets/site/video/marketing.webm" type="video/webm"><source src="/assets/site/video/marketing.mp4" type="video/mp4"></video>
+        <span aria-hidden="true" style="position:absolute;inset:0;background:rgba(34,27,20,.4)"></span></div>
+        <div style="position:absolute;left:-28px;top:36px;z-index:1;width:442px;aspect-ratio:1000/486;transform:rotate(5deg);filter:drop-shadow(0 18px 22px rgba(10,6,3,.45))">
+          <img src="/assets/site/img/phone_landscape.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
+          <div style="position:absolute;top:9%;bottom:9%;left:11%;right:6%;display:grid;grid-template-rows:auto auto;align-content:center;gap:10px">
+            <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center">
               <img src="/assets/site/img/icon_marketing.svg" alt="広告とデータ分析を表すメガホンとグラフのイラスト" style="height:84px;width:84px;object-fit:contain;display:block">
-              <span style="display:grid;gap:4px">
-                <span id="biz01" style="font:900 19px/1.35 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">マーケティング<br>コンサルティング事業</span>
-                <span style="font:700 11px/1.4 'Archivo',sans-serif;letter-spacing:.12em;color:#F2661F">MARKETING CONSULTING</span>
+              <span style="display:grid;gap:4px"><span id="biz01" style="font: 900 19px / 1.35 &quot;Zen Kaku Gothic New&quot;, &quot;Noto Sans JP&quot;, sans-serif; color: rgb(34, 27, 20)">マーケティング支援事業</span>
               </span>
             </div>
             <span style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">デジタル広告運用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">SNSオーガニック運用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">SEO・AI検索対策・MEO</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">クリエイティブ・Web制作</span></span>
@@ -268,14 +436,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div style="position:relative;z-index:2;margin:-80px 48px 0;background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(34,27,20,.14),0 2px 6px rgba(34,27,20,.05);padding:64px clamp(40px,4.5vw,64px) 60px;display:grid;grid-template-columns:minmax(0,1fr) minmax(min-content,1.1fr);gap:clamp(32px,4vw,56px);align-items:center">
         <div style="display:grid;gap:18px">
-          <span style="font:700 12px/1.5 'Archivo',sans-serif;letter-spacing:.2em;color:#F2661F">MARKETING CONSULTING</span>
-          <h2 lang="ja" style="margin:0;font:900 clamp(26px,2.7vw,34px)/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">事業目標から<span style="font-size: clamp(26px, 2.7vw, 34px)">施策設計する</span><span style="font-size: clamp(26px, 2.7vw, 34px);color: rgb(242, 102, 31)">マーケティング<wbr>戦略<wbr>パートナー</wbr></wbr></span><br></h2>
+          <span style="font:700 12px/1.5 'Archivo',sans-serif;letter-spacing:.2em;color:#F2661F">マーケティング支援</span>
+          <h2 lang="ja" style="margin:0;font:900 clamp(26px,2.7vw,34px)/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">事業目標から<span style="font-size: clamp(26px, 2.7vw, 34px)">施策設計する</span><span style="font-size: clamp(26px, 2.7vw, 34px); color: rgb(242, 102, 31)">マーケティング支援<wbr></span><br></h2>
         </div>
         <div style="display:grid;gap:32px;justify-items:start">
           <p style="margin: 0;font: 500 16px/2 'Noto Sans JP',sans-serif;color: #3D342B;text-wrap: pretty;max-width: 487px;font-weight: 700">Google・Meta・TikTokなど主要媒体の広告アカウント運用、<br>オーガニックSNS運用、SEO・AIO・MEOの検索対策、<br>バナーや動画・LP・HPのクリエイティブ制作まで、<br>戦略設計からレポーティングまで一気通貫でご支援します。</p>
           <div>
 
-<a href="/service/ad" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:28px;min-height:77px;padding:0 22px 0 52px;border-radius:999px;font:700 20px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewbox="0 0 24 24" style="width:17px;height:17px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<a href="/service/ad" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:28px;min-height:77px;padding:0 22px 0 52px;border-radius:999px;font:700 20px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
 </div>
         </div>
       </div>
@@ -283,46 +451,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 style="margin:0;font:700 16px/1.5 'Noto Sans JP',sans-serif;color:#221B14">個別のサービスから探す</h3>
         <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px">
           
-            <a href="/service/ad#other-services" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="digital-ads">
-              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/service-01.jpg" alt="デジタル広告運用のイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
+            <a href="/service/ad/digital-ads" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="digital-ads">
+              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/ui/31a7e2238869.jpg" alt="デジタル広告運用のイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
               <span style="position:relative;display:grid;gap:12px;padding:0 24px 24px">
-                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewbox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M8 15l3-4 3 2 5-6"></path><path d="M16 7h3v3"></path></svg></span>
+                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewBox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M8 15l3-4 3 2 5-6"></path><path d="M16 7h3v3"></path></svg></span>
                 <span lang="ja" style="font:900 18px/1.45 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">デジタル広告運用</span>
                 <span lang="ja" style="font:500 13px/1.8 'Noto Sans JP',sans-serif;color:#6B6259;word-break:auto-phrase">事業目標を踏まえて、媒体と予算配分を設計し、運用する</span>
-                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る ＞</span>
+                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る<span class="rt-more-ico" aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;background:#F2661F;transition:transform .2s ease,background .2s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px;display:block"><path d="M9 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span>
               </span>
               <span aria-hidden="true" style="position:absolute;right:0;bottom:0;width:20px;height:20px;background:#F2661F;clip-path:polygon(100% 0,100% 100%,0 100%);transition:width .2s ease,height .2s ease"></span>
             </a>
           
-            <a href="/service/ad#other-services" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="sns">
-              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/service-02.jpg" alt="SNSオーガニック運用のイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
+            <a href="/service/ad/sns" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="sns">
+              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/ui/dc9d889d8810.jpg" alt="SNSオーガニック運用のイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
               <span style="position:relative;display:grid;gap:12px;padding:0 24px 24px">
-                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewbox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path><path d="M12 13.5s-3-1.8-3-3.8a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 3.8-3 3.8z"></path></svg></span>
+                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewBox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path><path d="M12 13.5s-3-1.8-3-3.8a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 3.8-3 3.8z"></path></svg></span>
                 <span lang="ja" style="font:900 18px/1.45 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">SNSオーガニック運用</span>
                 <span lang="ja" style="font:500 13px/1.8 'Noto Sans JP',sans-serif;color:#6B6259;word-break:auto-phrase">企画から撮影・編集、投稿、分析まで一貫して対応</span>
-                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る ＞</span>
+                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る<span class="rt-more-ico" aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;background:#F2661F;transition:transform .2s ease,background .2s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px;display:block"><path d="M9 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span>
               </span>
               <span aria-hidden="true" style="position:absolute;right:0;bottom:0;width:20px;height:20px;background:#F2661F;clip-path:polygon(100% 0,100% 100%,0 100%);transition:width .2s ease,height .2s ease"></span>
             </a>
           
-            <a href="/service/ad#other-services" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="seo">
-              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/service-03.jpg" alt="SEO・AI検索対策・MEOのイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
+            <a href="/service/ad/seo" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="seo">
+              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/ui/408cbd0819d5.jpg" alt="SEO・AI検索対策・MEOのイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
               <span style="position:relative;display:grid;gap:12px;padding:0 24px 24px">
-                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewbox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"></path><path d="M15.5 15.5L20 20"></path><path d="M8 10.5h5"></path><path d="M10.5 8v5"></path></svg></span>
+                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewBox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"></path><path d="M15.5 15.5L20 20"></path><path d="M8 10.5h5"></path><path d="M10.5 8v5"></path></svg></span>
                 <span lang="ja" style="font:900 18px/1.45 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">SEO・AI検索対策・MEO</span>
                 <span lang="ja" style="font:500 13px/1.8 'Noto Sans JP',sans-serif;color:#6B6259;word-break:auto-phrase">Google検索やマップ、AI検索で見つけてもらう</span>
-                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る ＞</span>
+                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る<span class="rt-more-ico" aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;background:#F2661F;transition:transform .2s ease,background .2s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px;display:block"><path d="M9 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span>
               </span>
               <span aria-hidden="true" style="position:absolute;right:0;bottom:0;width:20px;height:20px;background:#F2661F;clip-path:polygon(100% 0,100% 100%,0 100%);transition:width .2s ease,height .2s ease"></span>
             </a>
           
-            <a href="/service/ad#other-services" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="creative">
-              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/service-04.jpg" alt="クリエイティブ・Web制作のイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
+            <a href="/service/ad/creative" style="position:relative;display:grid;align-content:start;background:#FFFFFF;border-radius:16px;overflow:hidden;text-decoration:none;color:#221B14" data-detail="creative">
+              <span style="position:relative;display:block;height:120px;overflow:hidden;border-radius:16px 16px 0 0;background:#EFE8DE"><img src="/assets/site/img/ui/445d3300f6d5.jpg" alt="クリエイティブ・Web制作のイメージ写真" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease"><span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:0.35;transition:opacity .25s ease"></span></span>
               <span style="position:relative;display:grid;gap:12px;padding:0 24px 24px">
-                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewbox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M4 5h16v11H4z"></path><path d="M9 20h6"></path><path d="M12 16v4"></path><path d="M8 12l2.5-3 2 2 1.5-1.5L17 12"></path></svg></span>
+                <span aria-hidden="true" style="display:grid;place-items:center;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 0 1px #EFE8DE"><svg viewBox="0 0 24 24" fill="none" stroke="#F2661F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;display:block"><path d="M4 5h16v11H4z"></path><path d="M9 20h6"></path><path d="M12 16v4"></path><path d="M8 12l2.5-3 2 2 1.5-1.5L17 12"></path></svg></span>
                 <span lang="ja" style="font:900 18px/1.45 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">クリエイティブ・Web制作</span>
                 <span lang="ja" style="font:500 13px/1.8 'Noto Sans JP',sans-serif;color:#6B6259;word-break:auto-phrase">バナー・動画・LP・HPを、広告と一体で検証しながら制作</span>
-                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る ＞</span>
+                <span style="justify-self:end;margin:6px 14px 0 0;font:700 12px 'Noto Sans JP',sans-serif;color:#C94E10" class="rt-more">詳しく見る<span class="rt-more-ico" aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;background:#F2661F;transition:transform .2s ease,background .2s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px;display:block"><path d="M9 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span>
               </span>
               <span aria-hidden="true" style="position:absolute;right:0;bottom:0;width:20px;height:20px;background:#F2661F;clip-path:polygon(100% 0,100% 100%,0 100%);transition:width .2s ease,height .2s ease"></span>
             </a>
@@ -334,16 +502,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <section aria-labelledby="biz02" style="position:relative;max-width:1280px;margin:0 auto;padding:144px 44px 144px">
       <div id="biz-video-hrtech" style="position:relative;height:506px">
-        <div aria-hidden="true" style="position:absolute;inset:0;border-radius:4px;overflow:hidden;background:#221B14"><img src="/assets/site/img/adobestock_561834287-muz90lle-ascb.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"><video class="rt-video" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><source src="/assets/site/video/hrtech.webm" type="video/webm"><source src="/assets/site/video/hrtech.mp4" type="video/mp4"></source></source></video>
+        <div aria-hidden="true" style="position:absolute;inset:0;border-radius:4px;overflow:hidden;background:#221B14"><img src="/assets/site/img/ui/8482ac20896d.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"><video class="rt-video" muted="" playsinline="" preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" loop=""><source src="/assets/site/video/hrtech.webm" type="video/webm"><source src="/assets/site/video/hrtech.mp4" type="video/mp4"></video>
         <span aria-hidden="true" style="position:absolute;inset:0;background:rgba(34,27,20,.4)"></span></div>
-        <div style="position:absolute;left:-28px;top:36px;z-index:1;width:442px;aspect-ratio:1000/486;transform:rotate(5deg);filter:drop-shadow(0 18px 22px rgba(10,6,3,.45))">
+        <div style="position:absolute;right:-28px;top:36px;z-index:1;width:442px;aspect-ratio:1000/486;transform:rotate(-5deg);filter:drop-shadow(0 18px 22px rgba(10,6,3,.45))">
           <img src="/assets/site/img/phone_landscape.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
           <div style="position:absolute;top:9%;bottom:9%;left:11%;right:6%;display:grid;grid-template-rows:auto auto;align-content:center;gap:10px">
             <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center">
               <img src="/assets/site/img/icon_hr.svg" alt="人材を探す虫眼鏡と人物のイラスト" style="height:84px;width:84px;object-fit:contain;display:block">
-              <span style="display:grid;gap:4px">
-                <span id="biz02" style="font:900 19px/1.35 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">HR TECH事業</span>
-                <span style="font:700 11px/1.4 'Archivo',sans-serif;letter-spacing:.12em;color:#F2661F">REFERRAL RECRUITING PLATFORM</span>
+              <span style="display:grid;gap:4px"><span id="biz02" style="font: 900 19px / 1.35 &quot;Zen Kaku Gothic New&quot;, &quot;Noto Sans JP&quot;, sans-serif; color: rgb(34, 27, 20)">リファラル採用DX事業</span>
               </span>
             </div>
             <span style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">プル型リファラル採用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">ミスマッチの少ない転職</span></span>
@@ -352,14 +518,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div style="position:relative;z-index:2;margin:-80px 48px 0;background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(34,27,20,.14),0 2px 6px rgba(34,27,20,.05);padding:64px clamp(40px,4.5vw,64px) 60px;display:grid;grid-template-columns:minmax(0,1fr) minmax(min-content,1.1fr);gap:clamp(32px,4vw,56px);align-items:center">
         <div style="display:grid;gap:18px">
-          <span style="font:700 12px/1.5 'Archivo',sans-serif;letter-spacing:.2em;color:#F2661F">REFERRAL RECRUITING PLATFORM</span>
-          <h2 lang="ja" style="margin: 0;font: 900 clamp(26px,2.7vw,34px)/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color: #221B14;word-break: auto-phrase;width: 461px;height: 108px">知人に推薦をもらいに行く、<br>新しいリファラル採用。</h2>
+          <span style="font:700 12px/1.5 'Archivo',sans-serif;letter-spacing:.2em;color:#F2661F">リファラル採用DX</span>
+          <h2 lang="ja" style="margin: 0;font: 900 clamp(26px,2.7vw,34px)/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color: #221B14;word-break: auto-phrase;width: 461px;height: 108px">知人に推薦をもらいに行く<br><span style="color: rgb(242, 102, 31)">新しいリファラル採用</span></h2>
         </div>
         <div style="display:grid;gap:32px;justify-items:start">
           <p style="margin:0;font:500 16px/2 'Noto Sans JP',sans-serif;color:#3D342B;text-wrap:pretty"><b>求職者が自ら「もらいに行く」プル型リファラル採用SNS。<br>紹介の起点を社員から求職者へ反転し、<br>定着率の高い、ミスマッチの無い転職体験を実現します。</b></p>
           <div>
 
-<a href="/service/hr" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:28px;min-height:77px;padding:0 22px 0 52px;border-radius:999px;font:700 20px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewbox="0 0 24 24" style="width:17px;height:17px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<a href="/service/hr" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:28px;min-height:77px;padding:0 22px 0 52px;border-radius:999px;font:700 20px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
 </div>
         </div>
       </div>
@@ -370,69 +536,69 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section>
     <div style="max-width:1280px;margin:0 auto;padding:144px 44px 160px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:80px;row-gap:112px">
       <a href="/service" style="display:flex;flex-direction:column;text-decoration:none;color:#221B14" class="rt-tile">
-        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/adobestock_1950248915-muz2gma5-khvw.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transform-origin:center"></span>
+        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/ui/d6058be72aeb.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transform-origin:center"></span>
         <span style="position:relative;z-index:1;margin:-56px 0 0 48px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px;row-gap:14px;padding:36px 36px 36px 40px;background:#221B14;border-radius:12px">
           <span style="display:contents">
             <span style="grid-column: 1 / -1;grid-row: 1;font: 900 52px/1 'Archivo',sans-serif;letter-spacing: -.02em;color:#FFFFFF;font-size: 56px">SERVICE</span>
             <span style="grid-column: 1;grid-row: 2;font: 700 16px 'Noto Sans JP',sans-serif;letter-spacing: .12em;color:#FFFFFF;font-size: 18px">事業内容</span>
             
           </span>
-          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewbox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
         </span>
       </a>
       <a href="/mission" style="display:flex;flex-direction:column;text-decoration:none;color:#221B14" class="rt-tile">
-        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/adobestock_316482717-muz6nxz4-hwr0.jpeg" alt="adobestock_316482717" width="10216" height="5400" style="max-width: 100%;height: 357px;display: block;object-fit: cover;width: 562px;aspect-ratio: 10216 / 5400"></span>
+        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/ui/606010a31821.jpg" alt="adobestock_316482717" width="10216" height="5400" style="max-width: 100%;height: 357px;display: block;object-fit: cover;width: 562px;aspect-ratio: 10216 / 5400"></span>
         <span style="position:relative;z-index:1;margin:-56px 0 0 48px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px;row-gap:14px;padding:36px 36px 36px 40px;background:#221B14;border-radius:12px">
           <span style="display:contents">
             <span style="grid-column: 1 / -1;grid-row: 1;font: 900 52px/1 'Archivo',sans-serif;letter-spacing: -.02em;color:#FFFFFF;font-size: 56px">MISSION</span>
             <span style="grid-column: 1;grid-row: 2;font: 700 16px 'Noto Sans JP',sans-serif;letter-spacing: .12em;color:#FFFFFF;font-size: 18px">私たちについて</span>
             
           </span>
-          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewbox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
         </span>
       </a>
       <a href="/news" style="display:flex;flex-direction:column;text-decoration:none;color:#221B14" class="rt-tile">
-        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/tile-news.jpg" alt="adobestock_297131356" width="5000" height="1667" style="max-width: 100%;height: 356px;display: block;object-fit: cover;width: 561px;aspect-ratio: 5000 / 1667"></span>
+        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/ui/429d660bb84a.jpg" alt="adobestock_297131356" width="5000" height="1667" style="max-width: 100%;height: 356px;display: block;object-fit: cover;width: 561px;aspect-ratio: 5000 / 1667"></span>
         <span style="position:relative;z-index:1;margin:-56px 0 0 48px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px;row-gap:14px;padding:36px 36px 36px 40px;background:#221B14;border-radius:12px">
           <span style="display:contents">
             <span style="grid-column: 1 / -1;grid-row: 1;font: 900 52px/1 'Archivo',sans-serif;letter-spacing: -.02em;color:#FFFFFF;font-size: 56px">NEWS</span>
             <span style="grid-column: 1;grid-row: 2;font: 700 16px 'Noto Sans JP',sans-serif;letter-spacing: .12em;color:#FFFFFF;font-size: 18px">お知らせ</span>
             
           </span>
-          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewbox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
         </span>
       </a>
       <a href="/recruit" style="display:flex;flex-direction:column;text-decoration:none;color:#221B14" class="rt-tile">
-        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/adobestock_270152107-muz6rcd8-euhq.jpeg" alt="adobestock_270152107" width="7040" height="2586" style="max-width: 100%;height: 353px;display: block;object-fit: cover;width: 568px;aspect-ratio: 7040 / 2586"><span style="width:100%;height:100%;display:grid;place-items:center;background:#F1EFEB;padding:24px;text-align:center;transform:scale(1);transform-origin:center"><span style="font:500 14px/1.8 'Noto Sans JP',sans-serif;color:#6B6259"></span></span></span>
+        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/ui/f365e5a2c6c4.jpg" alt="adobestock_270152107" width="7040" height="2586" style="max-width: 100%;height: 353px;display: block;object-fit: cover;width: 568px;aspect-ratio: 7040 / 2586"><span style="width:100%;height:100%;display:grid;place-items:center;background:#F1EFEB;padding:24px;text-align:center;transform:scale(1);transform-origin:center"><span style="font:500 14px/1.8 'Noto Sans JP',sans-serif;color:#6B6259"></span></span></span>
         <span style="position:relative;z-index:1;margin:-56px 0 0 48px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px;row-gap:14px;padding:36px 36px 36px 40px;background:#221B14;border-radius:12px">
           <span style="display:contents">
             <span style="grid-column: 1 / -1;grid-row: 1;font: 900 52px/1 'Archivo',sans-serif;letter-spacing: -.02em;color:#FFFFFF;font-size: 56px">RECRUIT</span>
             <span style="grid-column: 1;grid-row: 2;font: 700 16px 'Noto Sans JP',sans-serif;letter-spacing: .12em;color:#FFFFFF;font-size: 18px">採用情報</span>
             
           </span>
-          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewbox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
         </span>
       </a>
       <a href="/company" style="display:flex;flex-direction:column;text-decoration:none;color:#221B14" class="rt-tile">
-        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/adobestock_726674297-muz6x3k7-kwz7.jpeg" alt="adobestock_726674297" width="6144" height="3072" style="max-width: 100%;height: 358px;display: block;object-fit: cover;width: 578px;aspect-ratio: 6144 / 3072"></span>
+        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/ui/f56348b732e1.jpg" alt="adobestock_726674297" width="6144" height="3072" style="max-width: 100%;height: 358px;display: block;object-fit: cover;width: 578px;aspect-ratio: 6144 / 3072"></span>
         <span style="position:relative;z-index:1;margin:-56px 0 0 48px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px;row-gap:14px;padding:36px 36px 36px 40px;background:#221B14;border-radius:12px">
           <span style="display:contents">
             <span style="grid-column: 1 / -1;grid-row: 1;font: 900 52px/1 'Archivo',sans-serif;letter-spacing: -.02em;color:#FFFFFF;font-size: 56px">COMPANY</span>
             <span style="grid-column: 1;grid-row: 2;font: 700 16px 'Noto Sans JP',sans-serif;letter-spacing: .12em;color:#FFFFFF;font-size: 18px">会社概要</span>
             
           </span>
-          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewbox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
         </span>
       </a>
       <a href="/mtg" style="display:flex;flex-direction:column;text-decoration:none;color:#221B14" class="rt-tile">
-        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/adobestock_488347165-muz6zhpf-dtnn.jpeg" alt="adobestock_488347165" width="3895" height="1653" style="max-width: 100%;height: 355px;display: block;object-fit: cover;width: 574px;aspect-ratio: 3895 / 1653"><rect x="556" y="568" width="104" height="80" rx="14"></rect><rect x="699" y="568" width="104" height="80" rx="14"></rect><rect x="985" y="568" width="60" height="80" rx="14"></rect><rect x="556" y="696" width="104" height="44" rx="12"></rect><rect x="699" y="696" width="104" height="44" rx="12"></rect></span>
+        <span style="display:block;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#2E2418"><img src="/assets/site/img/ui/aee9b5ebb74c.jpg" alt="adobestock_488347165" width="3895" height="1653" style="max-width: 100%;height: 355px;display: block;object-fit: cover;width: 574px;aspect-ratio: 3895 / 1653"><rect x="556" y="568" width="104" height="80" rx="14"></rect><rect x="699" y="568" width="104" height="80" rx="14"></rect><rect x="985" y="568" width="60" height="80" rx="14"></rect><rect x="556" y="696" width="104" height="44" rx="12"></rect><rect x="699" y="696" width="104" height="44" rx="12"></rect></span>
         <span style="position:relative;z-index:1;margin:-56px 0 0 48px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px;row-gap:14px;padding:36px 36px 36px 40px;background:#221B14;border-radius:12px">
           <span style="display:contents">
             <span style="grid-column: 1 / -1;grid-row: 1;font: 900 52px/1 'Archivo',sans-serif;letter-spacing: -.02em;color:#FFFFFF;font-size: 56px">CONTACT</span>
             <span style="grid-column: 1;grid-row: 2;font: 700 16px 'Noto Sans JP',sans-serif;letter-spacing: .12em;color:#FFFFFF;font-size: 18px">無料相談・資料送付</span>
             
           </span>
-          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewbox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span aria-hidden="true" style="grid-column:2;grid-row:2;display:grid;place-items:center;width:72px;height:72px;flex:none;border-radius:50%;;background:#F2661F;border:1.5px solid #F2661F" class="rt-arrow"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
         </span>
       </a>
     </div>
@@ -442,34 +608,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <footer style="background:#221B14;color:#FBF1E6;font-family:'Noto Sans JP',sans-serif">
   <div style="max-width:1280px;margin:0 auto;padding:72px 24px 40px;display:grid;justify-items:center;gap:32px;text-align:center">
-    <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo-dark.png" alt="Root" style="position:relative;z-index:1;height:30px;width:auto"></a>
+    <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/625b4fdabd81.png" alt="Root" style="position:relative;z-index:1;height:30px;width:auto"></a>
     <nav aria-label="フッターメニュー" style="display:flex;flex-wrap:wrap;justify-content:center;column-gap:32px;row-gap:12px">
+      <a class="h0" href="/column" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">コラム</a>
       <a class="h0" href="/privacy" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">プライバシーポリシー</a>
       <a class="h0" href="/koukoku" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">電子公告</a>
       <a class="h0" href="/contact" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">お問い合わせ（採用・取材など）</a>
     </nav>
     <div style="display:flex;gap:14px">
-      <a class="h1" href="https://line.me/R/ti/p/@159kzgga" target="_blank" rel="noopener" aria-label="LINE公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><svg viewbox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3.1 6.5 7.4 7.1.3.1.7.2.8.5.1.2.1.6 0 .9l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.5c1.4-1.5 1.7-3 1.7-4.3 0-4-4-7.2-9-7.2z" fill="#221B14"></path><path d="M7.2 9v3.6h2M10.6 9v3.6M12.4 12.6V9l2.4 3.6V9M18 9h-1.9v3.6H18M16.1 10.8H18" fill="none" stroke="#FFFFFF" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+      <a class="h1" href="https://line.me/R/ti/p/@159kzgga" target="_blank" rel="noopener" aria-label="LINE公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3.1 6.5 7.4 7.1.3.1.7.2.8.5.1.2.1.6 0 .9l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.5c1.4-1.5 1.7-3 1.7-4.3 0-4-4-7.2-9-7.2z" fill="#221B14"></path><path d="M7.2 9v3.6h2M10.6 9v3.6M12.4 12.6V9l2.4 3.6V9M18 9h-1.9v3.6H18M16.1 10.8H18" fill="none" stroke="#FFFFFF" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="h1" href="https://note.com/root_biz" target="_blank" rel="noopener" aria-label="note公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><span aria-hidden="true" style="font:900 12px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">note</span></a>
     </div>
     <small style="font:500 11px 'Archivo',sans-serif;letter-spacing:.08em;color:rgba(251,241,230,.55)">© Root Inc.</small>
   </div>
 </footer>
 </div>
 </div>
-
 </div>
 <div class="view-sp">
-<h1 class="sr-only">株式会社Root｜人を想い、人に想われる。マーケティング支援とリファラル採用SNS「Root」</h1>
-
-
+<h1 class="sr-only">株式会社Root｜人を想い、人に想われる。</h1>
 <div data-screen-label="00 TOP SP" style="background:#FFFFFF;font-family:'Noto Sans JP',sans-serif;color:#221B14;max-width:430px;margin:0 auto;overflow-x:hidden">
   <div style="position:sticky;top:0;z-index:50;height:80px">
 
-<div hidden data-dc-if="isPC">
+<div hidden="" data-dc-if="isPC">
   <div style="position:relative;height:96px;font-family:'Noto Sans JP',sans-serif">
     <div style="position:absolute;top:16px;left:24px;right:24px;max-width:1232px;margin:0 auto;background:#FFFFFF;border-radius:32px;border:1px solid rgba(34,27,20,.08);box-shadow:0 8px 32px rgba(34,27,20,.10)">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 10px 0 28px">
-        <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo.png" alt="Root" style="height:26px;width:auto"></a>
+        <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:26px;width:auto"></a>
         <nav aria-label="メインメニュー" style="display:flex;align-items:center;gap:4px">
           
             <a href="/mission" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">MISSION</a>
@@ -487,15 +651,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </nav>
         <span style="display:inline-flex"><div>
 
-<a href="/mtg" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:14px;min-height:46px;padding:0 8px 0 24px;border-radius:999px;font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">無料相談を予約<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewbox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<a href="/mtg" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:14px;min-height:46px;padding:0 8px 0 24px;border-radius:999px;font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">無料相談を予約<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
 </div></span>
       </div>
-      <div hidden data-dc-if="isOpen">
+      <div hidden="" data-dc-if="isOpen">
         <div style="position:relative;border-top:1px solid #EFE8DE;padding:44px 56px 52px;display:grid;gap:36px">
                     <a href="#" style="justify-self:center;display:grid;justify-items:center;gap:8px;text-decoration:none;color:#221B14">
             <span style="display:flex;align-items:center;gap:16px">
               <span style="font:900 56px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:#221B14"></span>
-              <span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F"><svg viewbox="0 0 24 24" style="width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F"><svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
             </span>
             <span style="font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#6B6259"></span>
           </a>
@@ -510,18 +674,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <div style="position:relative;height:80px;font-family:'Noto Sans JP',sans-serif">
     <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 6px 0 20px;background:#FFFFFF;border-radius:30px;border:1px solid rgba(34,27,20,.08);box-shadow:0 6px 24px rgba(34,27,20,.10)">
-      <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo.png" alt="Root" style="height:22px;width:auto"></a>
+      <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
       <button type="button" aria-label="メニューを開く" aria-expanded="false" style="display:grid;place-items:center;align-content:center;gap:3px;width:48px;height:48px;border-radius:50%;border:1.5px solid #F2661F;background:#FFFFFF;cursor:pointer;padding:0">
         <span aria-hidden="true" style="display:grid;gap:3px"><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span></span>
         <span style="font:700 7.5px 'Archivo',sans-serif;letter-spacing:.12em;color:#221B14">MENU</span>
       </button>
     </div>
-    <div hidden data-dc-if="spIsOpen">
+    <div hidden="" data-dc-if="spIsOpen">
       <div role="dialog" aria-modal="true" aria-label="メニュー" style="position:fixed;inset:0;z-index:200;background:#FFFFFF;overflow-y:auto;display:flex;flex-direction:column">
         <div style="display:flex;align-items:center;height:84px;padding:0 18px 0 32px;flex:none">
-          <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo.png" alt="Root" style="height:22px;width:auto"></a>
+          <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
         </div>
-        <button type="button" aria-label="メニューを閉じる" style="position:fixed;right:0;bottom:0;z-index:210;width:128px;height:128px;border:0;border-top-left-radius:128px;background:#F2661F;cursor:pointer;padding:0 20px 22px 0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end"><span style="display:grid;justify-items:center;gap:6px"><svg viewbox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg><span style="font:800 12px/1 'Archivo',sans-serif;letter-spacing:.08em;color:#FFFFFF">CLOSE</span></span></button>
+        <button type="button" aria-label="メニューを閉じる" style="position:fixed;right:0;bottom:0;z-index:210;width:128px;height:128px;border:0;border-top-left-radius:128px;background:#F2661F;cursor:pointer;padding:0 20px 22px 0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end"><span style="display:grid;justify-items:center;gap:6px"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg><span style="font:800 12px/1 'Archivo',sans-serif;letter-spacing:.08em;color:#FFFFFF">CLOSE</span></span></button>
         <nav aria-label="メインメニュー" style="padding:8px 20px 0;display:grid">
           
             <div style="border-bottom:1px solid #E6DED3">
@@ -529,13 +693,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">MISSION</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">ミッション</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/mission" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">ミッショントップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/mission" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">ミッショントップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/mission#vision" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">目指す姿<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/mission#vision" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">目指す姿<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/mission#origin" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">社名の由来<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/mission#origin" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">社名の由来<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -546,15 +710,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">SERVICE</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">事業内容</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">事業内容トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業内容トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/service/ad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">MARKETING CONSULTING<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/service/ad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">マーケティング支援<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/service/hr" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">HR TECH<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/service/hr" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">リファラル採用DX<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -565,17 +729,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">NEWS</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お知らせ</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お知らせトップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お知らせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">すべてのお知らせ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">すべてのお知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news#press" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プレスリリース<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news#press" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プレスリリース<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news#info" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">お知らせ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news#info" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">お知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/news#media" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">メディア掲載<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/news#media" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">メディア掲載<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -586,15 +750,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">RECRUIT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">採用情報</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/recruit" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">採用情報トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/recruit" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">採用情報トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/recruit#culture" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">働く環境<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/recruit#culture" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">働く環境<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">募集職種<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">募集職種<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">エントリー<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">エントリー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -605,19 +769,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">COMPANY</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">会社概要</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/company" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">会社概要トップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/company" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">会社概要トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/company#profile" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">会社情報<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/company#profile" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">会社情報<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/company#business" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業紹介<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/company#business" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業紹介<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/company#access" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">アクセス<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/company#access" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">アクセス<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/koukoku" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">電子公告<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/koukoku" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">電子公告<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/privacy" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プライバシーポリシー<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/privacy" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プライバシーポリシー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -628,13 +792,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">CONTACT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お問い合わせ</span></span>
                 <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
               </button>
-              <div hidden data-dc-if="m.spIsOpen">
+              <div hidden="" data-dc-if="m.spIsOpen">
                 <div style="display:grid;padding:0 4px 16px">
-                  <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お問い合わせトップ<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お問い合わせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">無料相談・資料送付のご予約<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">無料相談・資料送付のご予約<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
-                    <a href="/contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">その他のお問い合わせ（採用・取材など）<svg viewbox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                    <a href="/contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">その他のお問い合わせ（採用・取材など）<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                   
                 </div>
               </div>
@@ -650,13 +814,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </div>
 
-  <section id="hero-video-slot" aria-label="Root" style="position:relative;position:relative;width:100%;height:calc(100svh - 80px);min-height:520px;background:#FFFFFF;display:grid;place-items:center;overflow:hidden"><video class="rt-video" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-fit:contain;background:#FFFFFF"><source src="/assets/site/video/intro_sp.webm?v=4" type="video/webm"><source src="/assets/site/video/intro_sp.mp4?v=4" type="video/mp4"></source></source></video>
-    <img src="/assets/site/img/logo.png" alt="Root" style="width:75%;height:auto;display:block">
+  <section id="hero-video-slot" aria-label="Root" style="position:relative;position:relative;width:100%;height:calc(100svh - 80px);min-height:520px;background:#FFFFFF;display:grid;place-items:center;overflow:hidden"><video class="rt-video" muted="" playsinline="" preload="metadata" aria-hidden="true" tabindex="-1" data-rt-video="loop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-fit:contain;background:#FFFFFF" loop=""><source src="/assets/site/video/intro_sp.webm" type="video/webm"><source src="/assets/site/video/intro_sp.mp4" type="video/mp4"></video>
+    <img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="width:75%;height:auto;display:block">
     <span aria-hidden="true" style="z-index:1;position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px">
       <span style="font:700 10px/1 'Archivo',sans-serif;letter-spacing:.24em;color:#F2661F">SCROLL</span>
       <span style="display:block;width:1px;height:48px;background:#F2661F"></span>
     </span>
   </section>
+<section id="latest-column" aria-label="最新のコラム・note速報" style="background:#221B14;padding:56px 0 56px;display:grid;gap:28px;overflow:hidden"><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 16px;flex-wrap:wrap;"><div style="display:grid;gap:8px"><h2 style="margin:0;font:900 40px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:#FFFFFF">COLUMN</h2><span style="font:700 13px 'Noto Sans JP',sans-serif;letter-spacing:.08em;color:rgba(255,255,255,.78)">最新のコラム・note速報</span></div></div><div style="display:flex;gap:16px;align-items:flex-start;padding:0 16px;overflow:hidden"><a href="/column/ai-search-information-design" style="flex:none;width:330px;display:grid;gap:16px;text-decoration:none;color:#FFFFFF"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-05.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:12px"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">AI活用</span><time datetime="2026-11-05" style="font:600 13px 'Archivo',sans-serif;color:rgba(255,255,255,.7)">2026/11/05</time></span><span style="font:700 16px/1.6 'Noto Sans JP',sans-serif;color:#FFFFFF">AI検索に選ばれるための情報設計</span></a><a href="/column/vertical-video-planning" style="flex:none;width:150px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-04.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">クリエイティブ</span><time datetime="2026-11-04" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/04</time></span></a><a href="/column/measurement-change" style="flex:none;width:150px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">広告テクノロジー</span><time datetime="2026-11-03" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/03</time></span></a><a href="/column/ad-report-revenue" style="flex:none;width:150px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-02.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">マーケティング戦略</span><time datetime="2026-11-02" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/02</time></span></a><a href="/column/generative-ai-creative" style="flex:none;width:150px;display:grid;gap:10px;align-self:start;text-decoration:none;color:#FFFFFF;opacity:.85"><span style="position:relative;display:block;width:100%;aspect-ratio:1280/670;border-radius:12px;overflow:hidden;background:#2E2620"><img src="/assets/site/img/column/thumb-01.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 11px 'Noto Sans JP',sans-serif">AI活用</span><time datetime="2026-11-01" style="font:600 11px 'Archivo',sans-serif;color:rgba(255,255,255,.6)">2026/11/01</time></span></a></div><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px;flex-direction:column;align-items:stretch;"><div style="display:flex;gap:8px;justify-content:center;"><span style="display:block;width:24px;height:8px;border-radius:999px;background:#F2661F"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3)"></span></div><div style="display:flex;gap:12px;flex-direction:column;"><a href="https://note.com/root_biz" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;border:1.5px solid #FFFFFF;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none">noteで速報を読む</a><a class="rt-cta" href="/column" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:0 10px 0 26px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none">コラム一覧を見る<span aria-hidden="true" style="display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></div></div></section>
+
+
   
 
   <section aria-labelledby="top-service" style="position:relative;overflow:hidden;background:#FFFFFF;padding:64px 0 56px">
@@ -666,7 +833,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <span style="font:900 52px/0.95 'Archivo',sans-serif;font-stretch:110%;letter-spacing:-.01em;color:#221B14">BUSINESS<br>SERVICE</span>
         <span style="font:700 15px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#221B14">事業内容</span>
       </h2>
-      <p lang="ja" style="margin:12px 0 0;font:500 15px/1.95 'Noto Sans JP',sans-serif;color:#3D342B;text-wrap:pretty;word-break:auto-phrase">マーケティング支援と、<wbr>リファラル採用SNS「Root」。<wbr>2つの事業で、<wbr>人と企業の可能性を<wbr>つなぎます。</wbr></wbr></wbr></wbr></p>
+      
     </div>
 
     <div style="position:relative;margin-top:72px">
@@ -675,21 +842,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <img src="/assets/site/img/phone_landscape.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
           <div style="position:absolute;top:9%;bottom:9%;left:11%;right:6%;display:grid;align-content:center;gap:10px">
             <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center">
-              <img src="/assets/site/img/icon_marketing.svg" alt="広告とデータ分析を表すメガホンとグラフのイラスト" style="height:84px;width:84px;object-fit:contain;display:block">
+              <img src="/assets/site/img/ui/d9677b61225e.png" alt="マーケティングの伴走者を表すイラスト" style="height:84px;width:84px;object-fit:cover;object-position:50% 40%;border-radius:50%;background:#F6EFE6;display:block">
               <span style="display:grid;gap:4px">
-                <span style="font:900 19px/1.35 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">マーケティング<br>コンサルティング事業</span>
-                <span style="font:700 11px/1.4 'Archivo',sans-serif;letter-spacing:.12em;color:#F2661F">MARKETING CONSULTING</span>
+                <span style="font:900 19px/1.35 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">オンライン常駐型<br>コンサルティング事業</span>
               </span>
             </div>
-            <span style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">デジタル広告運用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">SNSオーガニック運用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">SEO・AI検索対策・MEO</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">クリエイティブ・Web制作</span></span>
+            <span style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">ROAS・CACでの成果評価</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">施策アロケーション設計</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">代理店とのコミュニケーション</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">POC実証</span></span>
           </div>
         </div>
       </div>
       <div style="position:relative;z-index:1;background:#221B14;padding:120px 16px 40px;display:grid;gap:28px">
-        <p lang="ja" style="margin:0;font:700 15px/1.95 'Noto Sans JP',sans-serif;color:#FFFFFF;text-wrap:pretty">Google・Meta・TikTokなど主要媒体の広告アカウント運用、オーガニックSNS運用、SEO・AIO・MEOの検索対策、バナーや動画・LP・HPのクリエイティブ制作まで、戦略設計からレポーティングまで一気通貫でご支援します。</p>
+        <div style="display:grid;gap:8px"><span style="font:700 11px/1.5 'Noto Sans JP',sans-serif;letter-spacing:.16em;color:#F2661F">オンライン常駐型コンサルティング</span><h3 lang="ja" style="margin:0;font:900 22px/1.55 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#FFFFFF;word-break:auto-phrase">判断と実行を支える<br><span style="color:#F2661F">常駐型コンサルティング</span></h3></div><p lang="ja" style="margin:0;font:500 14px/1.95 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.86);text-wrap:pretty">Rootの社員がマーケティング部署の一員として常駐し、分析・意思決定・実行までを一緒に伴走します。既存の広告代理店はそのまま、施策成果を「売上軸」で再評価します。</p>
         <div>
 
-<a href="/service/ad" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewbox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<a href="/service/consulting" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
 </div>
       </div>
     </div>
@@ -700,10 +866,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <img src="/assets/site/img/phone_landscape.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
           <div style="position:absolute;top:9%;bottom:9%;left:11%;right:6%;display:grid;align-content:center;gap:10px">
             <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center">
+              <img src="/assets/site/img/icon_marketing.svg" alt="広告とデータ分析を表すメガホンとグラフのイラスト" style="height:84px;width:84px;object-fit:contain;display:block">
+              <span style="display:grid;gap:4px">
+                <span style="font:900 19px/1.35 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">マーケティング支援事業</span>
+              </span>
+            </div>
+            <span style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">デジタル広告運用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">SNSオーガニック運用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">SEO・AI検索対策・MEO</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">クリエイティブ・Web制作</span></span>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;z-index:1;background:#221B14;padding:120px 16px 40px;display:grid;gap:28px">
+        <div style="display:grid;gap:8px"><span style="font:700 11px/1.5 'Noto Sans JP',sans-serif;letter-spacing:.16em;color:#F2661F">マーケティング支援</span><h3 lang="ja" style="margin:0;font:900 22px/1.55 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#FFFFFF;word-break:auto-phrase">事業目標から施策設計する<br><span style="color:#F2661F">マーケティング支援</span></h3></div><p lang="ja" style="margin:0;font:500 14px/1.95 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.86);text-wrap:pretty">主要媒体の広告運用、SNS運用、SEO・AIO・MEOの検索対策、クリエイティブ制作まで、戦略設計からレポーティングまで一気通貫でご支援します。</p>
+        <div>
+
+<a href="/service/ad" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div><div style="display:grid;gap:10px"><h4 style="margin:0;font:700 13px 'Noto Sans JP',sans-serif;letter-spacing:.06em;color:rgba(255,255,255,.7)">個別のサービスから探す</h4><a href="/service/ad/digital-ads" class="rt-svc" style="display:grid;grid-template-columns:76px minmax(0,1fr) 32px;align-items:center;gap:14px;min-height:76px;padding:8px 12px 8px 8px;border-radius:12px;background:#FFFFFF;text-decoration:none"><img src="/assets/site/img/ui/31a7e2238869.jpg" alt="" style="width:76px;height:60px;object-fit:cover;border-radius:8px;display:block;background:#EEECE8"><span style="display:grid;gap:3px;min-width:0"><span lang="ja" style="font:700 14px/1.4 'Noto Sans JP',sans-serif;color:#221B14">デジタル広告運用</span><span lang="ja" style="font:500 11.5px/1.55 'Noto Sans JP',sans-serif;color:#6B6259">事業目標を踏まえて、媒体と予算配分を設計し、運用する</span></span><span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#F2661F"><svg viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a><a href="/service/ad/sns" class="rt-svc" style="display:grid;grid-template-columns:76px minmax(0,1fr) 32px;align-items:center;gap:14px;min-height:76px;padding:8px 12px 8px 8px;border-radius:12px;background:#FFFFFF;text-decoration:none"><img src="/assets/site/img/ui/dc9d889d8810.jpg" alt="" style="width:76px;height:60px;object-fit:cover;border-radius:8px;display:block;background:#EEECE8"><span style="display:grid;gap:3px;min-width:0"><span lang="ja" style="font:700 14px/1.4 'Noto Sans JP',sans-serif;color:#221B14">SNSオーガニック運用</span><span lang="ja" style="font:500 11.5px/1.55 'Noto Sans JP',sans-serif;color:#6B6259">企画から撮影・編集、投稿、分析まで一貫して対応</span></span><span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#F2661F"><svg viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a><a href="/service/ad/seo" class="rt-svc" style="display:grid;grid-template-columns:76px minmax(0,1fr) 32px;align-items:center;gap:14px;min-height:76px;padding:8px 12px 8px 8px;border-radius:12px;background:#FFFFFF;text-decoration:none"><img src="/assets/site/img/ui/408cbd0819d5.jpg" alt="" style="width:76px;height:60px;object-fit:cover;border-radius:8px;display:block;background:#EEECE8"><span style="display:grid;gap:3px;min-width:0"><span lang="ja" style="font:700 14px/1.4 'Noto Sans JP',sans-serif;color:#221B14">SEO・AI検索対策・MEO</span><span lang="ja" style="font:500 11.5px/1.55 'Noto Sans JP',sans-serif;color:#6B6259">Google検索やマップ、AI検索で見つけてもらう</span></span><span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#F2661F"><svg viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a><a href="/service/ad/creative" class="rt-svc" style="display:grid;grid-template-columns:76px minmax(0,1fr) 32px;align-items:center;gap:14px;min-height:76px;padding:8px 12px 8px 8px;border-radius:12px;background:#FFFFFF;text-decoration:none"><img src="/assets/site/img/ui/445d3300f6d5.jpg" alt="" style="width:76px;height:60px;object-fit:cover;border-radius:8px;display:block;background:#EEECE8"><span style="display:grid;gap:3px;min-width:0"><span lang="ja" style="font:700 14px/1.4 'Noto Sans JP',sans-serif;color:#221B14">クリエイティブ・Web制作</span><span lang="ja" style="font:500 11.5px/1.55 'Noto Sans JP',sans-serif;color:#6B6259">バナー・動画・LP・HPを、広告と一体で検証しながら制作</span></span><span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#F2661F"><svg viewBox="0 0 24 24" style="width:15px;height:15px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></div>
+      </div>
+    </div>
+
+    <div style="position:relative;margin-top:96px">
+      <div style="position:relative;z-index:2;height:168px;margin:0 auto -84px;width:345px">
+        <div style="position:absolute;left:0;top:0;width:442px;aspect-ratio:1000/486;transform-origin:top left;transform:scale(.7805) rotate(-5deg);filter:drop-shadow(0 18px 22px rgba(10,6,3,.45))">
+          <img src="/assets/site/img/phone_landscape.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
+          <div style="position:absolute;top:9%;bottom:9%;left:11%;right:6%;display:grid;align-content:center;gap:10px">
+            <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center">
               <img src="/assets/site/img/icon_hr.svg" alt="人材を探す虫眼鏡と人物のイラスト" style="height:84px;width:84px;object-fit:contain;display:block">
               <span style="display:grid;gap:4px">
-                <span style="font:900 19px/1.35 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">HR TECH事業</span>
-                <span style="font:700 11px/1.4 'Archivo',sans-serif;letter-spacing:.12em;color:#F2661F">REFERRAL RECRUITING PLATFORM</span>
+                <span style="font:900 19px/1.35 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">リファラル採用DX事業</span>
               </span>
             </div>
             <span style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">プル型リファラル採用</span><span style="padding:4px 11px;border-radius:999px;border:1.5px solid #F2661F;font:700 12.5px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;white-space:nowrap">ミスマッチの少ない転職</span></span>
@@ -711,47 +900,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </div>
       <div style="position:relative;z-index:1;background:#221B14;padding:120px 16px 40px;display:grid;gap:28px">
-        <p lang="ja" style="margin:0;font:700 15px/1.95 'Noto Sans JP',sans-serif;color:#FFFFFF;text-wrap:pretty">求職者が自ら「もらいに行く」プル型リファラル採用SNS。紹介の起点を社員から求職者へ反転し、定着率の高い、ミスマッチの無い転職体験を実現します。</p>
+        <div style="display:grid;gap:8px"><span style="font:700 11px/1.5 'Noto Sans JP',sans-serif;letter-spacing:.16em;color:#F2661F">リファラル採用DX</span><h3 lang="ja" style="margin:0;font:900 22px/1.55 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#FFFFFF;word-break:auto-phrase">知人に推薦をもらいに行く<br><span style="color:#F2661F">新しいリファラル採用</span></h3></div><p lang="ja" style="margin:0;font:500 14px/1.95 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.86);text-wrap:pretty">求職者が自ら「もらいに行く」プル型リファラル採用SNS。紹介の起点を社員から求職者へ反転し、ミスマッチの無い転職体験を実現します。</p>
         <div>
 
-<a href="/service/hr" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewbox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<a href="/service/hr" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">詳しいサービス内容はこちら<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
 </div>
       </div>
     </div>
 
     <div style="position:relative;padding:32px 16px 0;display:flex;justify-content:flex-end">
-      <a href="/service" style="display:inline-flex;align-items:center;min-height:44px;font:700 15px 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none;justify-content:center;gap:10px;padding:0 24px;border-radius:999px;background:#F2661F;color:#FFFFFF;border:1.5px solid #F2661F" class="rt-cta">事業内容をすべて見る</a>
+      <a href="/service" style="display:inline-flex;align-items:center;min-height:44px;font:700 15px 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none;justify-content:center;gap:10px;padding:0 24px;border-radius:999px;background:#F2661F;color:#FFFFFF;border:1.5px solid #F2661F" class="rt-cta">サービス一覧<span aria-hidden="true" style="display:grid;place-items:center;width:26px;height:26px;margin-right:-14px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
     </div>
   </section>
 
   <section aria-label="各ページへの入口" style="background:#FFFFFF;padding:8px 16px 72px">
     <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
       
-        <a href="/mission" style="position:relative;display:flex;flex-direction:column;grid-column:1 / -1;min-width:0;border-radius:16px;overflow:hidden;background:#221B14;box-shadow:0 8px 20px rgba(34,27,20,.10),0 2px 4px rgba(34,27,20,.06);transform:none;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;-webkit-tap-highlight-color:transparent" class="rt-tile">
-          <span style="position:relative;display:block;aspect-ratio:16/9;background:#2E2418;overflow:hidden">
-            <img src="/assets/site/img/adobestock_316482717-muz6nxz4-hwr0.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+        <a href="/service" style="position:relative;display:flex;flex-direction:column;grid-column:auto;min-width:0;border-radius:16px;overflow:hidden;background:#221B14;box-shadow:0 8px 20px rgba(34,27,20,.10),0 2px 4px rgba(34,27,20,.06);transform:none;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;-webkit-tap-highlight-color:transparent" class="rt-tile">
+          <span style="position:relative;display:block;aspect-ratio:4/3;background:#2E2418;overflow:hidden">
+            <img src="/assets/site/img/ui/d6058be72aeb.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
             <span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:.15"></span>
             <span aria-hidden="true" style="position:absolute;inset:0;background:#000000;opacity:0;transition:opacity .12s ease"></span>
           </span>
           <span style="position:relative;display:grid;gap:6px;padding:18px 16px 18px"><span aria-hidden="true" style="position:absolute;right:12px;top:-18px;z-index:1;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#F2661F;box-shadow:0 2px 6px rgba(34,27,20,.2);font:700 16px/1 'Archivo',sans-serif;color:#FFFFFF">→</span>
-            <span style="font:900 24px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#FFFFFF;white-space:nowrap">MISSION</span>
-            <span lang="ja" style="font:700 12px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#FFFFFF;word-break:auto-phrase">私たちについて</span>
-            
-              <span lang="ja" style="font:500 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.78)">人の1歩を、人の0.5歩に。</span>
-            
+            <span style="font:900 19px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#FFFFFF;white-space:nowrap">SERVICE</span>
+            <span lang="ja" style="font:700 12px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#FFFFFF;word-break:auto-phrase">事業内容</span></span>
+        </a>
+        <a href="/mission" style="position:relative;display:flex;flex-direction:column;grid-column:auto;min-width:0;border-radius:16px;overflow:hidden;background:#221B14;box-shadow:0 8px 20px rgba(34,27,20,.10),0 2px 4px rgba(34,27,20,.06);transform:none;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;-webkit-tap-highlight-color:transparent" class="rt-tile">
+          <span style="position:relative;display:block;aspect-ratio:4/3;background:#2E2418;overflow:hidden">
+            <img src="/assets/site/img/ui/606010a31821.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+            <span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:.15"></span>
+            <span aria-hidden="true" style="position:absolute;inset:0;background:#000000;opacity:0;transition:opacity .12s ease"></span>
           </span>
+          <span style="position:relative;display:grid;gap:6px;padding:18px 16px 18px"><span aria-hidden="true" style="position:absolute;right:12px;top:-18px;z-index:1;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#F2661F;box-shadow:0 2px 6px rgba(34,27,20,.2);font:700 16px/1 'Archivo',sans-serif;color:#FFFFFF">→</span>
+            <span style="font:900 19px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#FFFFFF;white-space:nowrap">MISSION</span>
+            <span lang="ja" style="font:700 12px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#FFFFFF;word-break:auto-phrase">私たちについて</span></span>
         </a>
       
         <a href="/news" style="position:relative;display:flex;flex-direction:column;grid-column:auto;min-width:0;border-radius:16px;overflow:hidden;background:#221B14;box-shadow:0 8px 20px rgba(34,27,20,.10),0 2px 4px rgba(34,27,20,.06);transform:none;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;-webkit-tap-highlight-color:transparent" class="rt-tile">
           <span style="position:relative;display:block;aspect-ratio:4/3;background:#2E2418;overflow:hidden">
-            <img src="/assets/site/img/tile-news.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="/assets/site/img/ui/429d660bb84a.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
             <span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:.15"></span>
             <span aria-hidden="true" style="position:absolute;inset:0;background:#000000;opacity:0;transition:opacity .12s ease"></span>
           </span>
           <span style="position:relative;display:grid;gap:6px;padding:18px 16px 18px"><span aria-hidden="true" style="position:absolute;right:12px;top:-18px;z-index:1;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#F2661F;box-shadow:0 2px 6px rgba(34,27,20,.2);font:700 16px/1 'Archivo',sans-serif;color:#FFFFFF">→</span>
             <span style="font:900 19px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#FFFFFF;white-space:nowrap">NEWS</span>
             <span lang="ja" style="font:700 12px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#FFFFFF;word-break:auto-phrase">お知らせ</span>
-            <span hidden data-dc-if="t.hasTag">
+            <span hidden="" data-dc-if="t.hasTag">
               <span lang="ja" style="font:500 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.78)"></span>
             </span>
           </span>
@@ -759,14 +954,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
         <a href="/recruit" style="position:relative;display:flex;flex-direction:column;grid-column:auto;min-width:0;border-radius:16px;overflow:hidden;background:#221B14;box-shadow:0 8px 20px rgba(34,27,20,.10),0 2px 4px rgba(34,27,20,.06);transform:none;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;-webkit-tap-highlight-color:transparent" class="rt-tile">
           <span style="position:relative;display:block;aspect-ratio:4/3;background:#2E2418;overflow:hidden">
-            <img src="/assets/site/img/adobestock_270152107-muz6rcd8-euhq.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="/assets/site/img/ui/f365e5a2c6c4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
             <span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:.15"></span>
             <span aria-hidden="true" style="position:absolute;inset:0;background:#000000;opacity:0;transition:opacity .12s ease"></span>
           </span>
           <span style="position:relative;display:grid;gap:6px;padding:18px 16px 18px"><span aria-hidden="true" style="position:absolute;right:12px;top:-18px;z-index:1;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#F2661F;box-shadow:0 2px 6px rgba(34,27,20,.2);font:700 16px/1 'Archivo',sans-serif;color:#FFFFFF">→</span>
             <span style="font:900 19px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#FFFFFF;white-space:nowrap">RECRUIT</span>
             <span lang="ja" style="font:700 12px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#FFFFFF;word-break:auto-phrase">採用情報</span>
-            <span hidden data-dc-if="t.hasTag">
+            <span hidden="" data-dc-if="t.hasTag">
               <span lang="ja" style="font:500 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.78)"></span>
             </span>
           </span>
@@ -774,14 +969,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
         <a href="/company" style="position:relative;display:flex;flex-direction:column;grid-column:auto;min-width:0;border-radius:16px;overflow:hidden;background:#221B14;box-shadow:0 8px 20px rgba(34,27,20,.10),0 2px 4px rgba(34,27,20,.06);transform:none;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;-webkit-tap-highlight-color:transparent" class="rt-tile">
           <span style="position:relative;display:block;aspect-ratio:4/3;background:#2E2418;overflow:hidden">
-            <img src="/assets/site/img/adobestock_726674297-muz6x3k7-kwz7.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="/assets/site/img/ui/f56348b732e1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
             <span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:.15"></span>
             <span aria-hidden="true" style="position:absolute;inset:0;background:#000000;opacity:0;transition:opacity .12s ease"></span>
           </span>
           <span style="position:relative;display:grid;gap:6px;padding:18px 16px 18px"><span aria-hidden="true" style="position:absolute;right:12px;top:-18px;z-index:1;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#F2661F;box-shadow:0 2px 6px rgba(34,27,20,.2);font:700 16px/1 'Archivo',sans-serif;color:#FFFFFF">→</span>
             <span style="font:900 19px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#FFFFFF;white-space:nowrap">COMPANY</span>
             <span lang="ja" style="font:700 12px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#FFFFFF;word-break:auto-phrase">会社概要</span>
-            <span hidden data-dc-if="t.hasTag">
+            <span hidden="" data-dc-if="t.hasTag">
               <span lang="ja" style="font:500 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.78)"></span>
             </span>
           </span>
@@ -789,14 +984,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
         <a href="/mtg" style="position:relative;display:flex;flex-direction:column;grid-column:auto;min-width:0;border-radius:16px;overflow:hidden;background:#221B14;box-shadow:0 8px 20px rgba(34,27,20,.10),0 2px 4px rgba(34,27,20,.06);transform:none;transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;-webkit-tap-highlight-color:transparent" class="rt-tile">
           <span style="position:relative;display:block;aspect-ratio:4/3;background:#2E2418;overflow:hidden">
-            <img src="/assets/site/img/adobestock_488347165-muz6zhpf-dtnn.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="/assets/site/img/ui/aee9b5ebb74c.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
             <span aria-hidden="true" style="position:absolute;inset:0;background:#221B14;opacity:.15"></span>
             <span aria-hidden="true" style="position:absolute;inset:0;background:#000000;opacity:0;transition:opacity .12s ease"></span>
           </span>
           <span style="position:relative;display:grid;gap:6px;padding:18px 16px 18px"><span aria-hidden="true" style="position:absolute;right:12px;top:-18px;z-index:1;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#FFFFFF;box-shadow:0 2px 6px rgba(34,27,20,.2);font:700 16px/1 'Archivo',sans-serif;color:#F2661F">→</span>
             <span style="font:900 19px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#FFFFFF;white-space:nowrap">CONTACT</span>
             <span lang="ja" style="font:700 12px/1.4 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#FFFFFF;word-break:auto-phrase">無料相談・資料送付</span>
-            <span hidden data-dc-if="t.hasTag">
+            <span hidden="" data-dc-if="t.hasTag">
               <span lang="ja" style="font:500 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.78)"></span>
             </span>
           </span>
@@ -809,21 +1004,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <footer style="background:#221B14;color:#FBF1E6;font-family:'Noto Sans JP',sans-serif">
   <div style="max-width:1280px;margin:0 auto;padding:72px 24px 40px;display:grid;justify-items:center;gap:32px;text-align:center">
-    <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/logo-dark.png" alt="Root" style="position:relative;z-index:1;height:30px;width:auto"></a>
+    <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/625b4fdabd81.png" alt="Root" style="position:relative;z-index:1;height:30px;width:auto"></a>
     <nav aria-label="フッターメニュー" style="display:flex;flex-wrap:wrap;justify-content:center;column-gap:32px;row-gap:12px">
+      <a class="h0" href="/column" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">コラム</a>
       <a class="h0" href="/privacy" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">プライバシーポリシー</a>
       <a class="h0" href="/koukoku" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">電子公告</a>
       <a class="h0" href="/contact" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">お問い合わせ（採用・取材など）</a>
     </nav>
     <div style="display:flex;gap:14px">
-      <a class="h1" href="https://line.me/R/ti/p/@159kzgga" target="_blank" rel="noopener" aria-label="LINE公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><svg viewbox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3.1 6.5 7.4 7.1.3.1.7.2.8.5.1.2.1.6 0 .9l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.5c1.4-1.5 1.7-3 1.7-4.3 0-4-4-7.2-9-7.2z" fill="#221B14"></path><path d="M7.2 9v3.6h2M10.6 9v3.6M12.4 12.6V9l2.4 3.6V9M18 9h-1.9v3.6H18M16.1 10.8H18" fill="none" stroke="#FFFFFF" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+      <a class="h1" href="https://line.me/R/ti/p/@159kzgga" target="_blank" rel="noopener" aria-label="LINE公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3.1 6.5 7.4 7.1.3.1.7.2.8.5.1.2.1.6 0 .9l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.5c1.4-1.5 1.7-3 1.7-4.3 0-4-4-7.2-9-7.2z" fill="#221B14"></path><path d="M7.2 9v3.6h2M10.6 9v3.6M12.4 12.6V9l2.4 3.6V9M18 9h-1.9v3.6H18M16.1 10.8H18" fill="none" stroke="#FFFFFF" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="h1" href="https://note.com/root_biz" target="_blank" rel="noopener" aria-label="note公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><span aria-hidden="true" style="font:900 12px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">note</span></a>
     </div>
     <small style="font:500 11px 'Archivo',sans-serif;letter-spacing:.08em;color:rgba(251,241,230,.55)">© Root Inc.</small>
   </div>
 </footer>
 </div>
 </div>
-
 </div>
 </body>
 </html>

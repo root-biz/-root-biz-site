@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>計測環境の変化に備える広告運用の考え方｜COLUMN｜株式会社Root</title>
+<meta name="description" content="Chromeのサードパーティ Cookie は結局廃止されず、Privacy Sandbox の多くの技術も終了が決まりました。一方で、iOSやSafariの制限、同意取得のルールなど、広告の計測を難しくする変化はすでに進んでいます。本…">
+<link rel="icon" type="image/svg+xml" href="/assets/site/img/favicon.svg">
+<style>
+html,body{margin:0;background:#FFFFFF;color:#221B14}*{box-sizing:border-box}
+.view-sp{display:none}
+@media (max-width:767px){.view-pc{display:none}.view-sp{display:block}}
+
+body{margin:0}
+/* Root corporate site: shared runtime styles (round 1) */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[id]{scroll-margin-top:112px}
+@media (max-width:767px){[id]{scroll-margin-top:92px}}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body.is-menu-open{overflow:hidden}
+/* PC mega menu panel */
+.rt-mega-link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:12px 2px;border-bottom:1px solid #EFE8DE;font:500 15px/1.5 'Noto Sans JP',sans-serif;color:#221B14!important;text-decoration:none;transition:color .15s ease}
+.rt-mega-link:hover,.rt-mega-link:focus-visible{color:#C94E10!important}
+.rt-mega-link svg{flex:none;width:14px;height:14px;transition:transform .15s ease}
+.rt-mega-link:hover svg{transform:translateX(3px)}
+[data-rt-nav].is-active{color:#F2661F!important}
+[data-rt-panel]{animation:rtFade .18s ease}
+@keyframes rtFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-rt-panel]{animation:none}}
+a:focus-visible,button:focus-visible{outline:3px solid #F2661F;outline-offset:3px}
+
+/* Root — round 8 design refresh: white/black base, orange buttons, hover motion */
+
+/* buttons: every pill-shaped link/button lifts on hover */
+@media (hover:hover){
+  a[style*="999px"],button[style*="999px"],.rt-cta,.rt-more,.rt-tile .rt-arrow{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background .22s ease,color .22s ease,filter .22s ease !important}
+  a[style*="999px"]:hover,button[style*="999px"]:not([disabled]):hover,.rt-cta:hover{transform:translateY(-3px) !important;box-shadow:0 12px 28px rgba(242,102,31,.35) !important;filter:brightness(1.05)}
+  a[style*="999px"]:active,.rt-cta:active{transform:translateY(0) !important}
+  .rt-tile:hover .rt-arrow{transform:translateX(6px) scale(1.08);box-shadow:0 8px 20px rgba(242,102,31,.45)}
+  .rt-tile{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+  .rt-tile:hover{transform:translateY(-6px)}
+  .rt-tile img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .rt-tile:hover img{transform:scale(1.04)}
+}
+/* 「詳しく見る」 -> small ghost button */
+a.rt-more,span.rt-more{display:inline-flex !important;align-items:center;gap:8px;min-height:36px;padding:0 16px !important;border:1.5px solid #F2661F !important;border-radius:999px !important;background:#FFFFFF !important;color:#C94E10 !important;font-weight:700 !important;text-decoration:none !important;transition:background .2s ease,color .2s ease,transform .2s ease}
+a.rt-more:hover,span.rt-more:hover,a:hover > span.rt-more{background:#F2661F !important;color:#FFFFFF !important;transform:translateY(-2px)}
+
+/* MARKETING CONSULTING page (PC uses CSS variables): white base, hero stays dark over the video */
+body[data-page="ad"] .view-pc{--bg:#FFFFFF;--bg2:#F6F5F2;--ink:#221B14;--line:rgba(34,27,20,.12);--line2:rgba(34,27,20,.26);--mute:rgba(34,27,20,.74);--mute2:rgba(34,27,20,.56);--cream:#FFFFFF}
+body[data-page="ad"] .view-pc .hero{--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+body[data-page="ad"] .view-pc .hero-bg{background:#221B14}
+body[data-page="ad"] .view-pc .svc2:hover .svc2-body{background:#FFFFFF;box-shadow:0 16px 40px rgba(34,27,20,.14),0 0 0 1px var(--or)}
+body[data-page="ad"] .view-pc .slot{background:none}
+body[data-page="ad"] .view-pc [class*="bg-"],body[data-page="ad"] .view-pc section{color:var(--ink)}
+body[data-page="ad"] .view-pc .card,body[data-page="ad"] .view-pc .pt{background:#FFFFFF}
+body[data-page="ad"] .view-pc #ad-final-cta{background:#221B14;--ink:#F7F4EE;--mute:rgba(251,241,230,.78);--mute2:rgba(251,241,230,.6);--line:rgba(251,241,230,.2)}
+
+/* inverted sections (ad SP / hr): light cards get a soft edge */
+[data-rt-inverted] [data-rt-card]{box-shadow:0 1px 0 rgba(34,27,20,.04)}
+
+/* mission: black bands separated by thin lines */
+[data-rt-band]{border-top:1px solid rgba(255,255,255,.14)}
+[data-rt-band="origin"]{border-bottom:1px solid rgba(255,255,255,.14)}
+
+
+html,body{margin:0;background:#FFFFFF;color:#221B14}*{box-sizing:border-box}a{color:#C94E10}a:hover{color:#F2661F}
+html,body{margin:0}*{box-sizing:border-box}a{color:#C94E10}a:hover{color:#F2661F}
+html,body{margin:0}*{box-sizing:border-box}a{color:#FFFFFF}a:hover{color:#FFFFFF}
+html,body{margin:0}*{box-sizing:border-box}a{color:#221B14}a:hover{color:#221B14}
+html,body{margin:0}*{box-sizing:border-box}a{color:#FBF1E6}a:hover{color:#F2661F}
+.h0:hover{color:#F2661F !important}
+.h1:hover{background:#FFFFFF !important}
+
+
+
+
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&amp;family=Noto+Sans+JP:wght@100..900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.root-biz.com/column/measurement-change">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="株式会社Root">
+<meta property="og:title" content="計測環境の変化に備える広告運用の考え方｜COLUMN｜株式会社Root">
+<meta property="og:description" content="Chromeのサードパーティ Cookie は結局廃止されず、Privacy Sandbox の多くの技術も終了が決まりました。一方で、iOSやSafariの制限、同意取得のルールなど、広告の計測を難しくする変化はすでに進んでいます。本…">
+<meta property="og:url" content="https://www.root-biz.com/column/measurement-change">
+<meta property="og:image" content="https://www.root-biz.com/assets/site/img/column/thumb-03.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site/css/site.css?v=10">
+<link rel="stylesheet" href="/assets/site/css/motion.css?v=10">
+<link rel="stylesheet" href="/assets/site/css/theme.css?v=10">
+<script src="/assets/site/js/site.js?v=10" defer></script>
+<script src="/assets/site/js/motion.js?v=10" defer></script>
+<script src="/assets/site/js/ui.js?v=10" defer></script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K2XGM5JS');</script>
+<!-- End Google Tag Manager -->
+</head>
+
+<body data-page="article">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XGM5JS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="view-pc">
+<div data-screen-label="COLUMN 06 NEWS PC" style="background:#FFFFFF;font-family:'Noto Sans JP',sans-serif;color:#221B14;min-width:1024px;position:relative;isolation:isolate;overflow-x:clip">
+
+  <div style="position:sticky;top:0;z-index:50;height:96px">
+
+
+  <div style="position:relative;height:96px;font-family:'Noto Sans JP',sans-serif">
+    <div style="position:absolute;top:16px;left:24px;right:24px;max-width:1232px;margin:0 auto;background:#FFFFFF;border-radius:32px;border:1px solid rgba(34,27,20,.08);box-shadow:0 8px 32px rgba(34,27,20,.10)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 10px 0 28px">
+        <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:26px;width:auto"></a>
+        <nav aria-label="メインメニュー" style="display:flex;align-items:center;gap:4px">
+          
+            <a href="/mission" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">MISSION</a>
+          
+            <a href="/service" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">SERVICE</a>
+          
+            <a href="/column" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">NEWS</a>
+          
+            <a href="/recruit" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">RECRUIT</a>
+          
+            <a href="/company" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">COMPANY</a>
+          
+            <a href="/mtg" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">CONTACT</a>
+          
+        </nav>
+        <span style="display:inline-flex"><div>
+
+<a href="/mtg" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:14px;min-height:46px;padding:0 8px 0 24px;border-radius:999px;font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">無料相談を予約<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div></span>
+      </div>
+      <div hidden="" data-dc-if="isOpen">
+        <div style="position:relative;border-top:1px solid #EFE8DE;padding:44px 56px 52px;display:grid;gap:36px">
+                    <a href="#" style="justify-self:center;display:grid;justify-items:center;gap:8px;text-decoration:none;color:#221B14">
+            <span style="display:flex;align-items:center;gap:16px">
+              <span style="font:900 56px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:#221B14"></span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F"><svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </span>
+            <span style="font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#6B6259"></span>
+          </a>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:40px">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div hidden="" data-dc-if="isSP">
+  <div style="position:relative;height:80px;font-family:'Noto Sans JP',sans-serif">
+    <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 6px 0 20px;background:#FFFFFF;border-radius:30px;border:1px solid rgba(34,27,20,.08);box-shadow:0 6px 24px rgba(34,27,20,.10)">
+      <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
+      <button type="button" aria-label="メニューを開く" aria-expanded="false" style="display:grid;place-items:center;align-content:center;gap:3px;width:48px;height:48px;border-radius:50%;border:1.5px solid #F2661F;background:#FFFFFF;cursor:pointer;padding:0">
+        <span aria-hidden="true" style="display:grid;gap:3px"><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span></span>
+        <span style="font:700 7.5px 'Archivo',sans-serif;letter-spacing:.12em;color:#221B14">MENU</span>
+      </button>
+    </div>
+    <div hidden="" data-dc-if="spIsOpen">
+      <div role="dialog" aria-modal="true" aria-label="メニュー" style="position:fixed;inset:0;z-index:200;background:#FFFFFF;overflow-y:auto;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;height:84px;padding:0 18px 0 32px;flex:none">
+          <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
+        </div>
+        <button type="button" aria-label="メニューを閉じる" style="position:fixed;right:0;bottom:0;z-index:210;width:128px;height:128px;border:0;border-top-left-radius:128px;background:#F2661F;cursor:pointer;padding:0 20px 22px 0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end"><span style="display:grid;justify-items:center;gap:6px"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg><span style="font:800 12px/1 'Archivo',sans-serif;letter-spacing:.08em;color:#FFFFFF">CLOSE</span></span></button>
+        <nav aria-label="メインメニュー" style="padding:8px 20px 0;display:grid">
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">MISSION</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">ミッション</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/mission" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">ミッショントップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/mission#vision" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">目指す姿<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/mission#origin" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">社名の由来<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">SERVICE</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">事業内容</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/service/ad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">マーケティング支援<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/service/hr" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">リファラル採用DX<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">NEWS</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お知らせ</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/column" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お知らせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/column" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">すべてのお知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/news#press" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プレスリリース<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/news#info" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">お知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/news#media" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">メディア掲載<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">RECRUIT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">採用情報</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/recruit" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">採用情報トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/recruit#culture" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">働く環境<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">募集職種<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">エントリー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">COMPANY</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">会社概要</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/company" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">会社概要トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/company#profile" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">会社情報<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/company#business" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業紹介<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/company#access" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">アクセス<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/koukoku" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">電子公告<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/privacy" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プライバシーポリシー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">CONTACT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お問い合わせ</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お問い合わせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">無料相談・資料送付のご予約<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">その他のお問い合わせ（採用・取材など）<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+        </nav>
+        <div style="margin-top:auto;padding:32px 20px 148px">
+          <a href="/mtg" style="display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border-radius:999px;background:#C94E10;color:#FFFFFF;font:700 16px 'Noto Sans JP',sans-serif;text-decoration:none">無料相談を予約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+  
+  
+<section style="position:relative;overflow:hidden;border-bottom:1px solid rgba(31,31,31,.14)">
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 44px" role="navigation" aria-label="パンくず"><a href="/" style="color:inherit;text-decoration:none">TOP</a> ／ <a href="/column" style="color:inherit;text-decoration:none">COLUMN</a> ／ <span style="font-weight:700">広告テクノロジー</span></div>
+  <div style="position:relative;max-width:880px;margin:0 auto;padding:56px 44px 64px;display:grid;gap:20px">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;min-height:28px;padding:0 14px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.04em">広告テクノロジー</span>
+      <time datetime="2026-11-03" style="font:600 14px 'Archivo',sans-serif;letter-spacing:.04em;color:#6B6259">2026年11月3日</time>
+    </div>
+    <h1 style="margin:0;font:700 40px/1.5 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">計測環境の変化に備える広告運用の考え方</h1>
+  </div>
+</section>
+<section style="background:transparent;position:relative"><span aria-hidden="true" data-rt-vword="1" style="position:absolute;left:-28px;top:80px;z-index:-1;writing-mode:vertical-rl;font:900 240px/1 'Archivo',sans-serif;letter-spacing:.02em;color:#EEECE8;white-space:nowrap;pointer-events:none;user-select:none">COLUMN</span><span aria-hidden="true" data-rt-vword="1" style="position:absolute;right:-28px;bottom:80px;z-index:-1;writing-mode:vertical-rl;font:900 240px/1 'Archivo',sans-serif;letter-spacing:.02em;color:#EEECE8;white-space:nowrap;pointer-events:none;user-select:none">COLUMN</span>
+  <div style="max-width:880px;margin:0 auto;padding:56px 44px 112px;display:grid;gap:32px">
+    <figure style="margin:0;border-radius:16px;overflow:hidden;aspect-ratio:1280/670;background:#FFFFFF;border:1px solid #EFE8DE"><img src="/assets/site/img/column/thumb-03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></figure>
+    <article style="display:grid;gap:22px;padding:48px 56px;border-radius:20px;background:#FFFFFF;border:1px solid #EFE8DE;display:grid;gap:22px"><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">Chromeのサードパーティ Cookie は結局廃止されず、Privacy Sandbox の多くの技術も終了が決まりました。一方で、iOSやSafariの制限、同意取得のルールなど、広告の計測を難しくする変化はすでに進んでいます。本稿では2026年11月時点の状況を整理し、「Cookieが残るかどうか」に左右されない計測の組み立て方を考えます。</p><nav aria-label="目次" style="display:grid;gap:10px;padding:28px;border-radius:16px;background:#FFFFFF;border:1.5px solid #EFE8DE"><span style="font:700 12px 'Archivo',sans-serif;letter-spacing:.14em;color:#C94E10">CONTENTS</span><a href="#s1" style="font:700 15px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">1. いま何が起きているか</a><a href="#s2" style="font:700 15px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">2. マーケティングへの影響</a><a href="#s3" style="font:700 15px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">3. Rootの見解と打ち手</a><a href="#s4" style="font:700 15px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">4. まとめ</a></nav><h2 id="s1" style="margin:24px 0 0;padding-top:24px;border-top:1px solid #EFE8DE;font:700 26px/1.5 'Noto Sans JP',sans-serif;color:#221B14">1. いま何が起きているか</h2><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">まず押さえておきたいのは、Chromeの方針が二転三転したうえで「サードパーティ Cookie は残る」という形に落ち着いたことです。Googleは2025年4月23日、Chromeでのサードパーティ Cookie の扱いについて現在の方式を維持し、新しい選択プロンプトも導入しないと発表しました。さらに2025年10月17日には、Topics や Protected Audience、Attribution Reporting API など Privacy Sandbox の多くの技術を、普及が進まなかったことを理由に終了すると公表しています。CHIPS や FedCM のように他のブラウザでも採用が進んだ技術は継続し、計測（アトリビューション）は W3C での標準化の議論に引き継がれます。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">では計測は元どおりかというと、そうではありません。Appleは2021年4月26日の iOS 14.5 から App Tracking Transparency（ATT）を必須とし、アプリが他社のアプリをまたいでユーザーを追跡するには、ユーザーの許可を得ることを求めています。Safari では2019年の ITP 2.1 以降、JavaScript で発行される Cookie の有効期間が最長7日に制限されています。Chrome でもシークレットモードではサードパーティ Cookie が既定でブロックされます。つまり「Cookieが使える環境」と「使えない環境」が混在しているのが現状です。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">ルール面でも変化があります。欧州経済領域（EEA）のユーザー向けには、Googleが2024年3月までに同意モード v2 への対応を求め、広告用データの送信やパーソナライズ広告への同意を示す ad_user_data・ad_personalization の2つのパラメータを追加しました。日本では2023年6月16日に改正電気通信事業法が施行され、対象となる事業者には、利用者の情報を外部に送信するタグなどについて、送信先や利用目的を通知・公表することが求められるようになりました（対象範囲は総務省の案内で確認が必要です）。</p><figure style="margin:0;display:grid;gap:8px;min-width:0"><div style="overflow-x:auto;border-radius:12px;border:1.5px solid #EFE8DE"><table style="width:100%;border-collapse:collapse;background:#FFFFFF"><thead><tr><th scope="col" style="padding:10px 12px;text-align:left;background:#221B14;color:#FFFFFF;font:700 13px/1.5 'Noto Sans JP',sans-serif;white-space:nowrap">時期</th><th scope="col" style="padding:10px 12px;text-align:left;background:#221B14;color:#FFFFFF;font:700 13px/1.5 'Noto Sans JP',sans-serif;white-space:nowrap">変化</th><th scope="col" style="padding:10px 12px;text-align:left;background:#221B14;color:#FFFFFF;font:700 13px/1.5 'Noto Sans JP',sans-serif;white-space:nowrap">計測への主な影響</th></tr></thead><tbody><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;white-space:nowrap;">2019年2月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">Safari ITP 2.1</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">JavaScriptで発行するCookieの有効期間が最長7日に</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;white-space:nowrap;">2021年4月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">iOS 14.5でATTが必須に</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">アプリをまたぐ追跡にユーザーの許可が必要に</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;white-space:nowrap;">2023年6月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">改正電気通信事業法の外部送信規律が施行</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">対象事業者に送信先・利用目的の通知・公表が必要に</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;white-space:nowrap;">2024年3月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">EEA向けに同意モード v2 への対応を要請</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">同意シグナルがないと広告用の計測・パーソナライズに制約</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;white-space:nowrap;">2025年4月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">ChromeがサードパーティCookieの現行方式維持を発表</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">Cookieの全面廃止は見送り</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;white-space:nowrap;">2025年10月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">Privacy Sandboxの多くの技術の終了を発表</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 13.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">代替APIを前提にした計測設計は見直しが必要に</td></tr></tbody></table></div><figcaption style="font:500 12px/1.7 'Noto Sans JP',sans-serif;color:#6B6259">図1：広告計測に関わる主な変化（出典：Google Privacy Sandbox ブログ、Google 日本公式ブログ、MacRumors、WebKit ブログ、総務省、Google タグマネージャー ヘルプ）</figcaption></figure><h2 id="s2" style="margin:24px 0 0;padding-top:24px;border-top:1px solid #EFE8DE;font:700 26px/1.5 'Noto Sans JP',sans-serif;color:#221B14">2. マーケティングへの影響</h2><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">Chromeの Cookie が残ったことで、「対応を急がなくてよくなった」と受け止める声もあります。ただ、広告の成果を測る仕組みの弱さが解消されたわけではありません。iPhone のユーザーや、同意を得られなかったユーザーのコンバージョンは、ブラウザ側の Cookie だけでは取りこぼしが出やすい状態が続いています。媒体の管理画面に表示されるコンバージョン数が実際の申込み・売上より少なく見えたり、媒体ごとに数字が食い違ったりするのはこのためです。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">影響が大きいのは、自動入札の精度です。Google や Meta の自動入札は、送られてきたコンバージョンのデータをもとに学習します。計測の取りこぼしが多いと、成果につながっている広告を正しく評価できず、予算配分の判断がずれていきます。担当者が管理画面の数字だけを見て「この媒体は効いていない」と判断してしまうと、本来は伸ばすべき施策を止めてしまうおそれもあります。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">もうひとつは、Privacy Sandbox の終了です。代替APIを前提に準備を進めていた計測やリターゲティングの設計は、方向転換が必要になります。特定の仕組みに依存するのではなく、ブラウザや規制の変化があっても成果を追える「土台」をつくることが、これからの広告運用の前提になると考えます。</p><h2 id="s3" style="margin:24px 0 0;padding-top:24px;border-top:1px solid #EFE8DE;font:700 26px/1.5 'Noto Sans JP',sans-serif;color:#221B14">3. Rootの見解と打ち手</h2><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">Rootは、計測を「媒体ごとの数字合わせ」ではなく「売上につながったかを判断するための仕組み」として設計し直すことが重要だと考えています。そのうえで、すぐに取り組める打ち手を3つ挙げます。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">1つ目は、ファーストパーティデータを媒体に正しく渡すことです。Google 広告の拡張コンバージョンは、サイトで取得したメールアドレスなどを SHA-256 でハッシュ化して送り、計測を補います。Meta のコンバージョンAPI は、サーバーからイベントを送ることで、ピクセルだけでは取りこぼすイベントを補えます。Meta はピクセルとの併用と、event_id による重複排除を推奨しています。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">2つ目は、タグと同意の管理を整えることです。サーバーサイドタグ（Google タグマネージャーのサーバーコンテナ）を使うと、送信前に個人を特定できる情報を取り除いたり、データの品質を確認したりできます。同意の取得と、その結果を媒体に伝える仕組み（同意モードなど）を合わせて設計し、外部送信の通知・公表とあわせて整備します。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">3つ目は、媒体の管理画面の外側で成果を検証することです。CRMや受注データとつないで広告の成果を売上で確認し、媒体全体の貢献はマーケティング・ミックス・モデリング（MMM）で補います。Googleはオープンソースの MMM「Meridian」を2025年2月に一般公開しており、以前より取り組みやすくなっています。</p><div style="display:grid;gap:14px;padding:32px;border-radius:16px;background:#221B14;color:#FFFFFF"><span style="font:700 12px 'Archivo',sans-serif;letter-spacing:.14em;color:#F2661F">ROOT'S VIEW</span><div style="display:grid;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)"><span style="font:700 16px/1.9 'Noto Sans JP',sans-serif;color:#FFFFFF"><span style="font-family:'Archivo',sans-serif;color:#F2661F;margin-right:10px">01</span>拡張コンバージョンやコンバージョンAPIで、ファーストパーティデータを媒体に正しく渡す</span></div><div style="display:grid;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)"><span style="font:700 16px/1.9 'Noto Sans JP',sans-serif;color:#FFFFFF"><span style="font-family:'Archivo',sans-serif;color:#F2661F;margin-right:10px">02</span>サーバーサイドタグと同意管理を整え、外部送信の通知・公表もあわせて見直す</span></div><div style="display:grid;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)"><span style="font:700 16px/1.9 'Noto Sans JP',sans-serif;color:#FFFFFF"><span style="font-family:'Archivo',sans-serif;color:#F2661F;margin-right:10px">03</span>CRM・受注データとMMMで、媒体の管理画面の外側から売上への貢献を検証する</span></div></div><h2 id="s4" style="margin:24px 0 0;padding-top:24px;border-top:1px solid #EFE8DE;font:700 26px/1.5 'Noto Sans JP',sans-serif;color:#221B14">4. まとめ</h2><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">Chromeのサードパーティ Cookie は残ることになりましたが、iOSやSafari、同意のルールによる計測の制約は続いています。Cookieの行方に振り回されず、ファーストパーティデータ・同意管理・売上での検証という3つの土台を整えることが、安定した広告運用につながります。</p><p style="margin:0;font:400 16px/2 'Noto Sans JP',sans-serif;color:#221B14">どこから手をつけるべきかは、事業やサイトの構成によって変わります。まずは、媒体の管理画面のコンバージョン数と、自社のCRMや受注データの数字を並べ、どれくらいの差があるのかを把握するところから始めるのがおすすめです。差の大きさと原因が見えれば、優先して整えるべき土台も自然と決まります。</p><ul style="margin:0;padding:24px 24px 24px 44px;border-radius:16px;border:1.5px solid #F2661F;display:grid;gap:8px;font:700 15px/1.8 'Noto Sans JP',sans-serif;color:#221B14"><li style="padding-left:4px">ChromeのサードパーティCookieは存続、Privacy Sandboxの多くの技術は終了</li><li style="padding-left:4px">iOS（ATT）・Safari（ITP）・同意ルールによる計測の制約は今後も続く</li><li style="padding-left:4px">ファーストパーティデータ、同意管理、売上での検証の3つを土台にする</li></ul><div style="display:grid;gap:8px;padding-top:20px;border-top:1px solid #EFE8DE"><span style="font:700 13px 'Noto Sans JP',sans-serif;color:#6B6259">参考</span><ul style="margin:0;padding-left:20px;font:500 13px/1.9 'Noto Sans JP',sans-serif;color:#6B6259;word-break:break-all"><li><a href="https://privacysandbox.google.com/blog/update-on-plans-for-privacy-sandbox-technologies" target="_blank" rel="noopener" style="color:#6B6259">Update on Plans for Privacy Sandbox Technologies（2025年10月17日）</a>（Google Privacy Sandbox）</li><li><a href="https://blog.google/intl/ja-jp/company-news/technology/privacy-sandbox-next-steps/" target="_blank" rel="noopener" style="color:#6B6259">Chrome のプライバシー サンドボックスとトラッキング保護 : 今後のステップ（2025年4月23日）</a>（Google 日本公式ブログ）</li><li><a href="https://www.macrumors.com/2021/04/20/app-tracking-transparency-april-26-enforcement" target="_blank" rel="noopener" style="color:#6B6259">Apps Must Adhere to App Tracking Transparency Rules and Be Built With iOS 14 SDK Starting April 26</a>（MacRumors）</li><li><a href="https://webkit.org/?p=8613" target="_blank" rel="noopener" style="color:#6B6259">Intelligent Tracking Prevention 2.1</a>（WebKit）</li><li><a href="https://www.soumu.go.jp/main_sosiki/joho_tsusin/d_syohi/gaibusoushin_kiritsu.html" target="_blank" rel="noopener" style="color:#6B6259">自分に関する情報が第三者に送信される場合、自身で確認できるようになります</a>（総務省）</li><li><a href="https://support.google.com/tagmanager/answer/13695607" target="_blank" rel="noopener" style="color:#6B6259">Updates to consent mode for traffic in European Economic Area (EEA)</a>（Google タグマネージャー ヘルプ）</li><li><a href="https://www.cookieyes.com/knowledge-base/google-consent-mode/is-google-consent-mode-mandatory-in-2024/" target="_blank" rel="noopener" style="color:#6B6259">Is Google Consent Mode mandatory in 2024?</a>（CookieYes）</li><li><a href="https://business.google.com/jp/accelerate/resources/articles/about-enhanced-conversions/" target="_blank" rel="noopener" style="color:#6B6259">拡張コンバージョンについて</a>（Google 広告）</li><li><a href="https://developers.facebook.com/docs/marketing-api/conversions-api/best-practices" target="_blank" rel="noopener" style="color:#6B6259">Conversions API Best Practices</a>（Meta for Developers）</li><li><a href="https://support.google.com/tagmanager/answer/13387731" target="_blank" rel="noopener" style="color:#6B6259">Get started with Tag Manager（サーバーサイドタグ）</a>（Google タグマネージャー ヘルプ）</li><li><a href="https://www.research-live.com/article/news/google-opens-marketing-mix-model-to-all-users/id/5135693" target="_blank" rel="noopener" style="color:#6B6259">Google opens marketing mix model to all users</a>（Research Live）</li></ul></div><a href="/service/ad/digital-ads" style="display:grid;gap:12px;padding:32px;border-radius:16px;background:#F2661F;color:#FFFFFF;text-decoration:none"><span style="font:700 13px 'Noto Sans JP',sans-serif">この記事に関連するサービス</span><span style="font:700 24px/1.5 'Noto Sans JP',sans-serif">デジタル広告運用</span><span style="display:inline-flex;align-items:center;gap:10px;font:700 14px 'Noto Sans JP',sans-serif">サービス内容を見る<svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></article>
+    <div style="display:flex;justify-content:center;padding-top:8px">
+      <a href="/column" style="display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 28px;border-radius:999px;border:1.5px solid #F2661F;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none;background:#F2661F" class="rt-cta"><span aria-hidden="true">←</span>コラム一覧へ戻る</a>
+    </div>
+  </div>
+</section>
+
+  <div>
+
+<section style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));font-family:'Noto Sans JP',sans-serif">
+  <div style="background:#F2661F;padding:104px clamp(40px,5.5vw,88px) 112px;display:grid;align-content:center">
+    <div style="max-width:540px;display:grid;gap:32px;justify-items:start">
+      <div style="display:grid;gap:14px">
+        <h2 style="margin:0;font:900 clamp(60px,6.4vw,92px)/.9 'Archivo',sans-serif;letter-spacing:-.025em;color:#221B14">CONTACT</h2>
+        <span style="font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#221B14">無料相談・資料送付</span>
+      </div>
+      <p lang="ja" style="margin:0;font:500 16px/2 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">サービスのご相談や資料のご請求は、<br>オンラインの無料相談からお気軽にどうぞ。</p>
+      <div>
+
+<a href="/mtg" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:24px;min-height:64px;padding:0 18px 0 44px;border-radius:999px;font:700 17px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#221B14;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(34,27,20,.35),0 2px 0 #0B0805;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer">無料相談を予約する<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M9 5l7 7-7 7" fill="none" stroke="#221B14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+    </div>
+  </div>
+  
+    <div style="background:#FFC527;padding:104px clamp(40px,5.5vw,88px) 112px;display:grid;align-content:center">
+      <div style="max-width:540px;display:grid;gap:32px;justify-items:start">
+        <div style="display:grid;gap:14px">
+          <h2 style="margin:0;font:900 clamp(60px,6.4vw,92px)/.9 'Archivo',sans-serif;letter-spacing:-.025em;color:#221B14">RECRUIT</h2>
+          <span style="font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#221B14">採用情報</span>
+        </div>
+        <p lang="ja" style="margin:0;font:500 16px/2 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">Rootで一緒に働く仲間を募集しています。<br>働く環境や募集職種はこちらから。</p>
+        <div>
+
+<a href="/recruit" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:24px;min-height:64px;padding:0 18px 0 44px;border-radius:999px;font:700 17px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#221B14;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(34,27,20,.35),0 2px 0 #0B0805;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer">採用情報を見る<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M9 5l7 7-7 7" fill="none" stroke="#221B14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+      </div>
+    </div>
+  
+  <div hidden="" data-dc-if="isService">
+    <div style="background:#FFC527;padding:104px clamp(40px,5.5vw,88px) 112px;display:grid;align-content:center">
+      <div style="max-width:540px;display:grid;gap:32px;justify-items:start">
+        <div style="display:grid;gap:14px">
+          <h2 style="margin:0;font:900 clamp(60px,6.4vw,92px)/.9 'Archivo',sans-serif;letter-spacing:-.025em;color:#221B14">SERVICE</h2>
+          <span style="font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#221B14">事業内容</span>
+        </div>
+        <p lang="ja" style="margin:0;font:500 16px/2 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">常駐型コンサルティング・マーケティング支援・<br>リファラル採用SNS「Root」の3つの事業をご紹介します。</p>
+        <div>
+
+<a href="/service" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:24px;min-height:64px;padding:0 18px 0 44px;border-radius:999px;font:700 17px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#221B14;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(34,27,20,.35),0 2px 0 #0B0805;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer">事業内容を見る<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M9 5l7 7-7 7" fill="none" stroke="#221B14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+  <div>
+
+<footer style="background:#221B14;color:#FBF1E6;font-family:'Noto Sans JP',sans-serif">
+  <div style="max-width:1280px;margin:0 auto;padding:72px 24px 40px;display:grid;justify-items:center;gap:32px;text-align:center">
+    <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/625b4fdabd81.png" alt="Root" style="height:30px;width:auto"></a>
+    <nav aria-label="フッターメニュー" style="display:flex;flex-wrap:wrap;justify-content:center;column-gap:32px;row-gap:12px">
+      <a class="h0" href="/column" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">コラム</a>
+      <a class="h0" href="/privacy" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">プライバシーポリシー</a>
+      <a class="h0" href="/koukoku" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">電子公告</a>
+      <a class="h0" href="/contact" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">お問い合わせ（採用・取材など）</a>
+    </nav>
+    <div style="display:flex;gap:14px">
+      <a class="h1" href="https://line.me/R/ti/p/@159kzgga" target="_blank" rel="noopener" aria-label="LINE公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3.1 6.5 7.4 7.1.3.1.7.2.8.5.1.2.1.6 0 .9l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.5c1.4-1.5 1.7-3 1.7-4.3 0-4-4-7.2-9-7.2z" fill="#221B14"></path><path d="M7.2 9v3.6h2M10.6 9v3.6M12.4 12.6V9l2.4 3.6V9M18 9h-1.9v3.6H18M16.1 10.8H18" fill="none" stroke="#FFFFFF" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="h1" href="https://note.com/root_biz" target="_blank" rel="noopener" aria-label="note公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><span aria-hidden="true" style="font:900 12px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">note</span></a>
+    </div>
+    <small style="font:500 11px 'Archivo',sans-serif;letter-spacing:.08em;color:rgba(251,241,230,.55)">© Root Inc.</small>
+  </div>
+</footer>
+</div>
+</div>
+</div>
+<div class="view-sp">
+<div data-screen-label="COLUMN 06 NEWS SP" lang="ja" style="background:#FFFFFF;font-family:'Noto Sans JP',sans-serif;color:#221B14;max-width:430px;margin:0 auto;overflow-x:hidden;position:relative;isolation:isolate;overflow-x:clip">
+
+  <div style="position:sticky;top:0;z-index:50;height:80px">
+
+<div hidden="" data-dc-if="isPC">
+  <div style="position:relative;height:96px;font-family:'Noto Sans JP',sans-serif">
+    <div style="position:absolute;top:16px;left:24px;right:24px;max-width:1232px;margin:0 auto;background:#FFFFFF;border-radius:32px;border:1px solid rgba(34,27,20,.08);box-shadow:0 8px 32px rgba(34,27,20,.10)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 10px 0 28px">
+        <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:26px;width:auto"></a>
+        <nav aria-label="メインメニュー" style="display:flex;align-items:center;gap:4px">
+          
+            <a href="/mission" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">MISSION</a>
+          
+            <a href="/service" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">SERVICE</a>
+          
+            <a href="/column" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">NEWS</a>
+          
+            <a href="/recruit" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">RECRUIT</a>
+          
+            <a href="/company" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">COMPANY</a>
+          
+            <a href="/mtg" aria-expanded="false" aria-haspopup="true" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;font:700 12.5px 'Archivo',sans-serif;letter-spacing:.14em;color:#1F1F1F;text-decoration:none">CONTACT</a>
+          
+        </nav>
+        <span style="display:inline-flex"><div>
+
+<a href="/mtg" style="display:inline-flex;width:auto;align-items:center;justify-content:center;gap:14px;min-height:46px;padding:0 8px 0 24px;border-radius:999px;font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#F2661F;border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(242,102,31,.4),0 2px 0 #B8420E;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer" class="rt-cta">無料相談を予約<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M9 5l7 7-7 7" fill="none" stroke="#F2661F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div></span>
+      </div>
+      <div hidden="" data-dc-if="isOpen">
+        <div style="position:relative;border-top:1px solid #EFE8DE;padding:44px 56px 52px;display:grid;gap:36px">
+                    <a href="#" style="justify-self:center;display:grid;justify-items:center;gap:8px;text-decoration:none;color:#221B14">
+            <span style="display:flex;align-items:center;gap:16px">
+              <span style="font:900 56px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:#221B14"></span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F"><svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </span>
+            <span style="font:700 14px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#6B6259"></span>
+          </a>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:40px">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div style="position:relative;height:80px;font-family:'Noto Sans JP',sans-serif">
+    <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 6px 0 20px;background:#FFFFFF;border-radius:30px;border:1px solid rgba(34,27,20,.08);box-shadow:0 6px 24px rgba(34,27,20,.10)">
+      <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
+      <button type="button" aria-label="メニューを開く" aria-expanded="false" style="display:grid;place-items:center;align-content:center;gap:3px;width:48px;height:48px;border-radius:50%;border:1.5px solid #F2661F;background:#FFFFFF;cursor:pointer;padding:0">
+        <span aria-hidden="true" style="display:grid;gap:3px"><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span><span style="display:block;width:16px;height:1.5px;background:#221B14"></span></span>
+        <span style="font:700 7.5px 'Archivo',sans-serif;letter-spacing:.12em;color:#221B14">MENU</span>
+      </button>
+    </div>
+    <div hidden="" data-dc-if="spIsOpen">
+      <div role="dialog" aria-modal="true" aria-label="メニュー" style="position:fixed;inset:0;z-index:200;background:#FFFFFF;overflow-y:auto;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;height:84px;padding:0 18px 0 32px;flex:none">
+          <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/b0b268bf76a6.png" alt="Root" style="height:22px;width:auto"></a>
+        </div>
+        <button type="button" aria-label="メニューを閉じる" style="position:fixed;right:0;bottom:0;z-index:210;width:128px;height:128px;border:0;border-top-left-radius:128px;background:#F2661F;cursor:pointer;padding:0 20px 22px 0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end"><span style="display:grid;justify-items:center;gap:6px"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg><span style="font:800 12px/1 'Archivo',sans-serif;letter-spacing:.08em;color:#FFFFFF">CLOSE</span></span></button>
+        <nav aria-label="メインメニュー" style="padding:8px 20px 0;display:grid">
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">MISSION</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">ミッション</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/mission" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">ミッショントップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/mission#vision" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">目指す姿<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/mission#origin" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">社名の由来<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">SERVICE</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">事業内容</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/service" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業内容トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/service/ad" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">マーケティング支援<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/service/hr" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">リファラル採用DX<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">NEWS</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お知らせ</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/column" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お知らせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/column" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">すべてのお知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/news#press" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プレスリリース<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/news#info" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">お知らせ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/news#media" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">メディア掲載<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">RECRUIT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">採用情報</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/recruit" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">採用情報トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/recruit#culture" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">働く環境<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">募集職種<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/recruit#positions" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">エントリー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">COMPANY</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">会社概要</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/company" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">会社概要トップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/company#profile" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">会社情報<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/company#business" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">事業紹介<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/company#access" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">アクセス<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/koukoku" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">電子公告<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/privacy" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">プライバシーポリシー<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+            <div style="border-bottom:1px solid #E6DED3">
+              <button type="button" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:12px 4px;border:0;background:transparent;cursor:pointer;text-align:left">
+                <span style="display:grid;gap:4px"><span style="font:900 26px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">CONTACT</span><span style="font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.1em;color:#6B6259">お問い合わせ</span></span>
+                <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #F2661F;color:#F2661F;font:500 20px/1 'Archivo',sans-serif">+</span>
+              </button>
+              <div hidden="" data-dc-if="m.spIsOpen">
+                <div style="display:grid;padding:0 4px 16px">
+                  <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:700 14px/1.5 'Noto Sans JP',sans-serif;color:#C94E10;text-decoration:none">お問い合わせトップ<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/mtg" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">無料相談・資料送付のご予約<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                    <a href="/contact" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 0;border-top:1px solid #EFE8DE;font:500 14px/1.5 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">その他のお問い合わせ（採用・取材など）<svg viewBox="0 0 24 24" aria-hidden="true" style="flex:none;width:14px;height:14px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#F2661F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                  
+                </div>
+              </div>
+            </div>
+          
+        </nav>
+        <div style="margin-top:auto;padding:32px 20px 148px">
+          <a href="/mtg" style="display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border-radius:999px;background:#C94E10;color:#FFFFFF;font:700 16px 'Noto Sans JP',sans-serif;text-decoration:none">無料相談を予約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  
+  
+<section style="position:relative;overflow:hidden;border-bottom:1px solid rgba(31,31,31,.14)">
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 16px" role="navigation" aria-label="パンくず"><a href="/" style="color:inherit;text-decoration:none">TOP</a> ／ <a href="/column" style="color:inherit;text-decoration:none">COLUMN</a> ／ <span style="font-weight:700">広告テクノロジー</span></div>
+  <div style="position:relative;max-width:880px;margin:0 auto;padding:32px 16px 40px;display:grid;gap:14px">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;min-height:28px;padding:0 14px;border-radius:999px;background:#F2661F;color:#FFFFFF;font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.04em">広告テクノロジー</span>
+      <time datetime="2026-11-03" style="font:600 14px 'Archivo',sans-serif;letter-spacing:.04em;color:#6B6259">2026年11月3日</time>
+    </div>
+    <h1 style="margin:0;font:700 26px/1.5 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">計測環境の変化に備える広告運用の考え方</h1>
+  </div>
+</section>
+<section style="background:transparent;position:relative"><span aria-hidden="true" data-rt-vword="1" style="position:absolute;left:-28px;top:80px;z-index:-1;writing-mode:vertical-rl;font:900 110px/1 'Archivo',sans-serif;letter-spacing:.02em;color:#EEECE8;white-space:nowrap;pointer-events:none;user-select:none">COLUMN</span><span aria-hidden="true" data-rt-vword="1" style="position:absolute;right:-28px;bottom:80px;z-index:-1;writing-mode:vertical-rl;font:900 110px/1 'Archivo',sans-serif;letter-spacing:.02em;color:#EEECE8;white-space:nowrap;pointer-events:none;user-select:none">COLUMN</span>
+  <div style="max-width:880px;margin:0 auto;padding:32px 16px 64px;display:grid;gap:24px">
+    <figure style="margin:0;border-radius:16px;overflow:hidden;aspect-ratio:1280/670;background:#FFFFFF;border:1px solid #EFE8DE"><img src="/assets/site/img/column/thumb-03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"></figure>
+    <article style="display:grid;gap:18px;padding:4px 0 0;background:transparent"><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">Chromeのサードパーティ Cookie は結局廃止されず、Privacy Sandbox の多くの技術も終了が決まりました。一方で、iOSやSafariの制限、同意取得のルールなど、広告の計測を難しくする変化はすでに進んでいます。本稿では2026年11月時点の状況を整理し、「Cookieが残るかどうか」に左右されない計測の組み立て方を考えます。</p><nav aria-label="目次" style="display:grid;gap:10px;padding:20px;border-radius:16px;background:#FFFFFF;border:1.5px solid #EFE8DE"><span style="font:700 12px 'Archivo',sans-serif;letter-spacing:.14em;color:#C94E10">CONTENTS</span><a href="#s1" style="font:700 14px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">1. いま何が起きているか</a><a href="#s2" style="font:700 14px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">2. マーケティングへの影響</a><a href="#s3" style="font:700 14px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">3. Rootの見解と打ち手</a><a href="#s4" style="font:700 14px/1.6 'Noto Sans JP',sans-serif;color:#221B14;text-decoration:none">4. まとめ</a></nav><h2 id="s1" style="margin:16px 0 0;padding-top:20px;border-top:1px solid #EFE8DE;font:700 20px/1.5 'Noto Sans JP',sans-serif;color:#221B14">1. いま何が起きているか</h2><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">まず押さえておきたいのは、Chromeの方針が二転三転したうえで「サードパーティ Cookie は残る」という形に落ち着いたことです。Googleは2025年4月23日、Chromeでのサードパーティ Cookie の扱いについて現在の方式を維持し、新しい選択プロンプトも導入しないと発表しました。さらに2025年10月17日には、Topics や Protected Audience、Attribution Reporting API など Privacy Sandbox の多くの技術を、普及が進まなかったことを理由に終了すると公表しています。CHIPS や FedCM のように他のブラウザでも採用が進んだ技術は継続し、計測（アトリビューション）は W3C での標準化の議論に引き継がれます。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">では計測は元どおりかというと、そうではありません。Appleは2021年4月26日の iOS 14.5 から App Tracking Transparency（ATT）を必須とし、アプリが他社のアプリをまたいでユーザーを追跡するには、ユーザーの許可を得ることを求めています。Safari では2019年の ITP 2.1 以降、JavaScript で発行される Cookie の有効期間が最長7日に制限されています。Chrome でもシークレットモードではサードパーティ Cookie が既定でブロックされます。つまり「Cookieが使える環境」と「使えない環境」が混在しているのが現状です。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">ルール面でも変化があります。欧州経済領域（EEA）のユーザー向けには、Googleが2024年3月までに同意モード v2 への対応を求め、広告用データの送信やパーソナライズ広告への同意を示す ad_user_data・ad_personalization の2つのパラメータを追加しました。日本では2023年6月16日に改正電気通信事業法が施行され、対象となる事業者には、利用者の情報を外部に送信するタグなどについて、送信先や利用目的を通知・公表することが求められるようになりました（対象範囲は総務省の案内で確認が必要です）。</p><figure style="margin:0;display:grid;gap:8px;min-width:0"><div style="overflow-x:auto;border-radius:12px;border:1.5px solid #EFE8DE"><table style="width:100%;min-width:560px;border-collapse:collapse;background:#FFFFFF"><thead><tr><th scope="col" style="padding:10px 12px;text-align:left;background:#221B14;color:#FFFFFF;font:700 12px/1.5 'Noto Sans JP',sans-serif;white-space:nowrap">時期</th><th scope="col" style="padding:10px 12px;text-align:left;background:#221B14;color:#FFFFFF;font:700 12px/1.5 'Noto Sans JP',sans-serif;white-space:nowrap">変化</th><th scope="col" style="padding:10px 12px;text-align:left;background:#221B14;color:#FFFFFF;font:700 12px/1.5 'Noto Sans JP',sans-serif;white-space:nowrap">計測への主な影響</th></tr></thead><tbody><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">2019年2月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">Safari ITP 2.1</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">JavaScriptで発行するCookieの有効期間が最長7日に</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">2021年4月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">iOS 14.5でATTが必須に</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">アプリをまたぐ追跡にユーザーの許可が必要に</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">2023年6月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">改正電気通信事業法の外部送信規律が施行</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">対象事業者に送信先・利用目的の通知・公表が必要に</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">2024年3月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">EEA向けに同意モード v2 への対応を要請</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">同意シグナルがないと広告用の計測・パーソナライズに制約</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">2025年4月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">ChromeがサードパーティCookieの現行方式維持を発表</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">Cookieの全面廃止は見送り</td></tr><tr><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:700 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">2025年10月</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">Privacy Sandboxの多くの技術の終了を発表</td><td style="padding:10px 12px;border-top:1px solid #EFE8DE;vertical-align:top;font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#221B14;">代替APIを前提にした計測設計は見直しが必要に</td></tr></tbody></table></div><figcaption style="font:500 12px/1.7 'Noto Sans JP',sans-serif;color:#6B6259">図1：広告計測に関わる主な変化（出典：Google Privacy Sandbox ブログ、Google 日本公式ブログ、MacRumors、WebKit ブログ、総務省、Google タグマネージャー ヘルプ）</figcaption><span style="font:500 11px 'Noto Sans JP',sans-serif;color:#6B6259">← 表は横にスクロールできます</span></figure><h2 id="s2" style="margin:16px 0 0;padding-top:20px;border-top:1px solid #EFE8DE;font:700 20px/1.5 'Noto Sans JP',sans-serif;color:#221B14">2. マーケティングへの影響</h2><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">Chromeの Cookie が残ったことで、「対応を急がなくてよくなった」と受け止める声もあります。ただ、広告の成果を測る仕組みの弱さが解消されたわけではありません。iPhone のユーザーや、同意を得られなかったユーザーのコンバージョンは、ブラウザ側の Cookie だけでは取りこぼしが出やすい状態が続いています。媒体の管理画面に表示されるコンバージョン数が実際の申込み・売上より少なく見えたり、媒体ごとに数字が食い違ったりするのはこのためです。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">影響が大きいのは、自動入札の精度です。Google や Meta の自動入札は、送られてきたコンバージョンのデータをもとに学習します。計測の取りこぼしが多いと、成果につながっている広告を正しく評価できず、予算配分の判断がずれていきます。担当者が管理画面の数字だけを見て「この媒体は効いていない」と判断してしまうと、本来は伸ばすべき施策を止めてしまうおそれもあります。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">もうひとつは、Privacy Sandbox の終了です。代替APIを前提に準備を進めていた計測やリターゲティングの設計は、方向転換が必要になります。特定の仕組みに依存するのではなく、ブラウザや規制の変化があっても成果を追える「土台」をつくることが、これからの広告運用の前提になると考えます。</p><h2 id="s3" style="margin:16px 0 0;padding-top:20px;border-top:1px solid #EFE8DE;font:700 20px/1.5 'Noto Sans JP',sans-serif;color:#221B14">3. Rootの見解と打ち手</h2><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">Rootは、計測を「媒体ごとの数字合わせ」ではなく「売上につながったかを判断するための仕組み」として設計し直すことが重要だと考えています。そのうえで、すぐに取り組める打ち手を3つ挙げます。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">1つ目は、ファーストパーティデータを媒体に正しく渡すことです。Google 広告の拡張コンバージョンは、サイトで取得したメールアドレスなどを SHA-256 でハッシュ化して送り、計測を補います。Meta のコンバージョンAPI は、サーバーからイベントを送ることで、ピクセルだけでは取りこぼすイベントを補えます。Meta はピクセルとの併用と、event_id による重複排除を推奨しています。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">2つ目は、タグと同意の管理を整えることです。サーバーサイドタグ（Google タグマネージャーのサーバーコンテナ）を使うと、送信前に個人を特定できる情報を取り除いたり、データの品質を確認したりできます。同意の取得と、その結果を媒体に伝える仕組み（同意モードなど）を合わせて設計し、外部送信の通知・公表とあわせて整備します。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">3つ目は、媒体の管理画面の外側で成果を検証することです。CRMや受注データとつないで広告の成果を売上で確認し、媒体全体の貢献はマーケティング・ミックス・モデリング（MMM）で補います。Googleはオープンソースの MMM「Meridian」を2025年2月に一般公開しており、以前より取り組みやすくなっています。</p><div style="display:grid;gap:14px;padding:22px;border-radius:16px;background:#221B14;color:#FFFFFF"><span style="font:700 12px 'Archivo',sans-serif;letter-spacing:.14em;color:#F2661F">ROOT'S VIEW</span><div style="display:grid;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)"><span style="font:700 15px/1.9 'Noto Sans JP',sans-serif;color:#FFFFFF"><span style="font-family:'Archivo',sans-serif;color:#F2661F;margin-right:10px">01</span>拡張コンバージョンやコンバージョンAPIで、ファーストパーティデータを媒体に正しく渡す</span></div><div style="display:grid;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)"><span style="font:700 15px/1.9 'Noto Sans JP',sans-serif;color:#FFFFFF"><span style="font-family:'Archivo',sans-serif;color:#F2661F;margin-right:10px">02</span>サーバーサイドタグと同意管理を整え、外部送信の通知・公表もあわせて見直す</span></div><div style="display:grid;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)"><span style="font:700 15px/1.9 'Noto Sans JP',sans-serif;color:#FFFFFF"><span style="font-family:'Archivo',sans-serif;color:#F2661F;margin-right:10px">03</span>CRM・受注データとMMMで、媒体の管理画面の外側から売上への貢献を検証する</span></div></div><h2 id="s4" style="margin:16px 0 0;padding-top:20px;border-top:1px solid #EFE8DE;font:700 20px/1.5 'Noto Sans JP',sans-serif;color:#221B14">4. まとめ</h2><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">Chromeのサードパーティ Cookie は残ることになりましたが、iOSやSafari、同意のルールによる計測の制約は続いています。Cookieの行方に振り回されず、ファーストパーティデータ・同意管理・売上での検証という3つの土台を整えることが、安定した広告運用につながります。</p><p style="margin:0;font:400 14.5px/1.85 'Noto Sans JP',sans-serif;color:#221B14">どこから手をつけるべきかは、事業やサイトの構成によって変わります。まずは、媒体の管理画面のコンバージョン数と、自社のCRMや受注データの数字を並べ、どれくらいの差があるのかを把握するところから始めるのがおすすめです。差の大きさと原因が見えれば、優先して整えるべき土台も自然と決まります。</p><ul style="margin:0;padding:18px 18px 18px 38px;border-radius:16px;border:1.5px solid #F2661F;display:grid;gap:8px;font:700 14px/1.8 'Noto Sans JP',sans-serif;color:#221B14"><li style="padding-left:4px">ChromeのサードパーティCookieは存続、Privacy Sandboxの多くの技術は終了</li><li style="padding-left:4px">iOS（ATT）・Safari（ITP）・同意ルールによる計測の制約は今後も続く</li><li style="padding-left:4px">ファーストパーティデータ、同意管理、売上での検証の3つを土台にする</li></ul><div style="display:grid;gap:8px;padding-top:20px;border-top:1px solid #EFE8DE"><span style="font:700 13px 'Noto Sans JP',sans-serif;color:#6B6259">参考</span><ul style="margin:0;padding-left:20px;font:500 13px/1.9 'Noto Sans JP',sans-serif;color:#6B6259;word-break:break-all"><li><a href="https://privacysandbox.google.com/blog/update-on-plans-for-privacy-sandbox-technologies" target="_blank" rel="noopener" style="color:#6B6259">Update on Plans for Privacy Sandbox Technologies（2025年10月17日）</a>（Google Privacy Sandbox）</li><li><a href="https://blog.google/intl/ja-jp/company-news/technology/privacy-sandbox-next-steps/" target="_blank" rel="noopener" style="color:#6B6259">Chrome のプライバシー サンドボックスとトラッキング保護 : 今後のステップ（2025年4月23日）</a>（Google 日本公式ブログ）</li><li><a href="https://www.macrumors.com/2021/04/20/app-tracking-transparency-april-26-enforcement" target="_blank" rel="noopener" style="color:#6B6259">Apps Must Adhere to App Tracking Transparency Rules and Be Built With iOS 14 SDK Starting April 26</a>（MacRumors）</li><li><a href="https://webkit.org/?p=8613" target="_blank" rel="noopener" style="color:#6B6259">Intelligent Tracking Prevention 2.1</a>（WebKit）</li><li><a href="https://www.soumu.go.jp/main_sosiki/joho_tsusin/d_syohi/gaibusoushin_kiritsu.html" target="_blank" rel="noopener" style="color:#6B6259">自分に関する情報が第三者に送信される場合、自身で確認できるようになります</a>（総務省）</li><li><a href="https://support.google.com/tagmanager/answer/13695607" target="_blank" rel="noopener" style="color:#6B6259">Updates to consent mode for traffic in European Economic Area (EEA)</a>（Google タグマネージャー ヘルプ）</li><li><a href="https://www.cookieyes.com/knowledge-base/google-consent-mode/is-google-consent-mode-mandatory-in-2024/" target="_blank" rel="noopener" style="color:#6B6259">Is Google Consent Mode mandatory in 2024?</a>（CookieYes）</li><li><a href="https://business.google.com/jp/accelerate/resources/articles/about-enhanced-conversions/" target="_blank" rel="noopener" style="color:#6B6259">拡張コンバージョンについて</a>（Google 広告）</li><li><a href="https://developers.facebook.com/docs/marketing-api/conversions-api/best-practices" target="_blank" rel="noopener" style="color:#6B6259">Conversions API Best Practices</a>（Meta for Developers）</li><li><a href="https://support.google.com/tagmanager/answer/13387731" target="_blank" rel="noopener" style="color:#6B6259">Get started with Tag Manager（サーバーサイドタグ）</a>（Google タグマネージャー ヘルプ）</li><li><a href="https://www.research-live.com/article/news/google-opens-marketing-mix-model-to-all-users/id/5135693" target="_blank" rel="noopener" style="color:#6B6259">Google opens marketing mix model to all users</a>（Research Live）</li></ul></div><div style="display:flex;align-items:center;gap:16px;padding:20px;border-radius:16px;border:1px solid #EFE8DE"><span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#F2661F;font:900 22px 'Archivo',sans-serif;color:#FFFFFF">R</span><span style="display:grid;gap:4px"><span style="font:700 15px 'Noto Sans JP',sans-serif;color:#221B14">株式会社Root 編集部</span><span style="font:500 13px/1.7 'Noto Sans JP',sans-serif;color:#6B6259">マーケティング支援・オンライン常駐型コンサルティング・リファラル採用DXを提供しています。</span></span></div><a href="/service/ad/digital-ads" style="display:grid;gap:12px;padding:24px;border-radius:16px;background:#F2661F;color:#FFFFFF;text-decoration:none"><span style="font:700 13px 'Noto Sans JP',sans-serif">この記事に関連するサービス</span><span style="font:700 20px/1.5 'Noto Sans JP',sans-serif">デジタル広告運用</span><span style="display:inline-flex;align-items:center;gap:10px;font:700 14px 'Noto Sans JP',sans-serif">サービス内容を見る<svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></article>
+    <div style="display:flex;justify-content:center;padding-top:8px">
+      <a href="/column" style="display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 28px;border-radius:999px;border:1.5px solid #F2661F;color:#FFFFFF;font:700 14px 'Noto Sans JP',sans-serif;text-decoration:none;background:#F2661F" class="rt-cta"><span aria-hidden="true">←</span>コラム一覧へ戻る</a>
+    </div>
+  </div>
+</section>
+
+  <div>
+
+<section style="display:grid;grid-template-columns:minmax(0,1fr);font-family:'Noto Sans JP',sans-serif">
+  <div style="background:#F2661F;padding:56px 16px 60px;display:grid;align-content:center">
+    <div style="max-width:540px;display:grid;gap:24px;justify-items:stretch">
+      <div style="display:grid;gap:14px">
+        <h2 style="margin:0;font:900 52px/.9 'Archivo',sans-serif;letter-spacing:-.025em;color:#221B14">CONTACT</h2>
+        <span style="font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#221B14">無料相談・資料送付</span>
+      </div>
+      <p lang="ja" style="margin:0;font:500 15px/2 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">サービスのご相談や資料のご請求は、<br>オンラインの無料相談からお気軽にどうぞ。</p>
+      <div>
+
+<a href="/mtg" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#221B14;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(34,27,20,.35),0 2px 0 #0B0805;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer">無料相談を予約する<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#221B14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+    </div>
+  </div>
+  
+    <div style="background:#FFC527;padding:56px 16px 60px;display:grid;align-content:center">
+      <div style="max-width:540px;display:grid;gap:24px;justify-items:stretch">
+        <div style="display:grid;gap:14px">
+          <h2 style="margin:0;font:900 52px/.9 'Archivo',sans-serif;letter-spacing:-.025em;color:#221B14">RECRUIT</h2>
+          <span style="font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#221B14">採用情報</span>
+        </div>
+        <p lang="ja" style="margin:0;font:500 15px/2 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">Rootで一緒に働く仲間を募集しています。<br>働く環境や募集職種はこちらから。</p>
+        <div>
+
+<a href="/recruit" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#221B14;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(34,27,20,.35),0 2px 0 #0B0805;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer">採用情報を見る<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#221B14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+      </div>
+    </div>
+  
+  <div hidden="" data-dc-if="isService">
+    <div style="background:#FFC527;padding:56px 16px 60px;display:grid;align-content:center">
+      <div style="max-width:540px;display:grid;gap:24px;justify-items:stretch">
+        <div style="display:grid;gap:14px">
+          <h2 style="margin:0;font:900 52px/.9 'Archivo',sans-serif;letter-spacing:-.025em;color:#221B14">SERVICE</h2>
+          <span style="font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#221B14">事業内容</span>
+        </div>
+        <p lang="ja" style="margin:0;font:500 15px/2 'Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">常駐型コンサルティング・マーケティング支援・<br>リファラル採用SNS「Root」の3つの事業をご紹介します。</p>
+        <div>
+
+<a href="/service" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 12px 0 28px;border-radius:999px;font:700 16px 'Noto Sans JP',sans-serif;letter-spacing:.02em;color:#FFFFFF;white-space:nowrap;text-decoration:none;background:#221B14;border:2px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(34,27,20,.35),0 2px 0 #0B0805;transform:translateY(0px);transition:transform .15s ease,box-shadow .15s ease;outline:none;opacity:1;cursor:pointer">事業内容を見る<span aria-hidden="true" style="display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:#FFFFFF;transform:translateX(0px);transition:transform .15s ease"><svg viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M9 5l7 7-7 7" fill="none" stroke="#221B14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+  <div>
+
+<footer style="background:#221B14;color:#FBF1E6;font-family:'Noto Sans JP',sans-serif">
+  <div style="max-width:1280px;margin:0 auto;padding:72px 24px 40px;display:grid;justify-items:center;gap:32px;text-align:center">
+    <a href="/" style="display:inline-flex;line-height:0"><img src="/assets/site/img/ui/625b4fdabd81.png" alt="Root" style="height:30px;width:auto"></a>
+    <nav aria-label="フッターメニュー" style="display:flex;flex-wrap:wrap;justify-content:center;column-gap:32px;row-gap:12px">
+      <a class="h0" href="/column" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">コラム</a>
+      <a class="h0" href="/privacy" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">プライバシーポリシー</a>
+      <a class="h0" href="/koukoku" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">電子公告</a>
+      <a class="h0" href="/contact" style="font:500 13px 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.8);text-decoration:none">お問い合わせ（採用・取材など）</a>
+    </nav>
+    <div style="display:flex;gap:14px">
+      <a class="h1" href="https://line.me/R/ti/p/@159kzgga" target="_blank" rel="noopener" aria-label="LINE公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.5 3.1 6.5 7.4 7.1.3.1.7.2.8.5.1.2.1.6 0 .9l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.5c1.4-1.5 1.7-3 1.7-4.3 0-4-4-7.2-9-7.2z" fill="#221B14"></path><path d="M7.2 9v3.6h2M10.6 9v3.6M12.4 12.6V9l2.4 3.6V9M18 9h-1.9v3.6H18M16.1 10.8H18" fill="none" stroke="#FFFFFF" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="h1" href="https://note.com/root_biz" target="_blank" rel="noopener" aria-label="note公式アカウント" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFFFFF"><span aria-hidden="true" style="font:900 12px/1 'Archivo',sans-serif;letter-spacing:-.01em;color:#221B14">note</span></a>
+    </div>
+    <small style="font:500 11px 'Archivo',sans-serif;letter-spacing:.08em;color:rgba(251,241,230,.55)">© Root Inc.</small>
+  </div>
+</footer>
+</div>
+</div>
+</div>
+</body>
+</html>

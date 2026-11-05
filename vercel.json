@@ -140,6 +140,123 @@
           "value": "public, max-age=604800"
         }
       ]
+    },
+    {
+      "source": "/service/consulting",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service/consulting>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/service/ad/digital-ads",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service/ad/digital-ads>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/service/ad/sns",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service/ad/sns>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/service/ad/seo",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service/ad/seo>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/service/ad/creative",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/service/ad/creative>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/news/20261022-japan-summit-2026",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/news/20261022-japan-summit-2026>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/news/20261023-adtech-tokyo-2026",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/news/20261023-adtech-tokyo-2026>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/column",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/column>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/column/generative-ai-creative",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/column/generative-ai-creative>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/column/ad-report-revenue",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/column/ad-report-revenue>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/column/measurement-change",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/column/measurement-change>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/column/vertical-video-planning",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/column/vertical-video-planning>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/column/ai-search-information-design",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/column/ai-search-information-design>; rel=\"canonical\""
+        }
+      ]
     }
   ]
 }

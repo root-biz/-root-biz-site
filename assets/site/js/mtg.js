@@ -25,6 +25,7 @@
   var REC_DESC = 'ご都合のよい日時をお選びください。ご予約確定後、Google Meet の参加URLをメールでお送りします。';
   var TYPES = {
     service: { title: 'サービス概要資料送付＆オンラインMTG調整', desc: BIZ_DESC, fields: ['company', 'name', 'position', 'tel', 'email', 'detail?'], done: 'ご入力のメールアドレス宛に、カレンダー招待と資料をお送りしました。' },
+    consulting: { title: 'オンライン常駐型コンサルティング 無料初期診断のご予約', desc: BIZ_DESC, fields: ['company', 'name', 'position', 'tel', 'email', 'detail?'], done: 'ご入力のメールアドレス宛に、カレンダー招待と資料をお送りしました。' },
     marketing: { title: 'マーケティング支援 無料相談のご予約', desc: BIZ_DESC, fields: ['company', 'name', 'position', 'tel', 'email', 'detail?'], done: 'ご入力のメールアドレス宛に、カレンダー招待と資料をお送りしました。' },
     hrtech: { title: 'リファラル採用SNS「Root」オンライン相談のご予約', desc: BIZ_DESC, fields: ['company', 'name', 'position', 'tel', 'email', 'detail?'], done: 'ご入力のメールアドレス宛に、カレンダー招待と資料をお送りしました。' },
     diagnosis: { title: '無料「つながり資産」診断 ヒアリングのご予約', desc: 'ご都合のよい日時をお選びください。ご予約確定後、Google Meet の参加URLと資料をメールでお送りします。', fields: ['company', 'name', 'position', 'tel', 'email', 'detail?'], done: 'ご入力のメールアドレス宛に、カレンダー招待と資料をお送りしました。' },
