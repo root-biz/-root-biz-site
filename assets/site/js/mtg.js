@@ -258,7 +258,18 @@
     var body = { action: 'book', type: typeKey, start: S.sel.t, website: '' };
     DEFS.forEach(function (d) { body[d.name] = (S.values[d.name] || '').trim(); });
     var hp = document.querySelector('[data-rt="website"]'); if (hp && hp.value) body.website = hp.value;
-    postJSON(body).then(function (res) {
+    // GAS側が新しい予約種別（consulting）に未対応の場合は、既存の service 種別で受け付け、内容欄に種別名を残す
+    var send = function (b) {
+      return postJSON(b).then(function (res) {
+        if (b.type === 'consulting' && !(res && res.ok) && !(res && /^(taken|invalid|busy)$/.test(res.reason || ''))) {
+          var fb = JSON.parse(JSON.stringify(b)); fb.type = 'service';
+          fb.detail = '【オンライン常駐型コンサルティング 無料初期診断】' + (fb.detail ? '\n' + fb.detail : '');
+          return postJSON(fb);
+        }
+        return res;
+      });
+    };
+    send(body).then(function (res) {
       S.submitting = false;
       if (res && res.ok) {
         S.result = res; dataLayer.push({ event: 'reservation_complete', reservation_type: typeKey });
