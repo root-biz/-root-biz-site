@@ -28,6 +28,7 @@ html.rt-stalk-hover .rt-stalker-ring{width:92px;height:92px;margin:-46px 0 0 -46
 html.rt-stalk-hover .rt-stalker{transform:scale(.6)}
 html.rt-stalk-text .rt-stalker-ring{opacity:.35;width:36px;height:36px;margin:-18px 0 0 -18px}
 html.rt-stalk-down .rt-stalker-ring{width:40px;height:40px;margin:-20px 0 0 -20px;background:rgba(242,102,31,.35)}
+.rt-stalker{display:none !important}
 @media (hover:none),(pointer:coarse){.rt-stalker,.rt-stalker-ring{display:none}}
 
 /* 4. underline animation for key phrases */
