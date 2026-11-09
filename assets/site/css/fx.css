@@ -19,15 +19,15 @@ html.rt-leaving-slow .rt-spin{opacity:1;transform:scale(1)}
 .rt-busy > *{visibility:hidden}
 .rt-busy::after{content:"";position:absolute;left:50%;top:50%;margin:-12px 0 0 -12px;border-color:rgba(255,255,255,.35);border-top-color:#FFFFFF}
 
-/* 3. mouse stalker (PC) */
+/* 3. mouse stalker (PC) — solid orange dot + ring that grows into a filled disc over links */
 .rt-stalker,.rt-stalker-ring{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .25s ease}
-.rt-stalker{width:8px;height:8px;margin:-4px 0 0 -4px;background:#F2661F}
-.rt-stalker-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid rgba(242,102,31,.55);transition:opacity .25s ease,width .25s ease,height .25s ease,margin .25s ease,background .25s ease,border-color .25s ease}
+.rt-stalker{width:12px;height:12px;margin:-6px 0 0 -6px;background:#F2661F;box-shadow:0 0 0 2px rgba(255,255,255,.85);transition:opacity .25s ease,transform .2s ease}
+.rt-stalker-ring{width:52px;height:52px;margin:-26px 0 0 -26px;border:2px solid #F2661F;background:rgba(242,102,31,.08);transition:opacity .25s ease,width .3s cubic-bezier(.2,.7,.2,1),height .3s cubic-bezier(.2,.7,.2,1),margin .3s cubic-bezier(.2,.7,.2,1),background .3s ease,border-color .3s ease}
 html.rt-stalk-on .rt-stalker,html.rt-stalk-on .rt-stalker-ring{opacity:1}
-html.rt-stalk-hover .rt-stalker-ring{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(242,102,31,.12);border-color:rgba(242,102,31,.0)}
-html.rt-stalk-hover .rt-stalker{opacity:0}
-html.rt-stalk-text .rt-stalker-ring{opacity:0}
-html.rt-stalk-down .rt-stalker-ring{width:28px;height:28px;margin:-14px 0 0 -14px}
+html.rt-stalk-hover .rt-stalker-ring{width:92px;height:92px;margin:-46px 0 0 -46px;background:rgba(242,102,31,.22);border-color:rgba(242,102,31,.9)}
+html.rt-stalk-hover .rt-stalker{transform:scale(.6)}
+html.rt-stalk-text .rt-stalker-ring{opacity:.35;width:36px;height:36px;margin:-18px 0 0 -18px}
+html.rt-stalk-down .rt-stalker-ring{width:40px;height:40px;margin:-20px 0 0 -20px;background:rgba(242,102,31,.35)}
 @media (hover:none),(pointer:coarse){.rt-stalker,.rt-stalker-ring{display:none}}
 
 /* 4. underline animation for key phrases */
@@ -56,3 +56,21 @@ section[style*="#221B14"] .rt-dot:not(.is-on){background:rgba(255,255,255,.3)}
 .rt-acc-body{overflow:hidden;transition:height .4s cubic-bezier(.2,.7,.2,1)}
 .rt-acc-inner{display:grid;gap:12px;padding-top:4px}
 section[id^="p"]:not(.is-open) > .rt-acc-h{color:#221B14}
+
+/* 9. booking step indicator (/mtg) */
+.rt-stepbox{margin-top:20px;padding:18px 24px 20px;border:1.5px solid #F2D3BF;border-radius:16px;background:#FFFFFF;box-shadow:0 6px 20px rgba(34,27,20,.06)}
+.rt-stepbox .rt-steps{margin:12px 0 0 !important}
+.rt-step-head{display:flex;align-items:baseline;gap:12px;margin:0;font:700 14px 'Noto Sans JP',sans-serif;color:#1F1F1F}
+.rt-step-no{font:700 12px 'Archivo',sans-serif;letter-spacing:.12em;color:#C94E10;padding:4px 10px;border-radius:999px;background:#FBF1E6}
+.rt-step-no b{font-size:15px}
+.rt-step-dot{width:36px !important;height:36px !important;transition:background .35s ease,border-color .35s ease,color .35s ease,box-shadow .35s ease}
+.rt-steps li.is-cur .rt-step-dot{box-shadow:0 0 0 0 rgba(201,78,16,.45);animation:rtStepPulse 1.8s ease-out infinite}
+@keyframes rtStepPulse{0%{box-shadow:0 0 0 0 rgba(201,78,16,.45)}70%{box-shadow:0 0 0 10px rgba(201,78,16,0)}100%{box-shadow:0 0 0 0 rgba(201,78,16,0)}}
+.rt-step-conn{position:relative;overflow:hidden;height:3px !important;border-radius:3px}
+.rt-step-conn::after{content:"";position:absolute;inset:0;background:#F2661F;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.65,0,.35,1)}
+.rt-step-conn.is-on::after{transform:scaleX(1)}
+.rt-step-line{top:18px !important;height:3px !important;border-radius:3px;overflow:hidden}
+.rt-step-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:#F2661F;transition:width .5s cubic-bezier(.65,0,.35,1)}
+.view-sp .rt-stepbox{padding:14px 12px 16px}
+.view-sp .rt-step-head{justify-content:center;font-size:13px}
+@media (prefers-reduced-motion:reduce){.rt-steps li.is-cur .rt-step-dot{animation:none}}

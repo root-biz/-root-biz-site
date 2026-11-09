@@ -114,11 +114,36 @@
     setText(q(root, 'desc'), T.desc);
     show(q(root, 'pill-recruit'), !!T.recruit);
     var steps = q(root, 'steps');
-    if (steps) [].slice.call(steps.querySelectorAll('li')).forEach(function (li, i) {
-      var n = i + 1, circle = li.querySelector('span > span'), label = circle && circle.nextElementSibling;
+    if (steps) renderSteps(steps);
+  }
+
+  /* step indicator: boxed, "STEP n / 3" heading, check marks for finished steps, orange line filling as you go */
+  var CHECK = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function renderSteps(steps) {
+    var lis = [].slice.call(steps.querySelectorAll('li')), N = lis.length;
+    if (!steps.getAttribute('data-rt-enh')) {
+      steps.setAttribute('data-rt-enh', '1');
+      var box = document.createElement('div'); box.className = 'rt-stepbox';
+      steps.parentNode.insertBefore(box, steps); box.appendChild(steps);
+      var head = document.createElement('p'); head.className = 'rt-step-head'; head.setAttribute('aria-live', 'polite');
+      box.insertBefore(head, steps);
+      steps.classList.add('rt-steps');
+      var line = steps.querySelector(':scope > span[aria-hidden]');
+      if (line) { var f = document.createElement('span'); f.className = 'rt-step-fill'; line.appendChild(f); line.classList.add('rt-step-line'); }
+      lis.forEach(function (li) { var c = li.querySelector('span > span'); if (c) { c.classList.add('rt-step-dot'); c.setAttribute('data-n', c.textContent.trim()); } var k = li.querySelector(':scope > span[aria-hidden]'); if (k) k.classList.add('rt-step-conn'); });
+    }
+    var box2 = steps.parentNode, head2 = box2.querySelector('.rt-step-head');
+    var cur = lis[S.step - 1], curLabel = cur ? cur.querySelector('.rt-step-dot').nextElementSibling : null;
+    if (head2) head2.innerHTML = '<span class="rt-step-no">STEP <b>' + S.step + '</b> / ' + N + '</span><span class="rt-step-name">' + (curLabel ? curLabel.textContent.trim() : '') + '</span>';
+    var fill = steps.querySelector('.rt-step-fill'); if (fill) fill.style.width = ((S.step - 1) / (N - 1) * 100) + '%';
+    lis.forEach(function (li, i) {
+      var n = i + 1, circle = li.querySelector('.rt-step-dot'), label = circle && circle.nextElementSibling, conn = li.querySelector('.rt-step-conn');
       if (n === S.step) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+      li.classList.toggle('is-done', n < S.step); li.classList.toggle('is-cur', n === S.step);
+      if (conn) conn.classList.toggle('is-on', n < S.step);
       if (!circle) return;
-      if (n < S.step) { style(circle, { background: '#FBF1E6', 'border-color': '#F2661F', color: '#C94E10' }); if (label) style(label, { color: '#6B6259', 'font-weight': '500' }); }
+      circle.innerHTML = n < S.step ? CHECK + '<span class="rt-sr">完了</span>' : circle.getAttribute('data-n');
+      if (n < S.step) { style(circle, { background: '#F2661F', 'border-color': '#F2661F', color: '#FFFFFF' }); if (label) style(label, { color: '#C94E10', 'font-weight': '700' }); }
       else if (n === S.step) { style(circle, { background: '#C94E10', 'border-color': '#C94E10', color: '#FFFFFF' }); if (label) style(label, { color: '#1F1F1F', 'font-weight': '700' }); }
       else { style(circle, { background: '#FFFFFF', 'border-color': '#D3CBBF', color: '#6B6259' }); if (label) style(label, { color: '#6B6259', 'font-weight': '500' }); }
     });
@@ -244,7 +269,7 @@
   function goStep(n) {
     S.step = n; render();
     var st = null; roots.forEach(function (r) { var s = q(r, 'steps'); if (s && s.getClientRects().length) st = s; });
-    if (st) { st.style.scrollMarginTop = '120px'; st.scrollIntoView({ block: 'start' }); }
+    if (st) { st = st.closest('.rt-stepbox') || st; st.style.scrollMarginTop = '110px'; st.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
   }
   function pick(c, s) {
     S.sel = { t: s.t, date: c.date, label: s.label, endLabel: s.endLabel }; S.notice1 = ''; S.notice2 = '';
