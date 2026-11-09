@@ -133,4 +133,18 @@
     }, { passive: true });
     schedule();
   });
+
+  /* CTA buttons: ripple where the button is pressed */
+  document.addEventListener('pointerdown', function (e) {
+    var a = e.target.closest && e.target.closest('.rt-cta, [data-rt-cta-c]');
+    if (!a || e.button > 0) return;
+    var r = a.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2;
+    var bg = getComputedStyle(a).backgroundColor, m = bg.match(/\d+(\.\d+)?/g) || [255, 255, 255];
+    var light = (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) > 200 && (m[3] === undefined || +m[3] > 0.5);
+    var s = document.createElement('span');
+    s.className = 'rt-ripple';
+    s.style.cssText = 'width:' + d + 'px;height:' + d + 'px;left:' + (e.clientX - r.left - d / 2) + 'px;top:' + (e.clientY - r.top - d / 2) + 'px;background:' + (light ? 'rgba(242,102,31,.28)' : 'rgba(255,255,255,.5)');
+    a.appendChild(s);
+    setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 700);
+  }, { passive: true });
 })();
