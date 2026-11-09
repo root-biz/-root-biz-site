@@ -823,6 +823,15 @@ body[data-page="ad"] .view-pc #ad-final-cta{background:#221B14;--ink:#F7F4EE;--m
   .svc2:hover{background:#FFFFFF !important;border-color:#221B14 !important}
   .svc2:hover .svc2-body{background:none !important;box-shadow:none !important}
 }
+/* 2026-11 SP：他サービスを縦積みリストに（黒地、タップ／ホバーで白に反転） */
+.rt-svcrow{display:grid;grid-template-columns:84px minmax(0,1fr) 36px;align-items:center;gap:12px;min-height:88px;padding:10px 12px 10px 10px;border-radius:12px;background:#221B14;border:1px solid #221B14;text-decoration:none;transition:background .25s,border-color .25s,box-shadow .25s}
+.rt-svcrow-img{width:84px;height:66px;object-fit:cover;border-radius:8px;display:block;background:#2E2620}
+.rt-svcrow-t{display:block;font:700 15px/1.45 'Noto Sans JP',sans-serif;color:#FFFFFF;transition:color .25s;word-break:auto-phrase}
+.rt-svcrow-p{font:500 12.5px/1.6 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.75);transition:color .25s;word-break:auto-phrase}
+.rt-svcrow-arr{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#F2661F}
+.rt-svcrow:hover,.rt-svcrow:focus-visible{background:#FFFFFF;border-color:#221B14;box-shadow:0 10px 24px rgba(34,27,20,.14)}
+.rt-svcrow:hover .rt-svcrow-t,.rt-svcrow:focus-visible .rt-svcrow-t{color:#221B14}
+.rt-svcrow:hover .rt-svcrow-p,.rt-svcrow:focus-visible .rt-svcrow-p{color:#6B6259}
 
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1180,7 +1189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="svc2-body">
         <span class="tag" style="color: #ffffff; justify-self: start; font-size: 15px">加速させる</span>
         <span class="svc2-t" style="font-size:30px"><b>01</b>デジタル広告運用</span>
-        <p class="card-p" style="font-weight: 700"><span class="pc-only">事業目標を踏まえて媒体と予算配分を設計し、運用する</span><span class="sp-only">事業目標から媒体と予算配分を設計・運用</span></p>
+        <p class="card-p" style="font-weight: 700; font-size: 15px"><span class="pc-only">事業目標を踏まえて媒体と予算配分を設計し、運用する</span><span class="sp-only">事業目標から媒体と予算配分を設計・運用</span></p>
         <span class="svc2-arr" aria-hidden="true"><svg id="svg-10" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
       </div>
     </a>
@@ -1189,7 +1198,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="svc2-body">
         <span class="tag" style="color: #ffffff; justify-self: start; font-size: 15px">「ファン」をつくる</span>
         <span class="svc2-t" style="font-size:30px"><b>02</b>SNSオーガニック運用</span>
-        <p class="card-p" style="font-weight: 700"><span class="pc-only">企画から撮影・編集、投稿、分析まで一貫して対応</span><span class="sp-only">企画から投稿・分析まで一貫対応</span></p>
+        <p class="card-p" style="font-weight: 700; font-size: 15px"><span class="pc-only">企画から撮影・編集、投稿、分析まで一貫して対応</span><span class="sp-only">企画から投稿・分析まで一貫対応</span></p>
         <span class="svc2-arr" aria-hidden="true"><svg id="svg-12" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
       </div>
     </a>
@@ -1198,7 +1207,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="svc2-body">
         <span class="tag" style="color: #ffffff; justify-self: start; font-size: 15px">見つけてもらう</span>
         <span class="svc2-t" style="font-size:30px"><b>03</b><span>SEO・AI検索対策・MEO</span></span>
-        <p class="card-p" style="font-weight: 700"><span class="pc-only">Google検索やマップ、AI検索で見つけてもらえる状態に</span><span class="sp-only">検索・マップ・AI検索で見つかる状態に</span></p>
+        <p class="card-p" style="font-weight: 700; font-size: 15px"><span class="pc-only">Google検索やマップ、AI検索で見つけてもらえる状態に</span><span class="sp-only">検索・マップ・AI検索で見つかる状態に</span></p>
         <span class="svc2-arr" aria-hidden="true"><svg id="svg-13" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
       </div>
     </a>
@@ -1207,7 +1216,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="svc2-body">
         <span class="tag" style="color: #ffffff; justify-self: start; font-size: 15px">選ばれる</span>
         <span class="svc2-t" style="font-size:30px"><b>04</b><span>クリエイティブ・Web制作</span></span>
-        <p class="card-p" style="font-weight: 700"><span class="pc-only">バナー・動画・LP・HP。広告と一体で訴求を検証しながら制作</span><span class="sp-only">バナー・動画・LP・HPを広告と一体で制作</span></p>
+        <p class="card-p" style="font-weight: 700; font-size: 15px"><span class="pc-only">バナー・動画・LP・HP。広告と一体で訴求を検証しながら制作</span><span class="sp-only">バナー・動画・LP・HPを広告と一体で制作</span></p>
         <span class="svc2-arr" aria-hidden="true"><svg id="svg-14" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
       </div>
     </a>
@@ -1536,13 +1545,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <span style="position:relative;display:flex;align-items:center;gap:12px;font:700 12px 'Archivo',sans-serif;letter-spacing:.24em;color:#F2661F"><svg id="svg-05" style="width:72px;height:14px;flex:none"><use href="#ecg"></use></svg>DIFFERENCE</span>
       <h2 style="position:relative;margin:0;font:900 24px/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">Rootの3つの特徴と強み</h2>
     </div>
-    <div style="padding:0 16px;display:flex;align-items:center;gap:12px">
-      <span style="flex:1;height:3px;border-radius:2px;background:rgba(34,27,20,.06);overflow:hidden"><span style="display:block;height:100%;width:33%;background:#F2661F"></span></span>
-      <button type="button" aria-label="前へ" style="display:grid;place-items:center;width:44px;height:44px;border-radius:8px;border:1.5px solid rgba(34,27,20,.15);background:#FFFFFF;cursor:pointer;padding:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="#221B14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
-      <button type="button" aria-label="次へ" style="display:grid;place-items:center;width:44px;height:44px;border-radius:8px;border:0;background:#F2661F;cursor:pointer;padding:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
-    </div>
-    <div style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px 4px;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch">
-      <div class="point" style="flex:0 0 85%;scroll-snap-align:start;display:grid;gap:18px;align-content:start;padding:24px 16px;background:#F6F5F2;border:1px solid rgba(34,27,20,.2);border-radius:12px" data-rt-card="">
+    <div style="display:grid;gap:16px;padding:0 16px">
+      <div class="point" style="display:grid;gap:18px;align-content:start;padding:24px 16px;background:#F6F5F2;border:1px solid rgba(34,27,20,.2);border-radius:12px" data-rt-card="">
         <div style="display:grid;gap:12px">
           <span style="display:flex;align-items:center;gap:12px;font:700 16px 'Archivo',sans-serif;letter-spacing:.2em;color:#221B14"><b style="font:800 28px/1 'Archivo',sans-serif;color:#F2661F;letter-spacing:0">01</b><i style="width:1.5px;height:24px;background:#F1EFEB;display:block"></i>POINT</span>
           <span style="font:900 24px/1.3 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">事業最適化支援</span>
@@ -1550,7 +1554,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <img src="/assets/site/img/ui/5491b32bf83b.jpg" alt="adobestock_2013692671" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block">
       </div>
-      <div class="point" style="flex:0 0 85%;scroll-snap-align:start;display:grid;gap:18px;align-content:start;padding:24px 16px;background:#F6F5F2;border:1px solid rgba(34,27,20,.2);border-radius:12px" data-rt-card="">
+      <div class="point" style="display:grid;gap:18px;align-content:start;padding:24px 16px;background:#F6F5F2;border:1px solid rgba(34,27,20,.2);border-radius:12px" data-rt-card="">
         <div style="display:grid;gap:12px">
           <span style="display:flex;align-items:center;gap:12px;font:700 16px 'Archivo',sans-serif;letter-spacing:.2em;color:#221B14"><b style="font:800 28px/1 'Archivo',sans-serif;color:#F2661F;letter-spacing:0">02</b><i style="width:1.5px;height:24px;background:#F1EFEB;display:block"></i>POINT</span>
           <span style="font:900 24px/1.3 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14;word-break:auto-phrase">領域を横断した最適解</span>
@@ -1558,7 +1562,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <img src="/assets/site/img/ui/b14e80792c95.jpg" alt="adobestock_970201212" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block">
       </div>
-      <div class="point" style="flex:0 0 85%;scroll-snap-align:start;display:grid;gap:18px;align-content:start;padding:24px 16px;background:#F6F5F2;border:1px solid rgba(34,27,20,.2);border-radius:12px" data-rt-card="">
+      <div class="point" style="display:grid;gap:18px;align-content:start;padding:24px 16px;background:#F6F5F2;border:1px solid rgba(34,27,20,.2);border-radius:12px" data-rt-card="">
         <div style="display:grid;gap:12px">
           <span style="display:flex;align-items:center;gap:12px;font:700 16px 'Archivo',sans-serif;letter-spacing:.2em;color:#221B14"><b style="font:800 28px/1 'Archivo',sans-serif;color:#F2661F;letter-spacing:0">03</b><i style="width:1.5px;height:24px;background:#F1EFEB;display:block"></i>POINT</span>
           <span style="font:900 24px/1.3 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">ミクロ成果確認</span>
@@ -1566,7 +1570,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <img src="/assets/site/img/ui/169fa0d52967.jpg" alt="adobestock_2185881498" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block">
       </div>
-      <span aria-hidden="true" style="flex:0 0 4px"></span>
     </div>
   </section>
 
@@ -1708,7 +1711,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <span aria-hidden="true" style="position:absolute;left:-6px;top:-34px;font:900 96px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:rgba(34,27,20,.06);white-space:nowrap;pointer-events:none">DIAGNOSIS</span>
       <span style="position:relative;display:flex;align-items:center;gap:12px;font:700 12px 'Archivo',sans-serif;letter-spacing:.24em;color:#F2661F"><svg id="svg-07" style="width:72px;height:14px;flex:none"><use href="#ecg"></use></svg>DIAGNOSIS</span>
       <h2 style="position:relative;margin:0;font:900 24px/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">まずは無料で<br>現状分析・診断から</h2>
-      <p style="position:relative;margin:0;font:500 15px/1.9 'Noto Sans JP',sans-serif;color:rgba(34,27,20,.75);word-break:auto-phrase">ヒアリングをもとに中長期戦略をご提案。<br>既存施策の数値分析・改善提案も行います。</p>
+      <p style="position: relative; margin: 0; font: 500 15px/1.9 'Noto Sans JP',sans-serif; color: rgba(34,27,20,.75); word-break: auto-phrase; font-weight: 700">ヒアリングをもとに中長期戦略をご提案。<br>既存施策の数値分析・改善提案も行います。</p>
     </div>
     <div style="display:grid;gap:8px">
       <img src="/assets/site/img/diagnosis.png" alt="分析・診断資料のイメージ" style="width:100%;height:auto;aspect-ratio:3900/1356;object-fit:contain;background:#FFFFFF;border-radius:8px;display:block">
@@ -1724,49 +1727,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <span style="position:relative;display:flex;align-items:center;gap:12px;font:700 12px 'Archivo',sans-serif;letter-spacing:.24em;color:#F2661F"><svg id="svg-09" style="width:72px;height:14px;flex:none"><use href="#ecg"></use></svg>OTHER SERVICES</span>
       <h2 style="position:relative;margin:0;font:900 24px/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">課題に合わせて<br>施策を組み合わせる。</h2>
     </div>
-    <div style="padding:0 16px;display:flex;align-items:center;gap:12px">
-      <span style="flex:1;height:3px;border-radius:2px;background:rgba(34,27,20,.06);overflow:hidden"><span style="display:block;height:100%;width:25%;background:#F2661F"></span></span>
-      <button type="button" aria-label="前へ" style="display:grid;place-items:center;width:44px;height:44px;border-radius:8px;border:1.5px solid rgba(34,27,20,.15);background:#FFFFFF;cursor:pointer;padding:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="#221B14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
-      <button type="button" aria-label="次へ" style="display:grid;place-items:center;width:44px;height:44px;border-radius:8px;border:0;background:#F2661F;cursor:pointer;padding:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
-    </div>
-    <div style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px 4px;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch">
-      <a class="svc2 service-card" data-service-link="ad" data-service-name="デジタル広告運用" href="/service/ad/digital-ads" style="flex:0 0 82%;scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr;border:1px solid rgba(251,241,230,.14);background:#2B2219;color:inherit;text-decoration:none">
-        <img src="/assets/site/img/ui/31a7e2238869.jpg" alt="デジタル広告運用のイメージ写真" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block">
-        <div style="padding:20px 16px;display:grid;gap:12px;align-content:start">
-          <span style="justify-self:start;display:inline-flex;align-items:center;padding:4px 10px;border-radius:2px;background:#F2661F;color:#FFFFFF;font:700 13px 'Noto Sans JP',sans-serif;letter-spacing:.06em">加速させる</span>
-          <span style="display:flex;align-items:baseline;gap:8px;font:700 19px/1.4 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#F7F4EE"><b style="font:800 22px/1 'Archivo',sans-serif;color:#F2661F">01</b>デジタル広告運用</span>
-          <p style="margin:0;font:400 15px/1.8 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.7);word-break:auto-phrase">事業目標から媒体と予算配分を設計・運用</p>
-          <span aria-hidden="true" style="justify-self:end;width:44px;height:44px;border-radius:50%;background:#F2661F;display:grid;place-items:center"><svg id="svg-10" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
-        </div>
-      </a>
-      <a class="svc2 service-card" data-service-link="sns" data-service-name="SNSオーガニック運用" href="/service/ad/sns" style="flex:0 0 82%;scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr;border:1px solid rgba(251,241,230,.14);background:#2B2219;color:inherit;text-decoration:none">
-        <img src="/assets/site/img/ui/dc9d889d8810.jpg" alt="SNSオーガニック運用のイメージ写真" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block">
-        <div style="padding:20px 16px;display:grid;gap:12px;align-content:start">
-          <span style="justify-self:start;display:inline-flex;align-items:center;padding:4px 10px;border-radius:2px;background:#F2661F;color:#FFFFFF;font:700 13px 'Noto Sans JP',sans-serif;letter-spacing:.06em">「ファン」をつくる</span>
-          <span style="display:flex;align-items:baseline;gap:8px;font:700 19px/1.4 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#F7F4EE"><b style="font:800 22px/1 'Archivo',sans-serif;color:#F2661F">02</b>SNSオーガニック運用</span>
-          <p style="margin:0;font:400 15px/1.8 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.7);word-break:auto-phrase">企画から投稿・分析まで一貫対応</p>
-          <span aria-hidden="true" style="justify-self:end;width:44px;height:44px;border-radius:50%;background:#F2661F;display:grid;place-items:center"><svg id="svg-12" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
-        </div>
-      </a>
-      <a class="svc2 service-card" data-service-link="seo" data-service-name="SEO・AI検索対策・MEO" href="/service/ad/seo" style="flex:0 0 82%;scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr;border:1px solid rgba(251,241,230,.14);background:#2B2219;color:inherit;text-decoration:none">
-        <img src="/assets/site/img/ui/408cbd0819d5.jpg" alt="SEO・AI検索対策・MEOのイメージ写真" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block">
-        <div style="padding:20px 16px;display:grid;gap:12px;align-content:start">
-          <span style="justify-self:start;display:inline-flex;align-items:center;padding:4px 10px;border-radius:2px;background:#F2661F;color:#FFFFFF;font:700 13px 'Noto Sans JP',sans-serif;letter-spacing:.06em">見つけてもらう</span>
-          <span style="display:flex;align-items:baseline;gap:8px;font:700 19px/1.4 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#F7F4EE"><b style="font:800 22px/1 'Archivo',sans-serif;color:#F2661F">03</b><span>SEO・AI検索対策・MEO</span></span>
-          <p style="margin:0;font:400 15px/1.8 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.7);word-break:auto-phrase">検索・マップ・AI検索で見つかる状態に</p>
-          <span aria-hidden="true" style="justify-self:end;width:44px;height:44px;border-radius:50%;background:#F2661F;display:grid;place-items:center"><svg id="svg-13" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
-        </div>
-      </a>
-      <a class="svc2 service-card" data-service-link="creative" data-service-name="クリエイティブ・Web制作" href="/service/ad/creative" style="flex:0 0 82%;scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr;border:1px solid rgba(251,241,230,.14);background:#2B2219;color:inherit;text-decoration:none">
-        <img src="/assets/site/img/ui/445d3300f6d5.jpg" alt="クリエイティブ・Web制作のイメージ写真" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block">
-        <div style="padding:20px 16px;display:grid;gap:12px;align-content:start">
-          <span style="justify-self:start;display:inline-flex;align-items:center;padding:4px 10px;border-radius:2px;background:#F2661F;color:#FFFFFF;font:700 13px 'Noto Sans JP',sans-serif;letter-spacing:.06em">選ばれる</span>
-          <span style="display:flex;align-items:baseline;gap:8px;font:700 19px/1.4 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#F7F4EE"><b style="font:800 22px/1 'Archivo',sans-serif;color:#F2661F">04</b><span>クリエイティブ・Web制作</span></span>
-          <p style="margin:0;font:400 15px/1.8 'Noto Sans JP',sans-serif;color:rgba(251,241,230,.7);word-break:auto-phrase">バナー・動画・LP・HPを広告と一体で制作</p>
-          <span aria-hidden="true" style="justify-self:end;width:44px;height:44px;border-radius:50%;background:#F2661F;display:grid;place-items:center"><svg id="svg-14" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span>
-        </div>
-      </a>
-      <span aria-hidden="true" style="flex:0 0 4px"></span>
+    <div style="display:grid;gap:12px;padding:0 16px">
+      <a class="rt-svcrow service-card" data-service-link="ad" data-service-name="デジタル広告運用" href="/service/ad/digital-ads"><img src="/assets/site/img/ui/31a7e2238869.jpg" alt="" class="rt-svcrow-img"><span style="display:grid;gap:4px;min-width:0"><span class="rt-svcrow-t">デジタル広告運用</span><span class="rt-svcrow-p">事業目標から媒体と予算配分を設計・運用</span></span><span aria-hidden="true" class="rt-svcrow-arr"><svg viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+      <a class="rt-svcrow service-card" data-service-link="sns" data-service-name="SNSオーガニック運用" href="/service/ad/sns"><img src="/assets/site/img/ui/dc9d889d8810.jpg" alt="" class="rt-svcrow-img"><span style="display:grid;gap:4px;min-width:0"><span class="rt-svcrow-t">SNSオーガニック運用</span><span class="rt-svcrow-p">企画から投稿・分析まで一貫対応</span></span><span aria-hidden="true" class="rt-svcrow-arr"><svg viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+      <a class="rt-svcrow service-card" data-service-link="seo" data-service-name="SEO・AI検索対策・MEO" href="/service/ad/seo"><img src="/assets/site/img/ui/408cbd0819d5.jpg" alt="" class="rt-svcrow-img"><span style="display:grid;gap:4px;min-width:0"><span class="rt-svcrow-t">SEO・AI検索対策・MEO</span><span class="rt-svcrow-p">検索・マップ・AI検索で見つかる状態に</span></span><span aria-hidden="true" class="rt-svcrow-arr"><svg viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+      <a class="rt-svcrow service-card" data-service-link="creative" data-service-name="クリエイティブ・Web制作" href="/service/ad/creative"><img src="/assets/site/img/ui/445d3300f6d5.jpg" alt="" class="rt-svcrow-img"><span style="display:grid;gap:4px;min-width:0"><span class="rt-svcrow-t">クリエイティブ・Web制作</span><span class="rt-svcrow-p">バナー・動画・LP・HPを広告と一体で制作</span></span><span aria-hidden="true" class="rt-svcrow-arr"><svg viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
     </div>
   </section>
 
@@ -1778,8 +1743,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span aria-hidden="true" style="position:absolute;left:-10px;top:14px;font:900 110px/1 'Archivo',sans-serif;letter-spacing:-.02em;color:rgba(251,241,230,.06);white-space:nowrap;pointer-events:none">DOWNLOAD</span>
     <img src="/assets/site/img/illust-service-ad-01.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
     <div style="position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding:36px 20px 28px;border-radius:24px;background:#FFFFFF;color:#221B14">
-      <div style="display:grid;gap:10px"><span style="display:flex;align-items:center;gap:12px;font:700 12px 'Archivo',sans-serif;letter-spacing:.24em;color:#F2661F"><span aria-hidden="true" style="display:block;width:28px;height:2px;background:#F2661F"></span>DOWNLOAD</span><h2 style="margin:0;font:900 26px/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">資料送付・<br>無料相談</h2></div>
-      <p style="margin:0;font:500 15px/1.9 'Noto Sans JP',sans-serif;color:#3D342B;word-break:auto-phrase">無料相談のご予約で、<br>サービス概要資料をお送りします。</p>
+      <div style="display:grid;gap:10px"><span style="display:flex;align-items:center;gap:12px;font:700 12px 'Archivo',sans-serif;letter-spacing:.24em;color:#F2661F"><span aria-hidden="true" style="display:block;width:28px;height:2px;background:#F2661F"></span>DOWNLOAD</span><h2 style="margin:0;font:900 26px/1.5 'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:#221B14">無料相談・資料送付</h2></div>
+      <p style="margin: 0; font: 500 15px/1.9 'Noto Sans JP',sans-serif; color: #3D342B; word-break: auto-phrase; font-weight: 700">無料相談のご予約で、サービス概要資料をお送りします。</p>
       <div style="display:grid;gap:8px"><img src="/assets/site/img/download.png" alt="サービス概要資料のイメージ" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:8px;box-shadow:0 8px 20px rgba(34,27,20,.18);display:block"><span style="font:400 12px/1.9 'Noto Sans JP',sans-serif;color:rgba(34,27,20,.55)">※画面はイメージです</span></div>
       <div style="width:100%">
 
