@@ -1,0 +1,58 @@
+/* Root — interaction effects (2026-11) */
+
+/* 1. skeleton shimmer while images / videos load */
+.rt-skel{background-color:#EEECE8 !important;background-image:linear-gradient(100deg,rgba(255,255,255,0) 20%,rgba(255,255,255,.65) 50%,rgba(255,255,255,0) 80%) !important;background-size:220% 100% !important;background-repeat:no-repeat !important;animation:rtSkel 1.3s ease-in-out infinite !important;color:transparent}
+.view-pc section[style*="#221B14"] .rt-skel,.view-sp section[style*="#221B14"] .rt-skel,video.rt-skel{background-color:#2E2620 !important;background-image:linear-gradient(100deg,rgba(255,255,255,0) 20%,rgba(255,255,255,.08) 50%,rgba(255,255,255,0) 80%) !important}
+@keyframes rtSkel{0%{background-position:120% 0}100%{background-position:-120% 0}}
+
+/* 2. page-to-page loading: thin progress bar + spinner */
+.rt-pbar{position:fixed;left:0;top:0;height:3px;width:0;background:#F2661F;z-index:10000;opacity:0;pointer-events:none;box-shadow:0 0 10px rgba(242,102,31,.6)}
+html.rt-leaving .rt-pbar{opacity:1;animation:rtBar 2.4s cubic-bezier(.1,.7,.2,1) forwards}
+@keyframes rtBar{0%{width:0}60%{width:72%}100%{width:90%}}
+.rt-spin{position:fixed;right:22px;bottom:22px;z-index:10000;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#FFFFFF;box-shadow:0 8px 24px rgba(34,27,20,.18);opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+html.rt-leaving-slow .rt-spin{opacity:1;transform:scale(1)}
+.rt-spin-ring,.rt-busy::after{display:block;width:24px;height:24px;border-radius:50%;border:3px solid rgba(242,102,31,.22);border-top-color:#F2661F;animation:rtSpin .8s linear infinite}
+.rt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@keyframes rtSpin{to{transform:rotate(360deg)}}
+/* sending forms: spinner inside the button */
+.rt-busy{position:relative;color:transparent !important}
+.rt-busy > *{visibility:hidden}
+.rt-busy::after{content:"";position:absolute;left:50%;top:50%;margin:-12px 0 0 -12px;border-color:rgba(255,255,255,.35);border-top-color:#FFFFFF}
+
+/* 3. mouse stalker (PC) */
+.rt-stalker,.rt-stalker-ring{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .25s ease}
+.rt-stalker{width:8px;height:8px;margin:-4px 0 0 -4px;background:#F2661F}
+.rt-stalker-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid rgba(242,102,31,.55);transition:opacity .25s ease,width .25s ease,height .25s ease,margin .25s ease,background .25s ease,border-color .25s ease}
+html.rt-stalk-on .rt-stalker,html.rt-stalk-on .rt-stalker-ring{opacity:1}
+html.rt-stalk-hover .rt-stalker-ring{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(242,102,31,.12);border-color:rgba(242,102,31,.0)}
+html.rt-stalk-hover .rt-stalker{opacity:0}
+html.rt-stalk-text .rt-stalker-ring{opacity:0}
+html.rt-stalk-down .rt-stalker-ring{width:28px;height:28px;margin:-14px 0 0 -14px}
+@media (hover:none),(pointer:coarse){.rt-stalker,.rt-stalker-ring{display:none}}
+
+/* 4. underline animation for key phrases */
+.rt-uline{background-image:linear-gradient(currentColor,currentColor);background-repeat:no-repeat;background-position:0 92%;background-size:0 .1em;transition:background-size .9s cubic-bezier(.65,0,.35,1);padding-bottom:.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.rt-uline.is-drawn{background-size:100% .1em}
+
+/* 5. parallax: give the moving media a little extra size so no edge shows */
+.rt-plx{scale:1.12;will-change:translate}
+@media (prefers-reduced-motion:reduce){.rt-plx{scale:1;translate:none !important}}
+
+/* 7. slider dots */
+.rt-dots{display:flex;justify-content:center;gap:8px;padding:14px 0 4px}
+.rt-dot{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:rgba(34,27,20,.2);cursor:pointer;transition:width .35s cubic-bezier(.2,.7,.2,1),background .35s ease}
+.rt-dot.is-on{width:24px;background:#F2661F}
+section[style*="#221B14"] .rt-dot:not(.is-on){background:rgba(255,255,255,.3)}
+[data-rt-slider]{cursor:grab}
+[data-rt-slider].is-drag{cursor:grabbing;user-select:none}
+@media (hover:none){[data-rt-slider]{cursor:auto}}
+
+/* 8. accordions (SP privacy policy) */
+.rt-acc-h{cursor:pointer;position:relative;padding-right:44px}
+.rt-acc-btn{position:absolute;right:0;top:50%;margin-top:-16px;width:32px;height:32px;padding:0;border:1.5px solid #F2661F;border-radius:50%;background:#FFFFFF;cursor:pointer}
+.rt-acc-sign::before,.rt-acc-sign::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:#F2661F;transition:transform .3s ease}
+.rt-acc-sign::after{transform:rotate(90deg)}
+.rt-acc-btn[aria-expanded="true"] .rt-acc-sign::after{transform:rotate(0deg)}
+.rt-acc-body{overflow:hidden;transition:height .4s cubic-bezier(.2,.7,.2,1)}
+.rt-acc-inner{display:grid;gap:12px;padding-top:4px}
+section[id^="p"]:not(.is-open) > .rt-acc-h{color:#221B14}
