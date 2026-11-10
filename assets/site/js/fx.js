@@ -54,24 +54,23 @@
     });
   }).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['disabled', 'aria-busy', 'aria-disabled'] });
 
-  /* ---------- 3. mouse stalker (PC / fine pointer only) — arrow + Root logo tag ---------- */
+  /* ---------- 3. mouse stalker (PC / fine pointer only) — ring that follows the pointer directly ---------- */
   if (finePointer && !reduce) {
-    var fig = document.createElement('div'); fig.className = 'rt-fig'; fig.setAttribute('aria-hidden', 'true');
-    fig.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24"><path d="M5 2l14 7-6 1.7L11 18z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg>' +
-      '<span class="rt-fig__tag"><img src="/assets/site/img/icons/stalker-logo.webp" alt="" width="44" height="15" decoding="async"></span>';
-    document.body.appendChild(fig);
-    var EASE = 0.34, mx = 0, my = 0, fx = 0, fy = 0, shown = false;
+    var ring = document.createElement('div'); ring.className = 'rt-ring'; ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+    var root = document.documentElement, HOT = 'a, button, [role="button"], label, summary, select, .isClick';
     addEventListener('pointermove', function (e) {
       if (e.pointerType && e.pointerType !== 'mouse') return;
-      mx = e.clientX; my = e.clientY;
-      if (!shown) { shown = true; fx = mx; fy = my; document.documentElement.classList.add('rt-stalk-on'); }
+      ring.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
+      root.classList.add('rt-stalk-on');
+      var t = e.target.closest ? e.target : null;
+      var field = t && t.closest('input, textarea, [contenteditable="true"]');
+      root.classList.toggle('rt-stalk-text', !!field);
+      root.classList.toggle('rt-stalk-hover', !field && !!(t && t.closest(HOT)));
     }, { passive: true });
-    document.documentElement.addEventListener('mouseleave', function () { shown = false; document.documentElement.classList.remove('rt-stalk-on'); });
-    (function loop() {
-      fx += (mx - fx) * EASE; fy += (my - fy) * EASE;
-      fig.style.transform = 'translate3d(' + fx + 'px,' + fy + 'px,0)';
-      requestAnimationFrame(loop);
-    })();
+    root.addEventListener('mouseleave', function () { root.classList.remove('rt-stalk-on', 'rt-stalk-hover'); });
+    addEventListener('mousedown', function () { root.classList.add('rt-stalk-down'); });
+    addEventListener('mouseup', function () { root.classList.remove('rt-stalk-down'); });
   }
 
   /* ---------- 4. underline animation on key phrases ---------- */
