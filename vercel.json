@@ -259,6 +259,15 @@
       ]
     },
     {
+      "source": "/column/ai-agent-ad-operations",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.root-biz.com/column/ai-agent-ad-operations>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
       "source": "/assets/site/(img|video)/(.*)",
       "headers": [
         {
