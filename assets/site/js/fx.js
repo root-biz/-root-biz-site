@@ -54,27 +54,22 @@
     });
   }).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['disabled', 'aria-busy', 'aria-disabled'] });
 
-  /* ---------- 3. mouse stalker (PC / fine pointer only) ---------- */
+  /* ---------- 3. mouse stalker (PC / fine pointer only) — arrow + Root logo tag ---------- */
   if (finePointer && !reduce) {
-    var dot = document.createElement('div'); dot.className = 'rt-stalker'; dot.setAttribute('aria-hidden', 'true');
-    var ring = document.createElement('div'); ring.className = 'rt-stalker-ring'; ring.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(ring); document.body.appendChild(dot);
-    var mx = -100, my = -100, rx = -100, ry = -100, shown = false;
-    document.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse') return;
+    var fig = document.createElement('div'); fig.className = 'rt-fig'; fig.setAttribute('aria-hidden', 'true');
+    fig.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24"><path d="M5 2l14 7-6 1.7L11 18z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/></svg>' +
+      '<span class="rt-fig__tag"><img src="/assets/site/img/icons/stalker-logo.webp" alt="" width="44" height="15" decoding="async"></span>';
+    document.body.appendChild(fig);
+    var EASE = 0.34, mx = 0, my = 0, fx = 0, fy = 0, shown = false;
+    addEventListener('pointermove', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
       mx = e.clientX; my = e.clientY;
-      if (!shown) { shown = true; rx = mx; ry = my; document.documentElement.classList.add('rt-stalk-on'); }
-      var t = e.target.closest && e.target.closest('a, button, [role="button"], label, summary, input, select, textarea');
-      document.documentElement.classList.toggle('rt-stalk-hover', !!t);
-      document.documentElement.classList.toggle('rt-stalk-text', !!(t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)));
+      if (!shown) { shown = true; fx = mx; fy = my; document.documentElement.classList.add('rt-stalk-on'); }
     }, { passive: true });
-    document.addEventListener('pointerleave', function () { shown = false; document.documentElement.classList.remove('rt-stalk-on'); });
-    document.addEventListener('mousedown', function () { document.documentElement.classList.add('rt-stalk-down'); });
-    document.addEventListener('mouseup', function () { document.documentElement.classList.remove('rt-stalk-down'); });
+    document.documentElement.addEventListener('mouseleave', function () { shown = false; document.documentElement.classList.remove('rt-stalk-on'); });
     (function loop() {
-      rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
-      dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
-      ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+      fx += (mx - fx) * EASE; fy += (my - fy) * EASE;
+      fig.style.transform = 'translate3d(' + fx + 'px,' + fy + 'px,0)';
       requestAnimationFrame(loop);
     })();
   }
