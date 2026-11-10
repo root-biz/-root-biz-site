@@ -21,10 +21,10 @@ html.rt-leaving-slow .rt-spin{opacity:1;transform:scale(1)}
 
 /* 3. mouse stalker (PC) — 50px ring following the pointer; grows into a filled disc over links */
 .rt-ring{position:fixed;left:0;top:0;z-index:9999;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .3s ease}
-.rt-ring::before{content:"";position:absolute;left:0;top:0;width:50px;height:50px;border:2px solid #9D9D9D;border-radius:50%;background:transparent;box-sizing:border-box;transform:translate(-50%,-50%);transition:width .4s ease,height .4s ease,background .4s ease,border-color .4s ease,opacity .3s ease}
+.rt-ring::before{content:"";position:absolute;left:0;top:0;width:50px;height:50px;border:2px solid #F2661F;border-radius:50%;background:transparent;box-sizing:border-box;transform:translate(-50%,-50%);transition:width .4s ease,height .4s ease,background .4s ease,border-color .4s ease,opacity .3s ease}
 .rt-ring::after{content:"";position:absolute;left:0;top:0;width:8px;height:8px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s ease}
 html.rt-stalk-on .rt-ring{opacity:1}
-html.rt-stalk-hover .rt-ring::before{width:108px;height:108px;border-color:transparent;background:rgba(31,26,22,.28)}
+html.rt-stalk-hover .rt-ring::before{width:108px;height:108px;border-color:transparent;background:rgba(242,102,31,.35)}
 html.rt-stalk-hover .rt-ring::after{opacity:1;transition:opacity .4s ease .2s}
 html.rt-stalk-hover a,html.rt-stalk-hover button,html.rt-stalk-hover [role="button"],html.rt-stalk-hover label,html.rt-stalk-hover summary{cursor:none}
 html.rt-stalk-down .rt-ring::before{width:40px;height:40px}
