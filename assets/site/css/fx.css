@@ -76,3 +76,11 @@ section[id^="p"]:not(.is-open) > .rt-acc-h{color:#221B14}
 .view-sp .rt-stepbox{padding:14px 12px 16px}
 .view-sp .rt-step-head{justify-content:center;font-size:13px}
 @media (prefers-reduced-motion:reduce){.rt-steps li.is-cur .rt-step-dot{animation:none}}
+
+/* TOP nav tiles (SERVICE / MISSION / NEWS / RECRUIT / COMPANY / MTG): black panel inverts to white on hover, same as OTHER SERVICES */
+@media (hover:hover){
+  body[data-page="top"] a.rt-tile > span[style*="background:#221B14"]{transition:background .25s ease,box-shadow .25s ease}
+  body[data-page="top"] a.rt-tile > span[style*="background:#221B14"] span[style*="color:#FFFFFF"]{transition:color .25s ease}
+  body[data-page="top"] a.rt-tile:hover > span[style*="background:#221B14"]{background:#FFFFFF !important;box-shadow:0 16px 40px rgba(34,27,20,.14),0 0 0 1px #F2661F}
+  body[data-page="top"] a.rt-tile:hover > span[style*="background:#221B14"] span[style*="color:#FFFFFF"]{color:#221B14 !important}
+}
