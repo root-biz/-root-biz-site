@@ -112,12 +112,16 @@ html,body{margin:0}*{box-sizing:border-box}a{color:#FBF1E6}a:hover{color:#F2661F
 <script src="/assets/site/js/ui.js?v=13" defer></script>
 <script src="/assets/site/js/fx.js?v=7" defer></script>
 <script src="/assets/site/js/news.js" defer></script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K2XGM5JS');</script>
+<!-- Google Tag Manager (loads on first interaction, or 3.5s after page load) -->
+<script>(function(w,d,l,i){w[l]=w[l]||[];var done=0,ev=['pointerdown','touchstart','keydown','scroll','mousemove'];
+function go(){if(done)return;done=1;ev.forEach(function(e){w.removeEventListener(e,go,{passive:true})});
+w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName('script')[0],
+j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);}
+ev.forEach(function(e){w.addEventListener(e,go,{passive:true})});
+function later(){setTimeout(go,3500)}
+if(d.readyState==='complete')later();else w.addEventListener('load',later);
+w.addEventListener('pagehide',go);
+})(window,document,'dataLayer','GTM-K2XGM5JS');</script>
 <!-- End Google Tag Manager -->
 </head>
 
