@@ -4,6 +4,7 @@
 .rt-video{opacity:0;transition:opacity .9s ease;pointer-events:none}
 .rt-video.is-on{opacity:1}
 #hero-video-slot .rt-video{transition-duration:.35s}
+#hero-video-slot .rt-video[poster]{opacity:1}
 #hero-video-slot.is-video > img[alt="Root"]{opacity:0;transition:opacity .35s ease}
 
 /* ---- scroll reveal ---- */
