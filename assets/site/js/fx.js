@@ -73,28 +73,6 @@
     addEventListener('mouseup', function () { root.classList.remove('rt-stalk-down'); });
   }
 
-  /* ---------- 4. underline animation on key phrases ---------- */
-  // orange-coloured phrases inside headings (e.g. 「常駐型コンサルティング」「新しいリファラル採用」)
-  var keys = $$('h1 span, h2 span, h3 span').filter(function (s) {
-    var st = (s.getAttribute('style') || '').replace(/\s/g, '').toLowerCase();
-    if (!/color:(#(f2661f|c94e10)|rgb\((242,102,31|201,78,16)\))/.test(st)) return false; // only the highlighted phrases
-    if (/background(-color)?:/.test(st) || s.children.length > 1) return false; // skip boxed labels
-    return s.textContent.trim().length >= 2;
-  });
-  keys.forEach(function (s) { s.classList.add('rt-uline'); });
-  if (reduce || !('IntersectionObserver' in window)) keys.forEach(function (s) { s.classList.add('is-drawn'); });
-  else {
-    // headings use clip-path for their own reveal, so watch the heading's parent box instead
-    var uo = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        (e.target._rtU || []).forEach(function (el) { setTimeout(function () { el.classList.add('is-drawn'); }, 450); });
-        uo.unobserve(e.target);
-      });
-    }, { rootMargin: '0px 0px -12% 0px' });
-    keys.forEach(function (s) { var h = s.closest('h1,h2,h3'), t = (h && h.parentElement) || s; (t._rtU = t._rtU || []).push(s); uo.observe(t); });
-  }
-
   /* ---------- 5. parallax for photos and videos ---------- */
   if (!reduce) {
     var px = [];

@@ -32,9 +32,6 @@ html.rt-stalk-down.rt-stalk-hover .rt-ring::before{width:92px;height:92px}
 html.rt-stalk-text .rt-ring::before{opacity:.35;width:30px;height:30px}
 @media (hover:none),(pointer:coarse){.rt-ring{display:none}}
 
-/* 4. underline animation for key phrases */
-.rt-uline{background-image:linear-gradient(currentColor,currentColor);background-repeat:no-repeat;background-position:0 92%;background-size:0 .1em;transition:background-size .9s cubic-bezier(.65,0,.35,1);padding-bottom:.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.rt-uline.is-drawn{background-size:100% .1em}
 
 /* 5. parallax: give the moving media a little extra size so no edge shows */
 .rt-plx{scale:1.12;will-change:translate}
